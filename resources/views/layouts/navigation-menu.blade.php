@@ -29,7 +29,13 @@
                         <i class="fa fa-hospital" style="font-size: 20px;"></i>
                         <span style="font-size: 15px;">Rama</span>
                     </a>
-                </li>                
+                </li>    
+                <li class="nav-item" style="font-size: 14PX;">
+                    <a class="nav-link @if (Request::segment(2)=='cita') active @endif" href="{{url('/admin/cita/list')}}" style="font-size: 14PX;text-align: center;">
+                        <i class="fa fa-hospital" style="font-size: 20px;"></i>
+                        <span style="font-size: 15px;">Rama</span>
+                    </a>
+                </li>              
             @elseif (Auth::user()->user_level == 2)
                 <li class="nav-item">
                     <a class="nav-link @if (Request::segment(2)=='dashboard') active @endif" href="{{url('secretary/dashboard')}}" style="text-align: center;font-size: 15px;">
@@ -37,6 +43,12 @@
                         <span style="font-size: 15px;">Dashboard</span>
                     </a>
                 </li>
+                <li class="nav-item" style="font-size: 14PX;">
+                    <a class="nav-link @if (Request::segment(2)=='cita') active @endif" href="{{url('/secretary/cita/list')}}" style="font-size: 14PX;text-align: center;">
+                        <i class="fa fa-hospital" style="font-size: 20px;"></i>
+                        <span style="font-size: 15px;">Rama</span>
+                    </a>
+                </li> 
             @elseif (Auth::user()->user_level == 3)
                 <li class="nav-item">
                     <a class="nav-link @if (Request::segment(2)=='dashboard') active @endif" href="{{url('doctor/dashboard')}}" style="text-align: center;font-size: 15px;">

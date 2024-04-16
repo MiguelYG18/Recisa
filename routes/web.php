@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CitaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SpecializationController;
 use App\Http\Controllers\UserGroupController;
@@ -76,10 +77,14 @@ Route::group(['middleware'=>'admin'],function(){
     Route::post('admin/specialization/edit/{id}',[SpecializationController::class,'update']);
     //delete get
     Route::get('admin/specialization/delete/{id}',[SpecializationController::class,'delete']);
+    //Rutas para las citas
+    Route::get('/admin/cita/list',[CitaController::class,'list']);
 });
 Route::group(['middleware'=>'secretary'],function(){
     //La vista del dashbaord
     Route::get('secretary/dashboard',[DashboardController::class,'dashboard']); 
+    //Rutas para las citas
+    Route::get('/secretary/cita/list',[CitaController::class,'list']);
 });
 Route::group(['middleware'=>'doctor'],function(){
     //La vista del dashbaord
