@@ -53,6 +53,8 @@ Route::group(['middleware'=>'admin'],function(){
     Route::post('admin/admin/edit/{slug}',[AdminController::class,'update']);
     //delete get
     Route::get('admin/admin/delete/{id}',[AdminController::class,'delete']);
+    //Generar Reporte de Usuarios
+    Route::get('admin/admin/reporte',[AdminController::class,'reporte']);
 
     //Rutas pra crear los grupos
     //La vista de los usuarios

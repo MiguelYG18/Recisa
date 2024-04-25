@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Mpdf\Mpdf;
+use Illuminate\Support\Facades\View;
 class AdminController extends Controller
 {
     public function list()
@@ -82,6 +84,9 @@ class AdminController extends Controller
         $user = User::all()->firstWhere(function ($user) use ($slug) {
             return $user->slug === $slug;
         });
+        if(empty($user)){
+            return view('admin.page.404');
+        }
         $rol = UserGroup::all();
         return view('admin.admin.edit', compact('user', 'rol'));
     }
@@ -136,6 +141,24 @@ class AdminController extends Controller
         $user=User::find($id);
         $user->delete();
         return redirect('admin/admin/list')->with('success','El Usuario '.$user->names.' fue eliminado'); 
+    }
+    public function reporte(){
+        // Obtener todos los usuarios
+        $users = User::all(); // O personaliza la consulta si es necesario
+        // Cargar la vista y pasar los datos de los usuarios
+        $view = View::make('admin.reporte.report', ['users' => $users]);
+        // Obtener el contenido HTML de la vista
+        $html = $view->render();
+        // Crear una instancia de mPDF
+        $mpdf = new Mpdf();
+        // Configurar el pie de página centrado
+        $footerHtml = '<footer>Página {PAGENO} de {nbpg}</footer>';
+        $mpdf->SetHTMLFooter($footerHtml);      
+        // Escribir el contenido HTML en el PDF
+        $mpdf->WriteHTML($html);
+        // Devolver el PDF como respuesta
+        return response($mpdf->Output('reporte_usuarios.pdf', 'I')) // 'I' para Inline, 'D' para Descargar
+            ->header('Content-Type', 'application/pdf');  
     }    
 
 }
