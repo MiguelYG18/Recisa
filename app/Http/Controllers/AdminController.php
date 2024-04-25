@@ -85,7 +85,7 @@ class AdminController extends Controller
             return $user->slug === $slug;
         });
         if(empty($user)){
-            return view('admin.page.404');
+            return view('page.404');
         }
         $rol = UserGroup::all();
         return view('admin.admin.edit', compact('user', 'rol'));

@@ -26,13 +26,19 @@ Route::post('login',[AuthController::class,'AuthLogin']);
 //Cerrar sesion
 Route::get('logout',[AuthController::class,'Logout']);
 
-//Manejo del error para el admin
-Route::get('/admin/404', function () {
-    return view('admin.page.404');
+//Manejo del error en el sistema
+//Error si no hay un dato
+Route::get('/404', function () {
+    return view('page.404');
 });
-//Manejo de error para la secretaria
-//Manejo de error para el doctor
-
+//Uusario no tiene acceso
+Route::get('/401', function () {
+    return view('page.401');
+});
+//Uusario no tiene acceso
+Route::get('/500', function () {
+    return view('page.500');
+});
 
 //Creamos las rutas de los roles
 Route::group(['middleware'=>'admin'],function(){

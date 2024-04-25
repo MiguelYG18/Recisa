@@ -131,7 +131,7 @@
             </div>
         </div>
         <div class="d-sm-flex justify-content-center align-items-center mb-4 mt-4">
-            <a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="{{url('admin/admin/reporte')}}" style="--bs-primary: #00486E;--bs-primary-rgb: 0,72,110;--bs-body-bg: #00486E;background: #00486E;">
+            <a class="btn btn-primary btn-sm d-none d-sm-inline-block" target="_blank" role="button" href="{{url('admin/admin/reporte')}}" style="--bs-primary: #00486E;--bs-primary-rgb: 0,72,110;--bs-body-bg: #00486E;background: #00486E;">
                 <i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generar Reporte
             </a>
         </div>   

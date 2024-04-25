@@ -21,11 +21,11 @@ class AdminMiddleware
                 return $next($request);
             }else{  
                 Auth::logout();
-                return redirect(url(''));
-            }
+                return redirect(url('/401'));
+            } 
         }else{
             Auth::logout();
-            return redirect(url(''));
+            return redirect(url('/401'));
         }
     }
 }

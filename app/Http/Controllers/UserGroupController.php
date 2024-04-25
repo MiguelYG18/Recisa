@@ -41,7 +41,7 @@ class UserGroupController extends Controller
             return view('admin.rol.edit',compact('usergroup'));
         }else{
             //Error 404
-            return view('admin.page.404');
+            return view('page.404');
         }
     }
     public function update($id,Request $request){
