@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
-
+use Illuminate\Support\Str;
 class AdminController extends Controller
 {
     public function list()
@@ -76,65 +76,62 @@ class AdminController extends Controller
         // Retornar los datos en formato JSON
         return $response->json();
     }
-    public function edit($id){
-        $user= User::find($id);;
-        $rol=UserGroup::all();
-        //Para verificar si id de la ruta exita
-        if(!empty($user)){
-            //Si carga la vista con los datos
-            return view('admin.admin.edit',compact('user','rol'));
-        }else{
-            //Error 404
-            return view('admin.page.404');
-        }
+    public function edit($slug)
+    {
+        // Buscar al usuario cuyo slug generado coincide con el parámetro
+        $user = User::all()->firstWhere(function ($user) use ($slug) {
+            return $user->slug === $slug;
+        });
+        $rol = UserGroup::all();
+        return view('admin.admin.edit', compact('user', 'rol'));
     }
-    public function update($id,Request $request){
-        //Valiadaciones
+    public function update($slug, Request $request)
+    {
+        // Generar el slug dinámicamente
+        $generatedSlug = Str::slug($slug);
+
+        // Buscar al usuario cuyo slug generado coincide con el parámetro
+        $user = User::all()->firstWhere(function ($user) use ($generatedSlug) {
+            return $user->slug === $generatedSlug;
+        });
+        // Validaciones
         request()->validate([
-            'dni'=>'required|max:8|unique:users,dni,'.$id,
-            'email'=>'required|email|max:255|unique:users,email,'.$id,
-            'phone'=>'required|max:9|unique:users,phone,'.$id,
-            'password'=>'same:password_confirm',
-            'user_level'=>'required|integer|exists:user_groups,group_level',
-            'status'=>'required',
-            'image' => 'nullable|image|mimes:png,jpg,jpeg|max:2048'
+            'dni' => 'required|max:8|unique:users,dni,' . $user->id,
+            'email' => 'required|email|max:255|unique:users,email,' . $user->id,
+            'phone' => 'required|max:9|unique:users,phone,' . $user->id,
+            'password' => 'sometimes|nullable|same:password_confirm',
+            'user_level' => 'required|integer|exists:user_groups,group_level',
+            'status' => 'required',
+            'image' => 'nullable|image|mimes:png,jpg,jpeg|max:5000',
         ]);
-        //Modelo user
-        $user=User::find($id);
-        //Editar al usuario
-        if($request->hasFile('image')){
-            $name=$user->hanbleUploadImage($request->file('image'));
-            //Eliminar si existiese una img
-            if(Storage::disk('public')->exists('perfiles/'.$user->imge_path)){
-                Storage::disk('public')->delete('perfiles/'.$user->img_path);
+
+        // Manejo de imágenes y actualización del modelo
+        if ($request->hasFile('image')) {
+            $name = $user->hanbleUploadImage($request->file('image'));
+            if (Storage::disk('public')->exists('perfiles/' . $user->image_path)) {
+                Storage::disk('public')->delete('perfiles/' . $user->image_path);
             }
-        }else{
-            $name=$user->image;
-        }
-        //Comprobar el password y aplicar el Hash
-        if(empty($request->password)){
-            $requestData = Arr::except($request->all(), ['password']);
         } else {
-            $fieldHash = Hash::make($request->password);
-            $requestData = $request->all();
-            $requestData['password'] = $fieldHash;
+            $name = $user->image;
         }
 
-        //Atributos Actualizar
-            $user->phone = $requestData['phone'];
-            $user->email = $requestData['email'];
-            $user->status = $requestData['status'];
-            $user->user_level = $requestData['user_level'];
-            $user->image = $name;
+        // Actualizar campos del usuario
+        $user->phone = $request->phone;
+        $user->email = $request->email;
+        $user->status = $request->status;
+        $user->user_level = $request->user_level;
+        $user->image = $name;
 
-        // Verificar si la clave 'password' está presente en $requestData antes de asignarla
-        if (isset($requestData['password'])) {
-            $user->password = $requestData['password'];
+        // Actualizar contraseña si se proporcionó
+        if ($request->filled('password')) {
+            $user->password = Hash::make($request->password);
         }
 
         $user->save();
-        return  redirect('admin/admin/list')->with('success','El Usuario '.$user->names.' fue actualizado');
+
+        return redirect('admin/admin/list')->with('success', 'El Usuario ' . $user->names . ' fue actualizado');
     }
+    
     public function delete($id){
         $user=User::find($id);
         $user->delete();

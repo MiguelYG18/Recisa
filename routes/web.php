@@ -48,9 +48,9 @@ Route::group(['middleware'=>'admin'],function(){
     //Envio de datos para registrar
     Route::post('/admin/admin/add',[AdminController::class,'insert']);
     //Vista editar
-    Route::get('admin/admin/edit/{id}',[AdminController::class,'edit']);
+    Route::get('admin/admin/edit/{slug}',[AdminController::class,'edit']);
     //Envio de datos para el edit
-    Route::post('admin/admin/edit/{id}',[AdminController::class,'update']);
+    Route::post('admin/admin/edit/{slug}',[AdminController::class,'update']);
     //delete get
     Route::get('admin/admin/delete/{id}',[AdminController::class,'delete']);
 

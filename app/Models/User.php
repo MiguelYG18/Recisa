@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class User extends Authenticatable
 {
@@ -60,6 +61,12 @@ class User extends Authenticatable
          //$file->move(public_path() . '/img/productos/', $name);
          Storage::putFileAs('/public/perfiles/',$file,$name,'public');         
          return $name;
+    }
+
+    //Rutas con slug
+    public function getSlugAttribute()
+    {
+        return Str::slug($this->names);
     }
     
 }

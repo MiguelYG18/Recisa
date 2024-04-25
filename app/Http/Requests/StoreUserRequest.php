@@ -30,7 +30,7 @@ class StoreUserRequest extends FormRequest
             'password'=>'required|min:8|same:password_confirm',
             'user_level'=>'required|integer|exists:user_groups,group_level',
             'status'=>'required',
-            'image' => 'nullable|image|mimes:png,jpg,jpeg|max:2048'
+            'image' => 'nullable|image|mimes:png,jpg,jpeg|max:5000'
         ];
     }
     public function attributes(){

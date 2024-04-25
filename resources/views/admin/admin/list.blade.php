@@ -49,9 +49,9 @@
                                         <th style="width: 300px;">Usuario</th>
                                         <th style="width: 250px;">Celular</th>
                                         <th style="width: 300px;">Email</th>
-                                        <th style="width: 150px;">Rol</th>
-                                        <th style="width: 200px;">Estado</th>
-                                        <th style="width: 200px;">Creación</th>
+                                        <th style="width: 100px;">Rol</th>
+                                        <th style="width: 150px;">Estado</th>
+                                        <th style="width: 300px;">Creación</th>
                                         <th class="text-center">Opciones</th>
                                     </tr>
                                 </thead>
@@ -60,7 +60,11 @@
                                         <tr>
                                             <td>
                                                 <div class="nav-item dropdown no-arrow">
-                                                    <img class="border rounded-circle img-profile" src="{{url('public/storage/perfiles/' .$user->image)}}" alt="{{$user->names}}" style="max-width: 100%; height: auto;">
+                                                    @if ($user->image == null)
+                                                        <img id="avatar-img" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="Admin"   name="image" class="rounded-circle p-1 bg-primary" width="110" style="max-width: 100px; height: 100px; border-radius: 50%; object-fit: cover;">
+                                                    @else
+                                                        <img class="border rounded-circle img-profile" src="{{url('public/storage/perfiles/' .$user->image)}}" alt="{{$user->names}}" style="max-width: 80px; height: 80px;">
+                                                    @endif
                                                 </div>
                                             </td>
                                             <td>{{$user->dni}}</td>
@@ -91,7 +95,7 @@
                                             <td>{{date('d-m-Y', strtotime($user->created_at))}}</td>
                                             <td class="text-center">
                                                 <div class="btn-group" role="group">
-                                                    <a href="{{url('admin/admin/edit/'.$user->id)}}" class="btn btn-primary" style="background: #7BDE7C;"><i class="fas fa-pencil-alt"></i></a>
+                                                    <a href="{{ url('admin/admin/edit/' . $user->slug) }}" class="btn btn-primary" style="background: #7BDE7C;"><i class="fas fa-pencil-alt"></i></a>
                                                     <button type="button" class="btn btn-danger" style="background: #EB5C5E;" data-bs-toggle="modal" data-bs-target="#staticBackdrop-{{$user->id}}">
                                                         <i class="far fa-trash-alt"></i>
                                                     </button>
