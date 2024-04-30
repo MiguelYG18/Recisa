@@ -5,10 +5,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/css/bootstrap-select.min.css">  
     @endpush
 
-    @section('content')
-        <div class="d-sm-flex justify-content-between align-items-center mb-4">
-            <h3 class="text-dark mb-0">Crear Rol</h3>
-        </div>        
+    @section('content')      
         <div class="row">
             <div class="col">
                 <div class="card shadow">
@@ -18,10 +15,10 @@
                     <div class="card-body">
                         <form action="" method="post">
                             {{csrf_field()}}
-                            <div class="row g-3">
+                            <div class="row g-3 justify-content-center">
                                 <div class="col-md-4">
                                     <label for="group_level" class="form-label">Nivel de Usuario:</label>
-                                    <select title="Seleccione el nivel de usuario..." name="group_level" id="group_level" data-style="btn-secondary" data-size="2" class="form-control selectpicker show-tick">
+                                    <select title="Seleccione el nivel de usuario..." name="group_level" id="group_level" data-style="btn-secondary" data-size="3" class="form-control selectpicker show-tick">
                                         <option value="1" {{old('group_level') == '1' ? 'selected' : ''}}>Admin</option>
                                         <option value="2" {{old('group_level') == '2' ? 'selected' : ''}}>Secretaria</option> 
                                         <option value="3" {{old('group_level') == '3' ? 'selected' : ''}}>Doctor</option>
@@ -40,7 +37,7 @@
                                         <small class="text-danger">{{'*'.$message}}</small>
                                     @enderror
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4" style="display: none;">
                                     <label for="slug" class="form-label">Enlace:</label>
                                     <input readonly type="text" id="slug" name="slug" class="form-control">
                                     @error('slug')

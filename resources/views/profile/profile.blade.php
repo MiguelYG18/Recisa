@@ -134,6 +134,23 @@
                                                     <input class="form-control" maxlength="9" type="text" id="phone" name="phone" value="{{old('phone',$user->phone)}}">
                                                 </div>
                                             </div>
+                                            @switch(Auth::user()->user_level)
+                                                @case(2)
+                                                    <div class="mb-3" style="margin-top: 20px;">
+                                                        <button class="btn btn-primary btn-sm" type="submit" style="--bs-primary: #00486E;--bs-primary-rgb: 0,72,110;background: #00486E;border-style: none;">
+                                                            Guardar Cambios
+                                                        </button>
+                                                    </div>
+                                                    @break
+                                                @case(3)
+                                                    <div class="mb-3" style="margin-top: 20px;">
+                                                        <button class="btn btn-primary btn-sm" type="submit" style="--bs-primary: #00486E;--bs-primary-rgb: 0,72,110;background: #00486E;border-style: none;">
+                                                            Guardar Cambios
+                                                        </button>
+                                                    </div>
+                                                    @break
+                                                @default
+                                            @endswitch
                                         </div>
                                     </form>
                                 </div>
@@ -176,7 +193,7 @@
                                                     </label>
                                                     <div>
                                                         <div class="btn-group" role="group" aria-label="Basic radio toggle button group" style="--bs-primary: #00486E;--bs-primary-rgb: 0,72,110;">
-                                                            <input type="radio" id="btnradio1" class="btn-check" name="btnradio" autocomplete="off" checked>
+                                                            <input type="radio" id="btnradio1" class="btn-check" name="btnradio" autocomplete="on" checked>
                                                             <label class="form-label btn btn-outline-primary" for="btnradio1" style="background: rgb(80,173,57); border-color: #00486E;color: white;">
                                                                 Activo
                                                             </label>
