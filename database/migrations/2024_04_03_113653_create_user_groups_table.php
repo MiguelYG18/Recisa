@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('user_groups', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger('group_level')->unique();
+            $table->string('slug')->unique();
             $table->char('group_status',1);
             $table->timestamps();
         });

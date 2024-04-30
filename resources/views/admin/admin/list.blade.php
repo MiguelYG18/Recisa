@@ -14,7 +14,7 @@
                     toast: true,
                     position: "top-end",
                     showConfirmButton: false,
-                    timer: 1500,
+                    timer: 3000,
                     timerProgressBar: true,
                     didOpen: (toast) => {
                         toast.onmouseenter = Swal.stopTimer;
@@ -29,8 +29,8 @@
         @endif   
         <div class="d-sm-flex justify-content-between align-items-center mb-4">
             <h3 class="text-dark mb-0">Usuarios</h3>
-            <a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="{{url('admin/admin/add')}}" style="--bs-primary: #00486E;--bs-primary-rgb: 0,72,110;--bs-body-bg: #00486E;background: #00486E;">
-                <i class="fas fa-user fa-sm text-white-50"></i>&nbsp;Crear Usuario
+            <a class="btn btn-primary btn-sm d-none d-sm-inline-block" target="_blank" role="button" href="{{url('admin/admin/reporte')}}" style="--bs-primary: #00486E;--bs-primary-rgb: 0,72,110;--bs-body-bg: #00486E;background: #00486E;">
+                <i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generar Reporte
             </a>
         </div>
         <div class="row">
@@ -108,7 +108,7 @@
                                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    El usuario {{$user->names}} debe ser informado después de a ver realizado esta acción.
+                                                                    El usuario {{$user->names}} debe ser informado después de haber realizado esta acción.
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
@@ -130,11 +130,6 @@
                 </div>
             </div>
         </div>
-        <div class="d-sm-flex justify-content-center align-items-center mb-4 mt-4">
-            <a class="btn btn-primary btn-sm d-none d-sm-inline-block" target="_blank" role="button" href="{{url('admin/admin/reporte')}}" style="--bs-primary: #00486E;--bs-primary-rgb: 0,72,110;--bs-body-bg: #00486E;background: #00486E;">
-                <i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generar Reporte
-            </a>
-        </div>   
     @endsection
     @push('js')
         <script>

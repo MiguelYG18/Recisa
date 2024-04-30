@@ -37,7 +37,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label for="surnames" class="form-label">Apellido:</label>
-                                    <input class="form-control" type="text" name="surnames" id="surnames" value="{{old('surnames',$user->surnames)}}">
+                                    <input readonly class="form-control" type="text" name="surnames" id="surnames" value="{{old('surnames',$user->surnames)}}">
                                     @error('surnames')
                                         <small class="text-danger">{{'*'.$message}}</small>
                                     @enderror

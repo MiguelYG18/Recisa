@@ -12,7 +12,7 @@
                     toast: true,
                     position: "top-end",
                     showConfirmButton: false,
-                    timer: 1500,
+                    timer: 3000,
                     timerProgressBar: true,
                     didOpen: (toast) => {
                         toast.onmouseenter = Swal.stopTimer;
@@ -27,9 +27,6 @@
         @endif   
     <div class="d-sm-flex justify-content-between align-items-center mb-4">
         <h3 class="text-dark mb-0">Roles</h3>
-        <a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="{{url('admin/rol/add')}}" style="--bs-primary: #00486E;--bs-primary-rgb: 0,72,110;--bs-body-bg: #00486E;background: #00486E;">
-            <i class="fa fa-users fa-sm text-white-50"></i>&nbsp;Crear Rol
-        </a>
     </div>
     <div class="row">
         <div class="col">
@@ -45,6 +42,7 @@
                                     <th style="width: 20px;">#</th>
                                     <th style="width: 250px;">Nivel de Usuario</th>
                                     <th style="width: 200px;">Estado</th>
+                                    <th style="width: 200px;">NÚmero de usuarios</th>
                                     <th style="width: 200px;">Creación</th>
                                     <th class="text-center">Opciones</th>
                                 </tr>
@@ -77,10 +75,24 @@
                                                 <span class="fw-bolder p-1 rounded bg-danger text-white">Desactivado</span>
                                             @endif
                                         </td>
+                                        <td class="text-center">
+                                            @switch($value)
+                                                @case($value->group_level == 1)
+                                                    {{$admin}}
+                                                    @break
+                                                @case($value->group_level == 2)
+                                                    {{$secretary}}
+                                                    @break
+                                                @case($value->group_level == 3)
+                                                    {{$doctor}}
+                                                    @break      
+                                                @default                                                   
+                                            @endswitch
+                                        </td>
                                         <td>{{date('d-m-Y', strtotime($value->created_at))}}</td>
                                         <td class="text-center">
                                             <div class="btn-group" role="group">
-                                                <a href="{{url('admin/rol/edit/'.$value->id)}}" class="btn btn-primary" style="background: #7BDE7C;"><i class="fas fa-pencil-alt"></i></a>
+                                                <a href="{{url('admin/rol/edit/'.$value->slug)}}" class="btn btn-primary" style="background: #7BDE7C;"><i class="fas fa-pencil-alt"></i></a>
                                                 <button type="button" class="btn btn-danger" style="background: #EB5C5E;" data-bs-toggle="modal" data-bs-target="#staticBackdrop-{{$value->id}}">
                                                     <i class="far fa-trash-alt"></i>
                                                 </button>

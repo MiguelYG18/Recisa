@@ -4,8 +4,10 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CitaController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SpecializationController;
 use App\Http\Controllers\UserGroupController;
+use App\Http\Controllers\UserSpecializationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,7 +37,7 @@ Route::get('/404', function () {
 Route::get('/401', function () {
     return view('page.401');
 });
-//Uusario no tiene acceso
+//Usuario no tiene acceso
 Route::get('/500', function () {
     return view('page.500');
 });
@@ -70,9 +72,9 @@ Route::group(['middleware'=>'admin'],function(){
     //Envio de datos para registrar
     Route::post('/admin/rol/add',[UserGroupController::class,'insert']);
     //Vista editar
-    Route::get('admin/rol/edit/{id}',[UserGroupController::class,'edit']);
+    Route::get('admin/rol/edit/{usergroup}',[UserGroupController::class,'edit']);
     //Envio de datos para el edit
-    Route::post('admin/rol/edit/{id}',[UserGroupController::class,'update']);
+    Route::post('admin/rol/edit/{usergroup}',[UserGroupController::class,'update']);
     //delete get
     Route::get('admin/rol/delete/{id}',[UserGroupController::class,'delete']);
 
@@ -85,16 +87,24 @@ Route::group(['middleware'=>'admin'],function(){
     Route::post('admin/specialization/edit/{id}',[SpecializationController::class,'update']);
     //delete get
     Route::get('admin/specialization/delete/{id}',[SpecializationController::class,'delete']);
+    
     //Rutas para las citas
     Route::get('/admin/cita/list',[CitaController::class,'list']);
+    //Ruta para ver el perfil
+    Route::get('admin/perfil',[ProfileController::class,'index']);
+    
 });
 Route::group(['middleware'=>'secretary'],function(){
     //La vista del dashbaord
     Route::get('secretary/dashboard',[DashboardController::class,'dashboard']); 
     //Rutas para las citas
-    Route::get('/secretary/cita/list',[CitaController::class,'list']);
+    Route::get('secretary/cita/list',[CitaController::class,'list']);
+    //Ruta para ver el perfil
+    Route::get('secretary/perfil',[ProfileController::class,'index']);
 });
 Route::group(['middleware'=>'doctor'],function(){
     //La vista del dashbaord
-    Route::get('doctor/dashboard',[DashboardController::class,'dashboard']); 
+    Route::get('doctor/dashboard',[DashboardController::class,'dashboard']);
+    //Ruta para ver el perfil
+    Route::get('doctor/perfil',[ProfileController::class,'index']); 
 });

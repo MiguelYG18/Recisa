@@ -207,6 +207,7 @@
                     showModal('Ingrese la cantidad para los cupos');
                     return; 
                 }
+                
                 if (isNaN(input.val()) || input.val() < 1 || input.val() > 20) {
                     showModal('La especialidad debe tener mínimo 1 cupo o máximo 20');
                     return;

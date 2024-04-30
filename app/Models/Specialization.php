@@ -12,4 +12,9 @@ class Specialization extends Model
         'name',
         'quantity_voucher'
     ];
+    public function users(){
+        return $this->belongsToMany(User::class,'user_specialization', 'id_user', 'id_specialization')
+                ->withTimestamps()
+                ->withPivot('cupo_doctor');
+    }
 }

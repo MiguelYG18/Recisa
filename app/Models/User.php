@@ -68,5 +68,6 @@ class User extends Authenticatable
     {
         return Str::slug($this->names);
     }
+    //Relación de doctor con especialidad
     
 }

@@ -23,13 +23,15 @@ class StoreUserGroup extends FormRequest
     {
         return [
             'group_level'=>'required|unique:user_groups,group_level',
-            'group_status'=>'required'
+            'group_status'=>'required',
+            'slug'=>'required|max:10|unique:user_groups,slug'
         ];
     }
     public function attributes(){
         return[
             'group_level'=>'nivel de grupo',
-            'group_status'=>'estado'
+            'group_status'=>'estado',
+            'slug'=>'enlace'
         ];
     }
 }

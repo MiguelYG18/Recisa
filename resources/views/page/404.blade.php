@@ -21,10 +21,28 @@
                                 <div class="text-center mt-4">
                                     <img class="mb-4 img-error" src="{{url('public/assets/img/error-404-monochrome.svg')}}" />
                                     <p class="lead">Esta URL solicitada no se encontró en este servidor.</p>
-                                    <a href="{{url('admin/dashboard')}}">
-                                        <i class="fas fa-arrow-left me-1"></i>
-                                        Volver al panel
-                                    </a>
+                                    @if(Auth::check())
+                                        @switch(Auth::user()->user_level)
+                                            @case(1)
+                                                <a href="{{url('admin/dashboard')}}">
+                                                    <i class="fas fa-arrow-left me-1"></i>
+                                                    Volver al panel
+                                                </a>                                                
+                                                @break
+                                            @case(2)
+                                                <a href="{{url('secretary/dashboard')}}">
+                                                    <i class="fas fa-arrow-left me-1"></i>
+                                                    Volver al panel
+                                                </a>                                                
+                                                @break
+                                            @case(3)
+                                                <a href="{{url('doctor/dashboard')}}">
+                                                    <i class="fas fa-arrow-left me-1"></i>
+                                                    Volver al panel
+                                                </a>                                                
+                                                @break
+                                        @endswitch
+                                    @endif
                                 </div>
                             </div>
                         </div>

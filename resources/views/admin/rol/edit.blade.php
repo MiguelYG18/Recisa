@@ -32,7 +32,7 @@
                         <form action="" method="post">
                             {{csrf_field()}}
                             <div class="row g-3">
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <label for="group_level" class="form-label">Nivel de Usuario:</label>
                                     <select title="Seleccione el nivel de usuario..." name="group_level" id="group_level" data-style="btn-secondary" data-size="2" class="form-control selectpicker show-tick">
                                         <option value="1" {{old('group_level') == '1' || $usergroup->group_level=='1' ? 'selected' : ''}}>Admin</option>
@@ -43,13 +43,20 @@
                                         <small class="text-danger">{{'*'.$message}}</small>
                                     @enderror
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <label for="group_status" class="form-label">Estado:</label>
                                     <select title="Seleccione el estado..." name="group_status" id="group_status" data-style="btn-secondary" data-size="2" class="form-control selectpicker show-tick">
                                         <option value="0" {{old('group_status') == '0' || $usergroup->group_status=='0' ? 'selected' : ''}}>Desactivado</option>
                                         <option value="1" {{old('group_status') == '1' || $usergroup->group_status=='1' ? 'selected' : ''}}>Activado</option> 
                                     </select>
                                     @error('group_status')
+                                        <small class="text-danger">{{'*'.$message}}</small>
+                                    @enderror
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="slug" class="form-label">Enlace:</label>
+                                    <input readonly type="text" id="slug" name="slug" class="form-control" value="{{old('slug',$usergroup->slug)}}">
+                                    @error('slug')
                                         <small class="text-danger">{{'*'.$message}}</small>
                                     @enderror
                                 </div>
