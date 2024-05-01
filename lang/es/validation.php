@@ -60,6 +60,7 @@ return [
     'hex_color'            => 'El campo :attribute debe tener un color hexadecimal válido.',
     'image'                => 'El campo :attribute debe ser una imagen.',
     'in'                   => 'El :attribute seleccionado no es válido.',
+    'indisposable'         => 'No se permiten las direcciones de correo electrónico desechables.',
     'in_array'             => 'El campo :attribute debe existir en :other.',
     'integer'              => 'El campo :attribute debe ser un número entero.',
     'ip'                   => 'El campo :attribute debe ser una dirección IP válida.',

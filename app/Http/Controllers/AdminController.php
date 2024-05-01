@@ -103,13 +103,37 @@ class AdminController extends Controller
         request()->validate([
             'dni' => 'required|max:8|unique:users,dni,' . $user->id,
             'email' => 'required|email|max:255|unique:users,email,' . $user->id,
-            'phone' => 'required|max:9|unique:users,phone,' . $user->id,
+            'phone' => 'required|min:9|max:9|unique:users,phone,' . $user->id,
             'password' => 'sometimes|nullable|same:password_confirm',
             'user_level' => 'required|integer|exists:user_groups,group_level',
-            'status' => 'required',
-            'image' => 'nullable|image|mimes:png,jpg,jpeg|max:5000',
+            'status' => 'required'
         ]);
 
+        // Actualizar campos del usuario
+        $user->phone = $request->phone;
+        $user->email = $request->email;
+        $user->status = $request->status;
+        $user->user_level = $request->user_level;
+
+        // Actualizar contraseña si se proporcionó
+        if ($request->filled('password')) {
+            $user->password = Hash::make($request->password);
+        }
+        $user->save();
+        return redirect('admin/admin/list')->with('success', 'El Usuario ' . $user->names . ' fue actualizado');
+    }
+    public function photo($slug, Request $request){
+        // Generar el slug dinámicamente
+        $generatedSlug = Str::slug($slug);
+
+        // Buscar al usuario cuyo slug generado coincide con el parámetro
+        $user = User::all()->firstWhere(function ($user) use ($generatedSlug) {
+            return $user->slug === $generatedSlug;
+        });
+        // Validaciones
+        request()->validate([
+            'image' => 'nullable|image|mimes:png,jpg,jpeg|max:2000',
+        ]);
         // Manejo de imágenes y actualización del modelo
         if ($request->hasFile('image')) {
             $name = $user->hanbleUploadImage($request->file('image'));
@@ -119,22 +143,9 @@ class AdminController extends Controller
         } else {
             $name = $user->image;
         }
-
-        // Actualizar campos del usuario
-        $user->phone = $request->phone;
-        $user->email = $request->email;
-        $user->status = $request->status;
-        $user->user_level = $request->user_level;
         $user->image = $name;
-
-        // Actualizar contraseña si se proporcionó
-        if ($request->filled('password')) {
-            $user->password = Hash::make($request->password);
-        }
-
         $user->save();
-
-        return redirect('admin/admin/list')->with('success', 'El Usuario ' . $user->names . ' fue actualizado');
+        return redirect('admin/admin/list')->with('success', 'La foto de perfil del usuario '. $user->names . ' fue actualizado');
     }
     
     public function delete($id){

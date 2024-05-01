@@ -59,6 +59,8 @@ Route::group(['middleware'=>'admin'],function(){
     Route::get('admin/admin/edit/{slug}',[AdminController::class,'edit']);
     //Envio de datos para el edit
     Route::post('admin/admin/edit/{slug}',[AdminController::class,'update']);
+    //Envio de las foto de perfil
+    Route::post('admin/admin/edit/photo/{slug}',[AdminController::class,'photo']);
     //delete get
     Route::get('admin/admin/delete/{id}',[AdminController::class,'delete']);
     //Generar Reporte de Usuarios

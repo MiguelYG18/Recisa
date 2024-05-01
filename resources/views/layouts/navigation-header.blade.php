@@ -95,7 +95,11 @@
                 <div class="nav-item dropdown no-arrow">
                     <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">
                         <span class="d-none d-lg-inline me-2 text-gray-600 small">{{Auth::user()->names}}</span>
-                        <img class="border rounded-circle img-profile" src="{{url('public/storage/perfiles/' . Auth::user()->image)}}">
+                        @if (Auth::user()->image == null)
+                            <img class="border rounded-circle img-profile" src="https://bootdey.com/img/Content/avatar/avatar6.png">
+                        @else
+                            <img class="border rounded-circle img-profile" src="{{url('public/storage/perfiles/' . Auth::user()->image)}}">
+                        @endif                       
                     </a>
                     <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in">
                         @switch(Auth::user()->user_level)

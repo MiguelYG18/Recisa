@@ -68,7 +68,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
-        <script src="https://geodata.solutions/includes/countrystate.js"></script>
         <script src="{{url('public/assets/js/Ludens---1-Index-Table-with-Search--Sort-Filters-v20-1.js')}}"></script>
 
         <script src="{{url('public/assets/js/Ludens---1-Index-Table-with-Search--Sort-Filters-v20.js')}}"></script>

@@ -72,14 +72,14 @@
                                             <td>{{$user->phone}}</td>
                                             <td>{{$user->email}}</td>
                                             <td>
-                                                @switch($user)
-                                                    @case($user->user_level == 1)
+                                                @switch($user->user_level)
+                                                    @case(1)
                                                         Admin
                                                         @break
-                                                    @case($user->user_level == 2)
+                                                    @case(2)
                                                         Secretaria
                                                         @break
-                                                    @case($user->user_level == 3)
+                                                    @case(3)
                                                         Doctor
                                                         @break    
                                                     @default                                                   

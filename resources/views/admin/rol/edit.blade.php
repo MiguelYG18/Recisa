@@ -26,6 +26,25 @@
                         </p>
                     </div>
                     <div class="card-body">
+                        <div class="col-md-12">
+                            @if ($errors->any())
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert" id="auto-close-alert">
+                                    <i class="fa-solid fa-circle-exclamation"></i>
+                                    {{ implode(' ', $errors->all()) }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                                <script>
+                                    // Después de 2 segundos (2000 ms), cierra la alerta automáticamente
+                                    setTimeout(function() {
+                                        var alert = document.getElementById("auto-close-alert");
+                                        if (alert) {
+                                            var alertInstance = new bootstrap.Alert(alert);
+                                            alertInstance.close();
+                                        }
+                                    }, 3500); // 2000 milisegundos = 2 segundos
+                                </script>
+                            @endif
+                        </div>
                         <form action="" method="post">
                             {{csrf_field()}}
                             <div class="row g-3 justify-content-center">
@@ -36,9 +55,6 @@
                                         <option value="2" {{old('group_level') == '2' || $usergroup->group_level=='2' ? 'selected' : ''}}>Secretaria</option> 
                                         <option value="3" {{old('group_level') == '3' || $usergroup->group_level=='3' ? 'selected' : ''}}>Doctor</option>
                                     </select>
-                                    @error('group_level')
-                                        <small class="text-danger">{{'*'.$message}}</small>
-                                    @enderror
                                 </div>
                                 <div class="col-md-4">
                                     <label for="group_status" class="form-label">Estado:</label>
@@ -46,19 +62,13 @@
                                         <option value="0" {{old('group_status') == '0' || $usergroup->group_status=='0' ? 'selected' : ''}}>Desactivado</option>
                                         <option value="1" {{old('group_status') == '1' || $usergroup->group_status=='1' ? 'selected' : ''}}>Activado</option> 
                                     </select>
-                                    @error('group_status')
-                                        <small class="text-danger">{{'*'.$message}}</small>
-                                    @enderror
                                 </div>
                                 <div class="col-md-4" style="display: none;">
                                     <label for="slug" class="form-label">Enlace:</label>
                                     <input readonly type="text" id="slug" name="slug" class="form-control" value="{{old('slug',$usergroup->slug)}}">
-                                    @error('slug')
-                                        <small class="text-danger">{{'*'.$message}}</small>
-                                    @enderror
                                 </div>
                                 <div class="col-12 text-center">
-                                    <button type="submit" class="btn btn-primary">Actualizar</button>
+                                    <button type="submit" class="btn btn-primary" style="background: #00486E;border-style: none;">Actualizar</button>
                                 </div>
                             </div>
                         </form>

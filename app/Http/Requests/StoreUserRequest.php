@@ -25,12 +25,12 @@ class StoreUserRequest extends FormRequest
             'dni'=>'required|max:8|unique:users,dni',
             'names'=>'required|max:25',
             'surnames'=>'required|max:25',
-            'phone'=>'required|max:9|unique:users,phone',
+            'phone'=>'required|min:9|max:9|unique:users,phone',
             'email'=>'required|email|max:255|unique:users,email',
-            'password'=>'required|min:8|same:password_confirm',
+            'password'=>'required|min:8|min:8|same:password_confirm',
             'user_level'=>'required|integer|exists:user_groups,group_level',
             'status'=>'required',
-            'image' => 'nullable|image|mimes:png,jpg,jpeg|max:5000'
+            'image' => 'nullable|image|mimes:png,jpg,jpeg|max:2000'
         ];
     }
     public function attributes(){
