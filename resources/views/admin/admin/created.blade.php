@@ -7,10 +7,7 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>    
     @endpush
 
-    @section('content')
-        <div class="d-sm-flex justify-content-between align-items-center mb-4">
-            <h3 class="text-dark mb-0">Crear Usuario</h3>
-        </div>        
+    @section('content')       
         <div class="row">
             <div class="col">
                 <div class="card shadow">

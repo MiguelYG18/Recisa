@@ -30,9 +30,6 @@
             });
         </script>
     @endif
-    <div class="d-sm-flex justify-content-between align-items-center mb-4">
-        <h3 class="text-dark mb-0">Especialidades</h3>
-    </div>
     <div class="row">
         <div class="col" style="margin-top: 20px;">
             <div class="card shadow mb-4">

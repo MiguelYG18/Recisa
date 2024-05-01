@@ -8,16 +8,13 @@
     @endpush
 
     @section('content')
-        <div class="d-sm-flex justify-content-between align-items-center mb-4">
-            <h3 class="text-dark mb-0">Editar al Usuario - {{$user->names}}</h3>
-        </div>
         <form action="" method="post" enctype="multipart/form-data">
         {{csrf_field()}}
             <div class="row">
                 <div class="col-8" style="margin-top: 20px;">
                     <div class="card shadow">
                         <div class="card-header py-3">
-                            <p class="text-primary m-0 fw-bold">Formulario del Usuario</p>
+                            <p class="text-primary m-0 fw-bold">Formulario del Usuario - {{$user->names}}</p>
                         </div>
                         <div class="card-body">
                             <div class="row g-3">
