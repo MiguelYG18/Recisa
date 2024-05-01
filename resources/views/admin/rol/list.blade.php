@@ -36,12 +36,12 @@
                         <table class="table my-0" id="dataTable">
                             <thead>
                                 <tr>
-                                    <th style="width: 20px;">#</th>
-                                    <th style="width: 250px;">Nivel de Usuario</th>
-                                    <th style="width: 200px;">Estado</th>
-                                    <th style="width: 200px;">NÚmero de usuarios</th>
-                                    <th style="width: 200px;">Creación</th>
-                                    <th class="text-center">Opciones</th>
+                                    <th style="width: 20px; font-weight:bold; text-align:center">#</th>
+                                    <th style="width: 250px; font-weight:bold; text-align:center">Nivel de Usuario</th>
+                                    <th style="width: 200px; font-weight:bold; text-align:center">Estado</th>
+                                    <th style="width: 200px; font-weight:bold; text-align:center">NÚmero de usuarios</th>
+                                    <th style="width: 200px; font-weight:bold; text-align:center">Creación</th>
+                                    <th style="width: 200px; font-weight:bold; text-align:center">Opciones</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -51,7 +51,7 @@
                                 @foreach ($roles as $index=>$value)
                                     <tr>
                                         <td>{{$index + 1}}</td>
-                                        <td>
+                                        <td style="text-align:center">
                                             @switch($value)
                                                 @case($value->group_level == 1)
                                                     Admin
@@ -65,14 +65,14 @@
                                                 @default                                                   
                                             @endswitch
                                         </td>
-                                        <td> 
+                                        <td style="text-align:center"> 
                                             @if ($value->group_status == 1)
                                                 <span class="fw-bolder p-1 rounded bg-success text-white">Activo</span>
                                             @else
                                                 <span class="fw-bolder p-1 rounded bg-danger text-white">Desactivado</span>
                                             @endif
                                         </td>
-                                        <td class="text-center">
+                                        <td style="text-align:center">
                                             @switch($value)
                                                 @case($value->group_level == 1)
                                                     {{$admin}}
@@ -86,10 +86,10 @@
                                                 @default                                                   
                                             @endswitch
                                         </td>
-                                        <td>{{date('d-m-Y', strtotime($value->created_at))}}</td>
+                                        <td style="text-align:center">{{date('d-m-Y', strtotime($value->created_at))}}</td>
                                         <td class="text-center">
                                             <div class="btn-group" role="group">
-                                                <a href="{{url('admin/rol/edit/'.$value->slug)}}" class="btn btn-primary" style="background: #7BDE7C;"><i class="fas fa-pencil-alt"></i></a>
+                                                <a href="{{url('admin/rol/edit/'.$value->slug)}}" class="btn btn-primary" style="background-color: #135578 !important;"><i class="fas fa-pencil-alt"></i></a>
                                                 <button type="button" class="btn btn-danger" style="background: #EB5C5E;" data-bs-toggle="modal" data-bs-target="#staticBackdrop-{{$value->id}}">
                                                     <i class="far fa-trash-alt"></i>
                                                 </button>
