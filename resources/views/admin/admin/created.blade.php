@@ -108,25 +108,9 @@
                                         </button>
                                     </div>
                                 </div>
-                            </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-4" style="margin-top: 20px;">
-                <div class="card shadow">
-                    <div class="card-header py-3">
-                        <p class="text-primary m-0 fw-bold">Foto de Perfil</p>
-                    </div>
-                    <div class="card-body">
-                        <div class="row g-3">
-                            <div class="d-flex align-items-center justify-content-center position-relative">
-                                <div class="text-center">
-                                    <img id="avatar-img" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="Admin"   name="image" class="rounded-circle p-1 bg-primary" width="160" style="max-width: 160px; height: 160px; border-radius: 50%; object-fit: contain;">
-                                    <input type="file" id="avatar-input" name="image" accept="image/*" style="display: none;">
-                                    <label for="avatar-input" class="boton-avatar position-absolute rounded-circle bg-primary" style="width: 40px; height: 40px; bottom: -10px; left: 60%; transform: translateX(-50%); border: 2px solid white;">
-                                        <i class="far fa-image text-white" style="line-height: 40px;"></i>
-                                    </label>       
-                                </div>                                
+                                <div class="col-12 text-center">
+                                    <button type="submit" class="btn btn-primary">Guardar</button>
+                                </div>
                             </div>
                             <div class="col-md-12 text-center mt-3">
                                 <button class="btn btn-primary btn-sm" type="submit" style="background: #00486E;border-style: none;">

@@ -55,7 +55,11 @@
                                     <input readonly type="text" id="slug" name="slug" class="form-control">
                                 </div>
                                 <div class="col-12 text-center">
+<<<<<<< HEAD
                                     <button type="submit" class="btn btn-primary" style="background: #00486E;border-style: none;">Guardar</button>
+=======
+                                    <button type="submit" class="btn btn-primary" style="background-color: #00476D !important;">Guardar</button>
+>>>>>>> 00370597deb2e977b970ca4aef8cdd5e8366f61e
                                 </div>
                             </div>
                         </form>
