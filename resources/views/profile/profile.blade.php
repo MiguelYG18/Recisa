@@ -25,6 +25,18 @@
                 });
             </script>            
         @endif 
+        <style>
+            /* Estilo para cuando el botón de radio no está seleccionado */
+.btn-check:not(:checked) + .btn-outline-primary {
+    box-shadow: none;
+}
+
+/* Estilo para cuando el botón de radio está seleccionado */
+.btn-check:checked + .btn-outline-primary {
+    box-shadow: 0 0 0 3.5px rgba(19, 85, 120, 0.5);
+}
+
+        </style>
         <div class="container-fluid">
             <h3 class="text-dark mb-4">Perfil</h3>
             <div class="row mb-3">
@@ -137,14 +149,14 @@
                                             @switch(Auth::user()->user_level)
                                                 @case(2)
                                                     <div class="mb-3" style="margin-top: 20px;">
-                                                        <button class="btn btn-primary btn-sm" type="submit" style="--bs-primary: #00486E;--bs-primary-rgb: 0,72,110;background: #00486E;border-style: none;">
+                                                        <button class="btn btn-primary btn-sm" type="submit" style="--bs-primary: #00476D !important;--bs-primary-rgb: 0,72,110;background: #135578 !important;border-style: none;">
                                                             Guardar Cambios
                                                         </button>
                                                     </div>
                                                     @break
                                                 @case(3)
                                                     <div class="mb-3" style="margin-top: 20px;">
-                                                        <button class="btn btn-primary btn-sm" type="submit" style="--bs-primary: #00486E;--bs-primary-rgb: 0,72,110;background: #00486E;border-style: none;">
+                                                        <button class="btn btn-primary btn-sm" type="submit" style="--bs-primary: #00476D !important;--bs-primary-rgb: 0,72,110;background: #135578 !important;border-style: none;">
                                                             Guardar Cambios
                                                         </button>
                                                     </div>
@@ -172,7 +184,7 @@
                                                     </label>
                                                 </div>
                                                 <div class="dropdown show" style="margin-top: -20px;">
-                                                    <button class="btn btn-primary dropdown-toggle" aria-expanded="true" data-bs-toggle="dropdown" type="button" style="--bs-primary: #00486E;--bs-primary-rgb: 0,72,110;background: #00486E;width: 170px;border-style: none;">Seleccione&nbsp;</button>
+                                                    <button class="btn btn-primary dropdown-toggle" aria-expanded="true" data-bs-toggle="dropdown" type="button" style="--bs-primary: #00486E;--bs-primary-rgb: 0,72,110;background: #00476D !important;width: 170px;border-style: none;">Seleccione&nbsp;</button>
                                                     <div class="dropdown-menu show" data-bs-popper="none" style="width: 170px;">
                                                         <a class="dropdown-item" href="#" data-bs-target="Medicos" style="--bs-primary: #00486E;--bs-primary-rgb: 0,72,110;">
                                                             Médico
@@ -211,7 +223,7 @@
                                             </div>
                                         </div>
                                         <div class="mb-3" style="margin-top: 20px;">
-                                            <button class="btn btn-primary btn-sm" type="submit" style="--bs-primary: #00486E;--bs-primary-rgb: 0,72,110;background: #00486E;border-style: none;">
+                                            <button class="btn btn-primary btn-sm" type="submit" style="--bs-primary: #00486E;--bs-primary-rgb: 0,72,110;background: #00476D !important;border-style: none;">
                                                 Guardar Cambios
                                             </button>
                                         </div>

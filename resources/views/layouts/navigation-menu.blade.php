@@ -1,10 +1,10 @@
-<aside id="sidebar">
+<aside id="sidebar" style="height: 100vh;">
     <div class="d-flex">
         <button class="toggle-btn" type="button">
             <i class="fa-solid fa-hospital"></i>
         </button>
         <div class="sidebar-logo">
-            <a href="#">RECISA</a>
+            <a href="">RECISA</a>
         </div>
     </div>
     <ul class="sidebar-nav">
@@ -12,7 +12,7 @@
             @case(1)
                 <li class="sidebar-item">
                     <a href="{{url('admin/dashboard')}}" class="sidebar-link">
-                        <i class="fa-solid fa-user"></i>
+                        <i class="fa-solid fa-home"></i>
                         <span>Perfil</span>
                     </a>
                 </li>
@@ -104,7 +104,7 @@
             @case(2)
                 <li class="sidebar-item">
                     <a href="{{url('secretary/dashboard')}}" class="sidebar-link">
-                        <i class="fa-solid fa-user"></i>
+                        <i class="fa-solid fa-house"></i>
                         <span>Perfil</span>
                     </a>
                 </li>
