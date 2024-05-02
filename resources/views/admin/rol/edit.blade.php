@@ -68,7 +68,7 @@
                                     <input readonly type="text" id="slug" name="slug" class="form-control" value="{{old('slug',$usergroup->slug)}}">
                                 </div>
                                 <div class="col-12 text-center">
-                                    <button type="submit" class="btn btn-primary" style="background: #00486E;border-style: none;">Actualizar</button>
+                                    <button type="submit" class="btn btn-primary" style="background-color: #00476D !important;">Actualizar</button>
                                 </div>
                             </div>
                         </form>

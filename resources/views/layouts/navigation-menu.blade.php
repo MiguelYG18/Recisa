@@ -131,9 +131,14 @@
                         <span>Perfil</span>
                     </a>
                 </li>
+                <li class="sidebar-item">
+                    <a href="{{url('doctor/specialization/list')}}" class="sidebar-link">
+                        <i class="fa-solid fa-chalkboard-user"></i>
+                        <span>Especialidades</span>
+                    </a>
+                </li>
                 @break    
             @default
-                
         @endswitch
         <br><br><br><br>
         <div class="d-flex">

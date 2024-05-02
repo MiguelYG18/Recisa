@@ -89,7 +89,7 @@
                                         <td style="text-align:center">{{date('d-m-Y', strtotime($value->created_at))}}</td>
                                         <td class="text-center">
                                             <div class="btn-group" role="group">
-                                                <a href="{{url('admin/rol/edit/'.$value->slug)}}" class="btn btn-primary" style="background-color: #135578 !important;"><i class="fas fa-pencil-alt"></i></a>
+                                                <a href="{{url('admin/rol/edit/'.$value->slug)}}" class="btn btn-primary" style="background: #7BDE7C;"><i class="fas fa-pencil-alt"></i></a>
                                                 <button type="button" class="btn btn-danger" style="background: #EB5C5E;" data-bs-toggle="modal" data-bs-target="#staticBackdrop-{{$value->id}}">
                                                     <i class="far fa-trash-alt"></i>
                                                 </button>

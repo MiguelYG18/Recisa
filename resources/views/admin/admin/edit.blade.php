@@ -105,7 +105,7 @@
                                 <div class="col-md-6">
                                     <div class="input-group">
                                         <input type="password" name="password" id="password" class="form-control" placeholder="Password" autocomplete="off">
-                                        <button id="show_password" class="btn btn-primary" onclick="mostrarPassword()" type="button" style="background: #00486E;border-style: none;">
+                                        <button id="show_password" class="btn btn-primary" onclick="mostrarPassword()" type="button" style="background-color: #00476D !important;">
                                             <span class="fa fa-eye-slash icon"></span>
                                         </button>
                                     </div>
@@ -113,13 +113,13 @@
                                 <div class="col-md-6">
                                     <div class="input-group">
                                         <input type="password" name="password_confirm" id="password_confirm" class="form-control" placeholder="Confirmar password" autocomplete="off">
-                                        <button id="show_password_confirm" class="btn btn-primary" onclick="mostrarPasswordConfirm()" type="button" style="background: #00486E;border-style: none;">
+                                        <button id="show_password_confirm" class="btn btn-primary" onclick="mostrarPasswordConfirm()" type="button" style="background-color: #00476D !important;">
                                             <span class="fa fa-eye-slash icon_confirm"></span>
                                         </button>
                                     </div>
                                 </div>
                                 <div class="col-md-12 text-center">
-                                    <button type="submit" class="btn btn-primary" style="background: #00486E;border-style: none;">Guardar</button>
+                                    <button type="submit" class="btn btn-primary" style="background-color: #00476D !important;">Guardar</button>
                                 </div>                                
                             </div>
                         </form>                            
@@ -169,7 +169,7 @@
                                     </div>                                
                                 </div>
                                 <div class="col-md-12 text-center mt-3">
-                                    <button class="btn btn-primary btn-sm" type="submit" style="background: #00486E;border-style: none;">
+                                    <button class="btn btn-primary btn-sm" type="submit" style="background-color: #00476D !important;">
                                         Cambiar Fotografìa
                                     </button>
                                 </div>   

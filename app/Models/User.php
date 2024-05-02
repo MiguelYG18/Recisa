@@ -68,6 +68,10 @@ class User extends Authenticatable
     {
         return Str::slug($this->names);
     }
-    //Relación de doctor con especialidad
-    
+    public function specializations()
+    {
+        // Indica que este modelo tiene muchas especialidades a través de la tabla intermedia
+        return $this->belongsToMany(Specialization::class, 'user_specialization', 'id_user', 'id_specialization')
+                    ->withPivot('cupo_doctor'); // Incluye campos de la tabla pivote
+    }
 }

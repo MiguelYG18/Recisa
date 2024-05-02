@@ -29,7 +29,6 @@
             </script>            
         @endif   
         <div class="d-sm-flex align-items-center mb-4" style="justify-content: right;">
-            
             <a class="btn btn-primary btn-sm d-none d-sm-inline-block" target="_blank" role="button" href="{{url('admin/admin/reporte')}}" style="--bs-primary: #00486E;--bs-primary-rgb: 0,72,110;--bs-body-bg: #00476D;background: #00476D !important;">
                 <i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generar Reporte
             </a>

@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CitaController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SpecializationController;
 use App\Http\Controllers\UserGroupController;
@@ -109,4 +110,6 @@ Route::group(['middleware'=>'doctor'],function(){
     Route::get('doctor/dashboard',[DashboardController::class,'dashboard']);
     //Ruta para ver el perfil
     Route::get('doctor/perfil',[ProfileController::class,'index']); 
+    //Doctor vea sus especialidades y progreso
+    Route::get('doctor/specialization/list',[DoctorController::class,'list']);
 });

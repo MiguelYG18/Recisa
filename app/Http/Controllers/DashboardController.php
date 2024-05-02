@@ -7,6 +7,7 @@ use App\Models\Patient;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
@@ -20,8 +21,8 @@ class DashboardController extends Controller
             return view('secretary.dashboard');
         }
         if($user->user_level == 3){
-            $appointments = Appointment::where('id_doctor', $user->id)->get();
-            return view('doctor.dashboard', compact('appointments')); // Pasa la lista de pacientes a la vista            
+            $appointments = Appointment::where('id_doctor', $user->id)->count();
+            return view('doctor.dashboard', compact('appointments')); 
         }
 
     }

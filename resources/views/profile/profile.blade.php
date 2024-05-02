@@ -33,7 +33,7 @@
                         <div class="card-body text-center shadow">
                             <img class="rounded-circle mb-3 mt-4" src="{{url('public/storage/perfiles/' .$user->image)}}" width="160" height="160">
                             <div class="mb-3">
-                                <button class="btn btn-primary btn-sm" type="button" style="background: #00486E;border-style: none;">
+                                <button class="btn btn-primary btn-sm" type="button" style="background-color: #00476D !important;">
                                     Cambiar Fotografìa
                                 </button>
                             </div>
