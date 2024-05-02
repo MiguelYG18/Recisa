@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\DB;
 class DashboardController extends Controller
 {
     public function dashboard(){
-        $user = Auth::user();
+        $user= Auth::user();        
         if($user->user_level == 1){
             $doctor= User::where('user_level',3)->count();
             return view('admin.dashboard',compact('doctor'));
