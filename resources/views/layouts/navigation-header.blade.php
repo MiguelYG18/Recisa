@@ -5,7 +5,7 @@
                 <button class="btn btn-primary py-0" type="button" style="background: #135578 !important;height: 54px;">
                     <i class="far fa-calendar-alt"></i>
                 </button>
-                <label class="form-label input-group-text" style="height: 54px; width:170px" id="fecha_hora"></label>
+                <label class="form-label input-group-text" style="height: 54px; width:187px" id="fecha_hora"></label>
                     <script>
                         function updateTime() {
                         var now = new Date();

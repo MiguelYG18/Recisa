@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Sistema RECISA - @yield('title')</title>
+    <title> RECISA| @yield('title')</title>
     <link rel="icon" href="{{ url('public/assets/img/escudo.png') }}">
     <!--Anderson-->
         <link rel="stylesheet" href="{{url('public/assets/bootstrap/css/bootstrap.min.css')}}">
