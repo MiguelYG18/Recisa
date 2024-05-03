@@ -60,10 +60,10 @@
                                         <tr>
                                             <td>
                                                 <div class="nav-item dropdown no-arrow">
-                                                    @if ($user->image == null)
-                                                        <img id="avatar-img" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="Admin"   name="image" class="rounded-circle p-1 bg-primary" width="110" style="max-width: 100px; height: 100px; border-radius: 50%; object-fit: cover;">
+                                                    @if(Storage::exists('public/storage/perfiles/' . $user->image))
+                                                        <img class="rounded-circle mb-3 mt-4" src="https://i.postimg.cc/hjSBbZX4/doctor.png" width="160" height="160">
                                                     @else
-                                                        <img class="border rounded-circle img-profile" src="{{url('public/storage/perfiles/' .$user->image)}}" alt="{{$user->names}}" style="max-width: 80px; height: 80px;">
+                                                        <img class="rounded-circle mb-3 mt-4" src="{{url('public/storage/perfiles/' .$user->image)}}" width="160" height="160">
                                                     @endif
                                                 </div>
                                             </td>

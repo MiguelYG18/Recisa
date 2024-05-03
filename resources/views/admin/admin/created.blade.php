@@ -112,7 +112,7 @@
                     <div class="row g-3">
                         <div class="d-flex align-items-center justify-content-center position-relative">
                             <div class="text-center">
-                                <img id="avatar-img" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="Admin"   name="image" class="rounded-circle p-1 bg-primary" width="160" style="max-width: 160px; height: 160px; border-radius: 50%; object-fit: contain;">
+                                <img id="avatar-img" src="https://i.postimg.cc/hjSBbZX4/doctor.png" alt="Admin"   name="image" class="rounded-circle p-1 bg-primary" width="160" style="max-width: 160px; height: 160px; border-radius: 50%; object-fit: contain;">
                                 <input type="file" id="avatar-input" name="image" accept="image/*" style="display: none;">
                                 <label for="avatar-input" class="boton-avatar position-absolute rounded-circle bg-primary" style="width: 40px; height: 40px; bottom: -10px; left: 60%; transform: translateX(-50%); border: 2px solid white;">
                                     <i class="far fa-image text-white" style="line-height: 40px;"></i>

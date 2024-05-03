@@ -19,46 +19,12 @@
             </div>
         </form>
         <ul class="navbar-nav flex-nowrap ms-auto">
-            <li class="nav-item dropdown no-arrow mx-1">
-                <div class="nav-item dropdown no-arrow">
-                    <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">
-                        <span class="badge bg-danger badge-counter">3+</span>
-                        <i class="fas fa-bell fa-fw"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-end dropdown-list animated--grow-in">
-                        <h6 class="dropdown-header">alerts center</h6>
-                        <a class="dropdown-item d-flex align-items-center" href="#">
-                            <div class="me-3">
-                                <div class="bg-primary icon-circle"><i class="fas fa-file-alt text-white"></i></div>
-                            </div>
-                            <div><span class="small text-gray-500">December 12, 2019</span>
-                                <p>A new monthly report is ready to download!</p>
-                            </div>
-                        </a>
-                        <a class="dropdown-item d-flex align-items-center" href="#">
-                            <div class="me-3">
-                                <div class="bg-success icon-circle"><i class="fas fa-donate text-white"></i></div>
-                            </div>
-                            <div><span class="small text-gray-500">December 7, 2019</span>
-                                <p>$290.29 has been deposited into your account!</p>
-                            </div>
-                        </a>
-                        <a class="dropdown-item d-flex align-items-center" href="#">
-                            <div class="me-3">
-                                <div class="bg-warning icon-circle"><i class="fas fa-exclamation-triangle text-white"></i></div>
-                            </div>
-                            <div><span class="small text-gray-500">December 2, 2019</span>
-                                <p>Spending Alert: We've noticed unusually high spending for your account.</p>
-                            </div>
-                        </a>
-                        <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-                    </div>
-                </div>
-            </li>
             @php
              use App\Models\User;
+             use App\Models\Specialization;
              $cupo=User::join('user_specialization', 'user_specialization.id_user', '=', 'users.id') 
                         ->where('user_specialization.cupo_doctor','=','0')
+                        ->where('users.status','=','1')
                         ->count();
              $doctors=User::select('specializations.name as specialization_name',
                                    'user_specialization.cupo_doctor','users.image',
@@ -66,10 +32,40 @@
                          ->join('user_specialization', 'user_specialization.id_user', '=', 'users.id') 
                          ->join('specializations', 'specializations.id', '=', 'user_specialization.id_specialization')
                          ->where('user_specialization.cupo_doctor','=','0')
+                         ->where('users.status','=','1')
                          ->get();
+             $vacio=Specialization::all()
+                                ->where('quantity_voucher','=','0')
+                                ->count();
+             $specializations=Specialization::all()
+                                ->where('quantity_voucher','=','0')
             @endphp
             @switch(Auth::user()->user_level)
                 @case(1)
+                    <li class="nav-item dropdown no-arrow mx-1">
+                        <div class="nav-item dropdown no-arrow">
+                            <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">
+                                <span class="badge bg-danger badge-counter">{{$vacio}}</span>
+                                <i class="fas fa-bell fa-fw"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end dropdown-list animated--grow-in">
+                                <h6 class="dropdown-header">Alertas</h6>
+                                @foreach ($specializations as $specialization)
+                                    <a class="dropdown-item d-flex align-items-center" href="#">
+                                        <div class="me-3">
+                                            <div class="bg-primary icon-circle text-center">
+                                                <i class="fas fa-file-alt text-white"></i>
+                                            </div>
+                                        </div>
+                                        <div><span class="small text-gray-500"></span>
+                                            <p>{{$specialization->name}} tiene {{$specialization->quantity_voucher}} cupos</p>
+                                        </div>
+                                    </a>
+                                @endforeach
+                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                            </div>
+                        </div>
+                    </li>
                     <li class="nav-item dropdown no-arrow mx-1">
                         <div class="nav-item dropdown no-arrow">
                             <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">
@@ -154,10 +150,10 @@
                     <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">
                         <span class="d-none d-lg-inline me-2 text-gray-600 small">{{Auth::user()->names}}</span>
                         
-                        @if(!Storage::exists('public/storage/perfiles/'. Auth::user()->image))
+                        @if(Storage::exists('public/storage/perfiles/'. Auth::user()->image))
                             <img class="border rounded-circle img-profile" src="https://i.postimg.cc/hjSBbZX4/doctor.png">
                         @else
-                            <img class="border rounded-circle img-profile" src="{{url('public/storage/perfiles/' . Auth::user()->image)}})}}">
+                            <img class="border rounded-circle img-profile" src="{{url('public/storage/perfiles/' . Auth::user()->image)}}">
                         @endif
                         
                         <!-- @if (Auth::user()->image == null)
