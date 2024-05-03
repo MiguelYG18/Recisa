@@ -1,4 +1,4 @@
-<aside id="sidebar" style="height: auto;">
+<aside id="sidebar" style="height: auto; min-height: 100vh;">
     <div class="d-flex">
         <button class="toggle-btn" type="button">
             <i class="fa-solid fa-hospital"></i>
