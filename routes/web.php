@@ -93,8 +93,13 @@ Route::group(['middleware'=>'admin'],function(){
     
     //Rutas para las citas
     Route::get('/admin/cita/list',[CitaController::class,'list']);
+
     //Ruta para ver el perfil
     Route::get('admin/perfil',[ProfileController::class,'index']);
+    //Enviar los datos del usuario en su perfil
+    Route::post('admin/perfil/edit/{user}',[ProfileController::class,'update']);
+    //Envio de las foto de perfil
+    Route::post('admin/perfil/photo/{user}',[ProfileController::class,'photo']);
     
 });
 Route::group(['middleware'=>'secretary'],function(){
@@ -104,12 +109,20 @@ Route::group(['middleware'=>'secretary'],function(){
     Route::get('secretary/cita/list',[CitaController::class,'list']);
     //Ruta para ver el perfil
     Route::get('secretary/perfil',[ProfileController::class,'index']);
+    //Enviar los datos del usuario en su perfil
+    Route::post('secretary/perfil/edit/{user}',[ProfileController::class,'update']);    
+    //Envio de las foto de perfil
+    Route::post('secretary/perfil/photo/{user}',[ProfileController::class,'photo']);
 });
 Route::group(['middleware'=>'doctor'],function(){
     //La vista del dashbaord
     Route::get('doctor/dashboard',[DashboardController::class,'dashboard']);
     //Ruta para ver el perfil
-    Route::get('doctor/perfil',[ProfileController::class,'index']); 
+    Route::get('doctor/perfil',[ProfileController::class,'index']);
+    //Enviar los datos del usuario en su perfil
+    Route::post('doctor/perfil/edit/{user}',[ProfileController::class,'update']);      
+    //Envio de las foto de perfil
+    Route::post('doctor/perfil/photo/{user}',[ProfileController::class,'photo']); 
     //Doctor vea sus especialidades y progreso
     Route::get('doctor/specialization/list',[DoctorController::class,'list']);
 });
