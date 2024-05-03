@@ -153,11 +153,18 @@
                 <div class="nav-item dropdown no-arrow">
                     <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">
                         <span class="d-none d-lg-inline me-2 text-gray-600 small">{{Auth::user()->names}}</span>
-                        @if (Auth::user()->image == null)
-                            <img class="border rounded-circle img-profile" src="https://bootdey.com/img/Content/avatar/avatar6.png">
+                        
+                        @if(!Storage::exists('public/storage/perfiles/'. Auth::user()->image))
+                            <img class="border rounded-circle img-profile" src="https://i.postimg.cc/hjSBbZX4/doctor.png">
+                        @else
+                            <img class="border rounded-circle img-profile" src="{{url('public/storage/perfiles/' . Auth::user()->image)}})}}">
+                        @endif
+                        
+                        <!-- @if (Auth::user()->image == null)
+                            <img class="border rounded-circle img-profile" src="https://www.comparapps.com/wp-content/uploads/2020/03/imagenes-para-paginas-web-1536x878.png">
                         @else
                             <img class="border rounded-circle img-profile" src="{{url('public/storage/perfiles/' . Auth::user()->image)}}">
-                        @endif                       
+                        @endif                        -->
                     </a>
                     <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in">
                         @switch(Auth::user()->user_level)
