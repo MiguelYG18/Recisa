@@ -150,7 +150,7 @@
                     <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">
                         <span class="d-none d-lg-inline me-2 text-gray-600 small">{{Auth::user()->names}}</span>
                         
-                        @if(Storage::exists('public/storage/perfiles/'. Auth::user()->image))
+                        @if(Auth::user()->image == null)
                             <img class="border rounded-circle img-profile" src="https://i.postimg.cc/hjSBbZX4/doctor.png">
                         @else
                             <img class="border rounded-circle img-profile" src="{{url('public/storage/perfiles/' . Auth::user()->image)}}">

@@ -158,7 +158,7 @@
                                 <div class="d-flex align-items-center justify-content-center position-relative">
                                     <div class="text-center">
                                         @if ($user->image == null)
-                                            <img id="avatar-img" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="Admin"   name="image" class="rounded-circle p-1 bg-primary" width="160" style="max-width: 160px; height: 160px; border-radius: 50%; object-fit: contain;">
+                                            <img class="rounded-circle mb-3 mt-4" src="https://i.postimg.cc/hjSBbZX4/doctor.png" width="160" height="160">
                                         @else
                                             <img id="avatar-img" src="{{url('public/storage/perfiles/' .$user->image)}}" name="image" alt="{{$user->name}}" class="rounded-circle p-1 bg-primary" width="160" style="max-width: 160px; height: 160px; border-radius: 50%; object-fit: contain;">
                                         @endif

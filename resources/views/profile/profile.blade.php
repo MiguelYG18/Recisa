@@ -43,7 +43,7 @@
                 <div class="col-lg-4">
                     <div class="card mb-3">
                     <div class="card-body text-center shadow">
-                    @if(Storage::exists('public/storage/perfiles/' . $user->image))
+                    @if($user->image == null)
                         <img class="rounded-circle mb-3 mt-4" src="https://i.postimg.cc/hjSBbZX4/doctor.png" width="160" height="160">
                     @else
                         <img class="rounded-circle mb-3 mt-4" src="{{url('public/storage/perfiles/' .$user->image)}}" width="160" height="160">
