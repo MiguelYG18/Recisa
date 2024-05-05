@@ -34,4 +34,9 @@ class StoreUserGroup extends FormRequest
             'slug'=>'enlace'
         ];
     }
+    public function messages(){
+        return[
+            'slug.required'=>'El campo enlace se genera con el nivel de usuario'
+        ];
+    }   
 }
