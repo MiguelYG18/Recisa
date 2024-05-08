@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\DB;
 class SpecializationController extends Controller
 {
     public function list(){
-
         $specializations=Specialization::all();
         return view('admin.specialization.specialization',compact('specializations'));
     }

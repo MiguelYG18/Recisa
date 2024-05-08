@@ -13,5 +13,4 @@ class Specialization extends Model
         'name',
         'quantity_voucher'
     ];
-
 }

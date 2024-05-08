@@ -4,7 +4,8 @@
         <!--Alertas-->
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <!--CSS TABLA-->
-        <link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.bootstrap5.css">       
+        <link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.bootstrap5.css">
+   
     @endpush 
     @section('content')
         @if (session('success'))
@@ -14,7 +15,7 @@
                     toast: true,
                     position: "top-end",
                     showConfirmButton: false,
-                    timer: 1500,
+                    timer: 3000,
                     timerProgressBar: true,
                     didOpen: (toast) => {
                         toast.onmouseenter = Swal.stopTimer;
@@ -27,10 +28,9 @@
                 });
             </script>            
         @endif   
-        <div class="d-sm-flex justify-content-between align-items-center mb-4">
-            <h3 class="text-dark mb-0">Usuarios</h3>
-            <a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="{{url('admin/admin/add')}}" style="--bs-primary: #00486E;--bs-primary-rgb: 0,72,110;--bs-body-bg: #00486E;background: #00486E;">
-                <i class="fas fa-user fa-sm text-white-50"></i>&nbsp;Crear Usuario
+        <div class="d-sm-flex align-items-center mb-4" style="justify-content: right;">
+            <a class="btn btn-primary btn-sm d-none d-sm-inline-block" target="_blank" role="button" href="{{url('admin/admin/reporte')}}" style="--bs-primary: #00486E;--bs-primary-rgb: 0,72,110;--bs-body-bg: #00476D;background: #00476D !important;">
+                <i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generar Reporte
             </a>
         </div>
         <div class="row">
@@ -43,16 +43,16 @@
                         <div class="table-responsive table" id="dataTable-2" role="grid" aria-describedby="dataTable_info">
                             <table id="usuarios" class="table my-0">
                                 <thead>
-                                    <tr>
-                                        <th style="width: 20px;">Foto</th>
-                                        <th style="width: 250px;">DNI</th>
-                                        <th style="width: 300px;">Usuario</th>
-                                        <th style="width: 250px;">Celular</th>
-                                        <th style="width: 300px;">Email</th>
-                                        <th style="width: 100px;">Rol</th>
-                                        <th style="width: 150px;">Estado</th>
-                                        <th style="width: 300px;">Creación</th>
-                                        <th class="text-center">Opciones</th>
+                                    <tr style="">
+                                        <th style="width: 20px;text-align: center !important; font-weight:bold">Foto</th>
+                                        <th style="width: 100px;text-align: center !important; font-weight:bold">DNI</th>
+                                        <th style="width: 1000px;text-align: center !important; font-weight:bold">Usuario</th>
+                                        <th style="width: 100px;text-align: center !important; font-weight:bold">Celular</th>
+                                        <th style="width: 300px;text-align: center !important; font-weight:bold">Email</th>
+                                        <th style="width: 100px;text-align: center !important; font-weight:bold">Rol</th>
+                                        <th style="width: 150px;text-align: center !important; font-weight:bold">Estado</th>
+                                        <th style="width: 300px;text-align: center !important; font-weight:bold">Creación</th>
+                                        <th class="title-table" style="width: 300px;text-align: center !important; font-weight:bold">Opciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -60,10 +60,10 @@
                                         <tr>
                                             <td>
                                                 <div class="nav-item dropdown no-arrow">
-                                                    @if ($user->image == null)
-                                                        <img id="avatar-img" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="Admin"   name="image" class="rounded-circle p-1 bg-primary" width="110" style="max-width: 100px; height: 100px; border-radius: 50%; object-fit: cover;">
+                                                    @if($user->image == null)
+                                                        <img class="rounded-circle mb-3 mt-4" src="https://i.postimg.cc/hjSBbZX4/doctor.png" width="160" height="160">
                                                     @else
-                                                        <img class="border rounded-circle img-profile" src="{{url('public/storage/perfiles/' .$user->image)}}" alt="{{$user->names}}" style="max-width: 80px; height: 80px;">
+                                                        <img class="rounded-circle mb-3 mt-4" src="{{url('public/storage/perfiles/' .$user->image)}}" width="160" height="160">
                                                     @endif
                                                 </div>
                                             </td>
@@ -72,14 +72,14 @@
                                             <td>{{$user->phone}}</td>
                                             <td>{{$user->email}}</td>
                                             <td>
-                                                @switch($user)
-                                                    @case($user->user_level == 1)
+                                                @switch($user->user_level)
+                                                    @case(1)
                                                         Admin
                                                         @break
-                                                    @case($user->user_level == 2)
+                                                    @case(2)
                                                         Secretaria
                                                         @break
-                                                    @case($user->user_level == 3)
+                                                    @case(3)
                                                         Doctor
                                                         @break    
                                                     @default                                                   
@@ -108,7 +108,7 @@
                                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    El usuario {{$user->names}} debe ser informado después de a ver realizado esta acción.
+                                                                    El usuario {{$user->names}} debe ser informado después de haber realizado esta acción.
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
@@ -130,11 +130,6 @@
                 </div>
             </div>
         </div>
-        <div class="d-sm-flex justify-content-center align-items-center mb-4 mt-4">
-            <a class="btn btn-primary btn-sm d-none d-sm-inline-block" target="_blank" role="button" href="{{url('admin/admin/reporte')}}" style="--bs-primary: #00486E;--bs-primary-rgb: 0,72,110;--bs-body-bg: #00486E;background: #00486E;">
-                <i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generar Reporte
-            </a>
-        </div>   
     @endsection
     @push('js')
         <script>

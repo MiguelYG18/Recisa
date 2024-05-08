@@ -30,9 +30,6 @@
             });
         </script>
     @endif
-    <div class="d-sm-flex justify-content-between align-items-center mb-4">
-        <h3 class="text-dark mb-0">Especialidades</h3>
-    </div>
     <div class="row">
         <div class="col" style="margin-top: 20px;">
             <div class="card shadow mb-4">
@@ -40,6 +37,25 @@
                     <h6 class="text-primary fw-bold m-0">Registrar Especialidad</h6>
                 </div>
                 <div class="card-body">
+                    <div class="col-md-12">
+                        @if ($errors->any())
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert" id="auto-close-alert">
+                                <i class="fa-solid fa-circle-exclamation"></i>
+                                {{ implode(' ', $errors->all()) }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                            <script>
+                                // Después de 2 segundos (2000 ms), cierra la alerta automáticamente
+                                setTimeout(function() {
+                                    var alert = document.getElementById("auto-close-alert");
+                                    if (alert) {
+                                        var alertInstance = new bootstrap.Alert(alert);
+                                        alertInstance.close();
+                                    }
+                                }, 3500); // 2000 milisegundos = 2 segundos
+                            </script>
+                        @endif
+                    </div>
                     <form action="" method="post">
                         {{ csrf_field() }}
                         <div class="row g-3">
@@ -50,9 +66,6 @@
                                         <input type="text" class="form-control" maxlength="30" id="basic-url"
                                             name="name_insert" aria-describedby="basic-addon3 basic-addon4"
                                             value="{{ old('name_insert') }}">
-                                        @error('name_insert')
-                                            <small class="text-danger">{{ '*' . $message }}</small>
-                                        @enderror
                                     </div>
                                 </div>
                             </div>
@@ -73,13 +86,10 @@
                                         <option value="5"
                                             {{ old('quantity_voucher_insert') == '5' ? 'selected' : '' }}>5</option>
                                     </select>
-                                    @error('quantity_voucher_insert')
-                                        <small class="text-danger">{{ '*' . $message }}</small>
-                                    @enderror
                                 </div>
                             </div>
                             <div class="col-12 text-center">
-                                <button type="submit" class="btn btn-primary">Guardar</button>
+                                <button type="submit" class="btn btn-primary" style="background-color: #00476D !important;">Guardar</button>
                             </div>
                         </div>
                     </form>
@@ -207,6 +217,7 @@
                     showModal('Ingrese la cantidad para los cupos');
                     return; 
                 }
+                
                 if (isNaN(input.val()) || input.val() < 1 || input.val() > 20) {
                     showModal('La especialidad debe tener mínimo 1 cupo o máximo 20');
                     return;

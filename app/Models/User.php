@@ -71,4 +71,5 @@ class User extends Authenticatable
     {
         return Str::slug($this->names);
     }
+    
 }
