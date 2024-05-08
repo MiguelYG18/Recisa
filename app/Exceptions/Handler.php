@@ -26,13 +26,7 @@ class Handler extends ExceptionHandler
     public function register(): void
     {
         $this->renderable(function (Throwable $e, $request) {
-            if ($e->getCode() == 500 || $e instanceof QueryException) {
-                // Invalida la sesión manualmente sin acceder a la base de datos
-                Session::flush(); // Limpia todos los datos de la sesión
-                return response()->view('page.500', [], 500); // Redirige a la página 500
-            }
-
-            return null; // Deja que el manejo de errores continúe normalmente
+            // Deja que el manejo de errores continúe normalmente
         });
     }
 }

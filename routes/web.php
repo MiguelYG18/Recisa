@@ -6,6 +6,7 @@ use App\Http\Controllers\CitaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SpecializationController;
 use App\Http\Controllers\UserGroupController;
+use App\Http\Controllers\UserSpecializationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -87,6 +88,14 @@ Route::group(['middleware'=>'admin'],function(){
     Route::get('admin/specialization/delete/{id}',[SpecializationController::class,'delete']);
     //Rutas para las citas
     Route::get('/admin/cita/list',[CitaController::class,'list']);
+
+    //Rutas para asignar los doctores a un 
+    //La vista de la asignación a doctor
+    Route::get('/admin/assignment',[UserSpecializationController::class,'list']);
+    //Envio de datos para registrar
+    Route::post('/admin/assignment',[UserSpecializationController::class,'insert']);
+    //delete get
+    Route::get('admin/assignment/delete/{id}',[UserSpecializationController::class,'delete']);
 });
 Route::group(['middleware'=>'secretary'],function(){
     //La vista del dashbaord

@@ -51,16 +51,19 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-    public function group(){
-        return $this->belongsTo(UserGroup::class,'user_level', 'group_level');
+
+    public function group()
+    {
+        return $this->belongsTo(UserGroup::class, 'user_level', 'group_level');
     }
-     //Guardar nuestas images 
-    public function hanbleUploadImage($image){
-         $file = $image;
-         $name = time() . $file->getClientOriginalName();
-         //$file->move(public_path() . '/img/productos/', $name);
-         Storage::putFileAs('/public/perfiles/',$file,$name,'public');         
-         return $name;
+    //Guardar nuestas images 
+    public function hanbleUploadImage($image)
+    {
+        $file = $image;
+        $name = time() . $file->getClientOriginalName();
+        //$file->move(public_path() . '/img/productos/', $name);
+        Storage::putFileAs('/public/perfiles/', $file, $name, 'public');
+        return $name;
     }
 
     //Rutas con slug
@@ -68,5 +71,4 @@ class User extends Authenticatable
     {
         return Str::slug($this->names);
     }
-    
 }

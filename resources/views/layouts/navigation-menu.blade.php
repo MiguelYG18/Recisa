@@ -35,6 +35,12 @@
                         <i class="fa fa-hospital" style="font-size: 20px;"></i>
                         <span style="font-size: 15px;">Rama</span>
                     </a>
+                </li> 
+                <li class="nav-item" style="font-size: 14PX;">
+                    <a class="nav-link @if (Request::segment(2)=='assignment') active @endif" href="{{url('/admin/assignment')}}" style="font-size: 14PX;text-align: center;">
+                        <i class="fa fa-hospital" style="font-size: 20px;"></i>
+                        <span style="font-size: 15px;">Rama</span>
+                    </a>
                 </li>              
             @elseif (Auth::user()->user_level == 2)
                 <li class="nav-item">
