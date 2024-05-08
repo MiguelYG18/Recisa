@@ -21,8 +21,17 @@
                                 <i class="fa-solid fa-circle-exclamation"></i>
                                 {{ implode(' ', $errors->all()) }}
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                <script>
+                                    // Después de 2 segundos (2000 ms), cierra la alerta automáticamente
+                                    setTimeout(function() {
+                                        var alert = document.getElementById("auto-close-alert");
+                                        if (alert) {
+                                            var alertInstance = new bootstrap.Alert(alert);
+                                            alertInstance.close();
+                                        }
+                                    }, 3500); // 2000 milisegundos = 2 segundos
+                                </script>
                             </div>
-
                         @endif
                     </div>
                     <div class="col-md-12">

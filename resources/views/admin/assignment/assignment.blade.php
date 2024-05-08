@@ -59,6 +59,25 @@
                     <h6 class="text-primary fw-bold m-0">Asignar Doctor a Especialidad</h6>
                 </div>
                 <div class="card-body">
+                    <div class="col-md-12">
+                        @if ($errors->any())
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert" id="auto-close-alert">
+                                <i class="fa-solid fa-circle-exclamation"></i>
+                                {{ implode(' ', $errors->all()) }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                <script>
+                                    // Después de 2 segundos (2000 ms), cierra la alerta automáticamente
+                                    setTimeout(function() {
+                                        var alert = document.getElementById("auto-close-alert");
+                                        if (alert) {
+                                            var alertInstance = new bootstrap.Alert(alert);
+                                            alertInstance.close();
+                                        }
+                                    }, 3500); // 2000 milisegundos = 2 segundos
+                                </script>
+                            </div>
+                        @endif
+                    </div>
                     <form action="" method="post" id="form_assignment">
                         {{ csrf_field() }}
                         <div class="row g-3">
@@ -76,53 +95,44 @@
                                                     {{ $specialization->name }}</option>
                                             @endforeach
                                         </select>
-                                        @error('id_specialization')
-                                            <small class="text-danger">{{ '*' . $message }}</small>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <div class="input-group">
-                                        <span class="input-group-text" id="basic-addon3">Doctor</span>
-                                        <select title="...." data-style="btn-secondary" data-size="3"
-                                            id="id_doctor" class="form-control selectpicker show-tick"
-                                            style="width: 120px;" name="id_doctor">
-                                            @foreach ($doctor as $userDoctor)
-                                                <option value="{{ $userDoctor->id }}"
-                                                    {{ old('id_doctor') == $userDoctor->id ? 'selected' : '' }}>
-                                                    {{ $userDoctor->names }}</option>
-                                            @endforeach
-                                        </select>
-                                        @error('id_doctor')
-                                            <small class="text-danger">{{ '*' . $message }}</small>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <div class="input-group">
-                                        <label class="input-group-text" for="quantity_voucher">Asignar Cupos</label>
-                                        <input type="text" class="form-control" maxlength="5" id="basic-url"
-                                            name="vaucher_specialization"
-                                            aria-describedby="basic-addon3 basic-addon4"
-                                            onkeypress="return event.charCode >= 48 && event.charCode <= 57"
-                                            oninput="this.value = this.value.replace(/[^0-9]/g, '');"
-                                            value="{{ old('vaucher_specialization') }}">
-                                        @error('vaucher_specialization')
-                                            <small class="text-danger">{{ '*' . $message }}</small>
-                                        @enderror
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-5">
                                 <div class="input-group mb-3">
-                                    <label class="input-group-text" for="quantity_voucher">Total Cupos</label>
+                                    <label class="input-group-text" for="quantity_voucher">Cupos</label>
                                     <input type="text" class="form-control" maxlength="5" id="max_voucher" readonly
                                         name="max_voucher" aria-describedby="basic-addon3 basic-addon4"
                                         value="{{ old('max_voucher') }}">
                                 </div>
                             </div>
+                            <div class="col-md-7">
+                                <div class="input-group">
+                                    <span class="input-group-text" id="basic-addon3">Doctor</span>
+                                    <select title="...." data-style="btn-secondary" data-size="3"
+                                        id="id_doctor" class="form-control selectpicker show-tick"
+                                        style="width: 120px;" name="id_doctor">
+                                        @foreach ($doctor as $userDoctor)
+                                            <option value="{{ $userDoctor->id }}"
+                                                {{ old('id_doctor') == $userDoctor->id ? 'selected' : '' }}>
+                                                {{ $userDoctor->names }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="input-group">
+                                    <label class="input-group-text" for="quantity_voucher">Asignar</label>
+                                    <input type="text" class="form-control" maxlength="5" id="basic-url"
+                                        name="vaucher_specialization"
+                                        aria-describedby="basic-addon3 basic-addon4"
+                                        onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                                        oninput="this.value = this.value.replace(/[^0-9]/g, '');"
+                                        value="{{ old('vaucher_specialization') }}">
+                                </div>
+                            </div>
                             <div class="col-12 text-center">
-                                <button type="submit" class="btn btn-primary" id="btn_agregar">Guardar</button>
+                                <button type="submit" class="btn btn-primary" style="background-color: #00476D !important;">Guardar</button>
                             </div>
                         </div>
                     </form>
