@@ -34,8 +34,8 @@
                                         <td class="text-center">
                                             <a href="#" class="btn rounded bg-warning"
                                                 data-bs-toggle="tooltip" 
-                                                data-bs-placement="right" 
-                                                data-bs-title="3"
+                                                data-bs-placement="right"                                                 
+                                                data-bs-title="{{$index->Total_Appointments}}"
                                                 data-bs-custom-class="custom-tooltip-class">
                                                 <i class="fa-solid fa-bed-pulse"></i>
                                             </a>
@@ -72,35 +72,8 @@
                 </div>
             </div>
         </div>
-        <div class="col-4" style="margin-top: 20px;">
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="text-primary fw-bold m-0">Cupos por Especialidad</h6>
-                </div>
-                <div class="card-body">
-                    <h4 class="small fw-bold">Medicina General<span class="float-end">20%</span></h4>
-                    <div class="progress progress-sm mb-3">
-                        <div class="progress-bar bg-danger" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%;"><span class="visually-hidden">20%</span></div>
-                    </div>
-                    <h4 class="small fw-bold">Odontología<span class="float-end">40%</span></h4>
-                    <div class="progress progress-sm mb-3">
-                        <div class="progress-bar bg-warning" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;"><span class="visually-hidden">40%</span></div>
-                    </div>
-                    <h4 class="small fw-bold">Obstetricia<span class="float-end">60%</span></h4>
-                    <div class="progress progress-sm mb-3">
-                        <div class="progress-bar bg-primary" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"><span class="visually-hidden">60%</span></div>
-                    </div>
-                    <h4 class="small fw-bold">Pediatria<span class="float-end">80%</span></h4>
-                    <div class="progress progress-sm mb-3">
-                        <div class="progress-bar bg-info" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"><span class="visually-hidden">80%</span></div>
-                    </div>
-                    <h4 class="small fw-bold">Psicología<span class="float-end">Complete!</span></h4>
-                    <div class="progress progress-sm mb-3">
-                        <div class="progress-bar bg-success" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"><span class="visually-hidden">100%</span></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    </div>
+</div> 
     </div>
     @endsection
     @push('js')

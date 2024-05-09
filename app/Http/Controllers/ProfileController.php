@@ -15,16 +15,16 @@ class ProfileController extends Controller
         $photo = '';
         $profile='';
         switch ($user->user_level) {
-            case 1:
+            case (1):
                 //ruta para actualziar la foto de perfil
                 $photo = 'admin/perfil/photo/';
                 $profile='admin/perfil/edit/';
                 break;
-            case 2:
+            case (2):
                 $photo = 'secretary/perfil/photo/';
                 $profile='secretary/perfil/edit/';
                 break;
-            case 3:
+            case (3):
                 $photo = 'doctor/perfil/photo/';
                 $profile='doctor/perfil/edit/';
                 break;

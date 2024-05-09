@@ -92,7 +92,8 @@
                                                 <option value="{{ $specialization->id }}"
                                                     data-voucher="{{ $specialization->quantity_voucher }}"
                                                     {{ old('id_specialization') == $specialization->id ? 'selected' : '' }}>
-                                                    {{ $specialization->name }}</option>
+                                                    {{ $specialization->name }}
+                                                </option>
                                             @endforeach
                                         </select>
                                     </div>

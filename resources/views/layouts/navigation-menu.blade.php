@@ -60,11 +60,11 @@
                 </li>
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
-                        data-bs-target="#auth3" aria-expanded="false" aria-controls="auth3">
+                        data-bs-target="#auth4" aria-expanded="false" aria-controls="auth4">
                         <i class="fa-solid fa-file-lines"></i>
                         <span>Gestión Asignaciones</span>
                     </a>
-                    <ul id="auth3" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                    <ul id="auth4" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item2">
                             <a href="{{url('admin/assignment')}}" class="sidebar-link">Asignar Especialidades</a>
                         </li>
@@ -72,11 +72,11 @@
                 </li>
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
-                        data-bs-target="#auth3" aria-expanded="false" aria-controls="auth3">
+                        data-bs-target="#auth5" aria-expanded="false" aria-controls="auth5">
                         <i class="fa-solid fa-hospital-user"></i>
                         <span>Gestión de Pacientes</span>
                     </a>
-                    <ul id="auth3" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                    <ul id="auth5" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item2">
                             <a href="#" class="sidebar-link">Registrar Paciente</a>
                         </li>

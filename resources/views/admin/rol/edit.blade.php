@@ -1,8 +1,6 @@
 @extends('layouts.app')
 @section('title','Editar Rol')
     @push('css')
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/css/bootstrap-select.min.css">  
     @endpush
 
     @section('content')      
@@ -79,6 +77,5 @@
     @endsection
 
     @push('js')
-        <!-- Latest compiled and minified JavaScript -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/js/bootstrap-select.min.js"></script>
+        
     @endpush

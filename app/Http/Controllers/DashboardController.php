@@ -21,7 +21,9 @@ class DashboardController extends Controller
             return view('secretary.dashboard');
         }
         if($user->user_level == 3){
-            $appointments = Appointment::where('id_doctor', $user->id)->count();
+            $appointments = Appointment::join('user_specialization', 'appointments.id_quota', '=', 'user_specialization.id')
+            ->where('user_specialization.id_user', $user->id)
+            ->count();
             return view('doctor.dashboard', compact('appointments')); 
         }
 

@@ -101,6 +101,13 @@ Route::group(['middleware'=>'admin'],function(){
     Route::post('/admin/assignment',[UserSpecializationController::class,'insert']);
     //delete get
     Route::get('admin/assignment/delete/{id}',[UserSpecializationController::class,'delete']);
+
+    //Ruta para ver el perfil
+    Route::get('admin/perfil',[ProfileController::class,'index']);
+    //Enviar los datos del usuario en su perfil
+    Route::post('admin/perfil/edit/{user}',[ProfileController::class,'update']);    
+    //Envio de las foto de perfil
+    Route::post('admin/perfil/photo/{user}',[ProfileController::class,'photo']);
 });
 Route::group(['middleware'=>'secretary'],function(){
     //La vista del dashbaord
