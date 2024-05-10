@@ -102,7 +102,7 @@
                             <div class="col-md-5">
                                 <div class="input-group mb-3">
                                     <label class="input-group-text" for="quantity_voucher">Cupos</label>
-                                    <input type="text" class="form-control" maxlength="5" id="max_voucher" readonly
+                                    <input type="text" class="form-control" style="border-radius:0px 10px 10px 0px !important; height:38px" maxlength="5" id="max_voucher" readonly
                                         name="max_voucher" aria-describedby="basic-addon3 basic-addon4"
                                         value="{{ old('max_voucher') }}">
                                 </div>
@@ -124,7 +124,7 @@
                             <div class="col-md-5">
                                 <div class="input-group">
                                     <label class="input-group-text" for="quantity_voucher">Asignar</label>
-                                    <input type="text" class="form-control" maxlength="5" id="basic-url"
+                                    <input type="text" class="form-control" style="border-radius:0px 10px 10px 0px !important; height: 38px;"  maxlength="5" id="basic-url"
                                         name="vaucher_specialization"
                                         aria-describedby="basic-addon3 basic-addon4"
                                         onkeypress="return event.charCode >= 48 && event.charCode <= 57"
