@@ -78,7 +78,7 @@
                     </a>
                     <ul id="auth5" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item2">
-                            <a href="#" class="sidebar-link">Registrar Paciente</a>
+                            <a href="{{url('admin/admin/addPatient')}}"  class="sidebar-link">Registrar Paciente</a>
                         </li>
                         <li class="sidebar-item2">
                             <a href="#" class="sidebar-link">Listar Pacientes</a>

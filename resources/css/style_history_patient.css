@@ -1,0 +1,76 @@
+.container_files {
+  background-color: #ffffff;
+  width: 90%;
+  max-width: 45em;
+  position: relative;
+  margin: 3.12em auto;
+  padding: 3.12em 1.25em;
+  border-radius: 0.43em;
+  box-shadow: 0 1.25em 2.18em rgb(1, 28, 71, 0.3);
+  border: 5px dashed;
+  border-color: #15476D;
+  transition: background-color 0.5s ease;
+}
+
+.container_files:hover{
+  background-color: #eff5ff;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.label {
+  display: block;
+  position: relative;
+  background-color: #00476D;
+  color: #ffffff;
+  font-size: 1.12em;
+  font-weight: 500;
+  text-align: center;
+  width: 80%;
+  padding: 1.12em 0;
+  margin: auto;
+  border-radius: 0.31em;
+  cursor: pointer;
+}
+
+#num-of-files {
+  font-weight: 400 !important;
+  text-align: center  !important;
+  margin: 1.25em 0 1.87em 0 !important;
+}
+
+ul {
+  list-style-type: none !important;
+}
+
+.container_files li {
+  font-weight: 500 !important;
+  background-color: #eff5ff !important;
+  color: #025bee !important;
+  margin-bottom: 1em !important;
+  padding: 1.1em 1em !important;
+  border-radius: 0.3em !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important; /* Añadido para centrar verticalmente el contenido */
+}
+
+button{
+  background-color: transparent !important;
+  border: none !important;
+  font-size: 18px !important;
+}
+
+.fa-trash:before :focus {
+  box-shadow: 5px 5px 20px #0000;
+}
+
+.fa-trash:before {      
+  color: #DC3644;
+}
+
+.fa-eye::before{
+  color: #15476D;
+}

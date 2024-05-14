@@ -52,6 +52,10 @@ Route::group(['middleware'=>'admin'],function(){
     Route::get('/admin/admin/list',[AdminController::class,'list']);
     //La vista crear usuario
     Route::get('/admin/admin/add',[AdminController::class,'add']);
+    //La vista crear paciente
+    Route::get('/admin/admin/addPatient',[AdminController::class,'addPatient']);
+    //La vista crear historia clinica
+    Route::get('/admin/admin/addHistoryPatient',[AdminController::class,'addHistoryPatient']);
     //Validación de la API
     Route::post('/admin/admin/add-consulta', [AdminController::class, 'consultarDNI']);
     //Envio de datos para registrar

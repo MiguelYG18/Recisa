@@ -8,11 +8,11 @@
     @endpush
 
     @section('content')    
-    <div class="row">
-        <div class="col-md-8" style="margin-top: 20px;">
+    <div class="row" style="justify-content: center;">
+        <div class="col-8" style="margin-top: 20px;">
             <div class="card shadow">
                 <div class="card-header py-3">
-                    <p class="text-primary m-0 fw-bold">Formulario del Usuario</p>
+                    <p class="text-primary m-0 fw-bold">Formulario del Paciente</p>
                 </div>
                 <div class="card-body">
                     <div class="col-md-12">
@@ -36,9 +36,10 @@
                     </div>
                     <div class="col-md-12">
                         <label for="documento" class="form-label">CONSULTA DE DNI:</label>
+                        
                         <div class="input-group mb-3">
-                            <input  type="text" maxlength="8" minlength="8" style="border-radius:10px 0px 0px 10px !important"id="documento" class="form-control" placeholder="Ingrese el DNI" aria-label="Ingrese el DNI" aria-describedby="button-addon2">
-                            <button class="btn btn-primary" type="button" id="buscar" style="background-color: #00476D !important;">Buscar</button>
+                            <input  type="text" maxlength="8" minlength="8" id="documento" class="form-control" placeholder="Ingrese el DNI" aria-label="Ingrese el DNI" aria-describedby="button-addon2" style="border-radius: 10px 0px 0px 10px !important">
+                            <button class="btn btn-primary btn-sm"  type="button" id="buscar" style="background-color: #00476D !important; border:none  ;color: #ffff ">Buscar</button>
                         </div>
                     </div>
                     <form action="" method="POST" enctype="multipart/form-data">
@@ -60,84 +61,34 @@
                                 <label for="phone" class="form-label">Celular:</label>
                                 <input class="form-control" maxlength="9" minlength="9" type="text" name="phone" id="phone" value="{{old('phone')}}">
                             </div>
-                            <div class="col-md-6">
-                                <label for="email" class="form-label">Email:</label>
-                                <input class="form-control" type="text" name="email" id="email" value="{{old('email')}}">
-                            </div>
-                            <div class="col-md-3">
-                                <label for="status" class="form-label">Estado:</label>
-                                <select title="Estado..." data-style="btn-secondary" name="status" id="status" data-size="2" class="form-control selectpicker show-tick">
-                                    <option value="0"  {{ old('status') == '0' ? 'selected' : '' }}>Desactivado</option>
-                                    <option value="1"  {{ old('status') == '1' ? 'selected' : '' }}>Activado</option> 
-                                </select>
-                            </div>  
-                            <div class="col-md-3">
-                                <label for="role" class="form-label">Rol:</label>
-                                <select title="Rol..." name="user_level" id="user_level" data-style="btn-secondary" data-size="2" class="form-control selectpicker show-tick">
-                                    @foreach ($rol as $item)
-                                        <option value="{{$item->group_level}}" {{old('user_level') == $item->group_level ? 'selected':''}}>
-                                            @switch($item)
-                                                @case($item->group_level == 1)
-                                                    Admin
-                                                    @break
-                                                @case($item->group_level == 2)
-                                                    Secretaria
-                                                    @break
-                                                @case($item->group_level == 3)
-                                                    Doctor
-                                                    @break   
-                                                @default
-                                            @endswitch
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="input-group">
-                                    <input type="password" name="password" id="password" class="form-control" placeholder="Password" autocomplete="off">
-                                    <button id="show_password" class="btn btn-primary" onclick="mostrarPassword()" type="button" style="background-color: #00476D !important;">
-                                        <span class="fa fa-eye-slash icon"></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="input-group">
-                                    <input type="password" name="password_confirm" id="password_confirm" class="form-control" placeholder="Confirmar password" autocomplete="off">
-                                    <button id="show_password_confirm" class="btn btn-primary" onclick="mostrarPasswordConfirm()" type="button" style="background-color: #00476D !important;">
-                                        <span class="fa fa-eye-slash icon_confirm"></span>
-                                    </button>
-                                </div>
-                            </div>                             
-                        </div>                        
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4" style="margin-top: 20px;">
-            <div class="card shadow">
-                <div class="card-header py-3">
-                    <p class="text-primary m-0 fw-bold">Foto de Perfil</p>
-                </div>
-                <div class="card-body">
-                    <div class="row g-3">
-                        <div class="d-flex align-items-center justify-content-center position-relative">
-                            <div class="text-center">
-                                <img id="avatar-img" src="https://i.postimg.cc/hjSBbZX4/doctor.png" alt="Admin"   name="image" class="rounded-circle p-1 bg-primary" width="160" style="max-width: 160px; height: 160px; border-radius: 50%; object-fit: contain;">
-                                <input type="file" id="avatar-input" name="image" accept="image/*" style="display: none;">
-                                <label for="avatar-input" class="boton-avatar position-absolute rounded-circle bg-primary" style="width: 40px; height: 40px; bottom: -10px; left: 60%; transform: translateX(-50%); border: 2px solid white;">
-                                    <i class="far fa-image text-white" style="line-height: 40px;"></i>
-                                </label>       
-                            </div>                                
-                        </div>
-                        <div class="col-md-12 text-center mt-3">
+                            <div class="col-md-12 text-center mt-3">
                             <button class="btn btn-primary btn-sm" type="submit" style="background-color: #00476D !important;">
                                 Guardar
                             </button>
                         </div>   
-                    </div>
+                             
+                            
+                                                    
+                        </div>                        
                 </div>
             </div>
         </div>
         </form>
+        <div class="row g-3" style="justify-content:center; text-align: center;">
+        <div class="col-md-2">       
+               <a href="{{url("admin/admin/addHistoryPatient")}}">
+                <img src="{{url('public/assets/img/avatars/historia-clinica.png')}}" alt="" style="height: 128px; box-shadow:8px 8px 20px #0000"><br>
+               
+               <span style="color:#00476D;">Historias Clínicas</span>
+               </a>
+            </div>
+            <div class="col-md-2">
+            <a href="{{url("")}}">
+                <img src="{{url('public/assets/img/avatars/lista.png')}}" alt="" style="height: 134px; box-shadow:8px 8px 20px #0000; margin-top:-8px"><br>
+                <span style="color:#00476D;">Lista de Pacientes</span>
+               </a>
+                </div>
+        </div>
     </div> 
     @endsection
 
