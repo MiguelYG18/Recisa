@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CitaController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DNIController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SpecializationController;
@@ -57,7 +58,7 @@ Route::group(['middleware'=>'admin'],function(){
     //La vista crear historia clinica
     Route::get('/admin/admin/addHistoryPatient',[AdminController::class,'addHistoryPatient']);
     //Validación de la API
-    Route::post('/admin/admin/add-consulta', [AdminController::class, 'consultarDNI']);
+    Route::post('/admin/admin/add-consulta', [DNIController::class, 'consultarDNI']);
     //Envio de datos para registrar
     Route::post('/admin/admin/add',[AdminController::class,'insert']);
     //Vista editar
