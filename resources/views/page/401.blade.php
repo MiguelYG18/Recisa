@@ -7,7 +7,7 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>404 Error - No autorizado</title>
-        <link href="{{url('public/assets/css/template.css')}}" rel="stylesheet" />
+        <link href="{{asset('assets/css/template.css')}}" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     </head>
     <body>
@@ -42,6 +42,6 @@
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="{{url('public/assets/js/scripts.js')}}"></script>
+        <script src="{{asset('assets/js/scripts.js')}}"></script>
     </body>
 </html>

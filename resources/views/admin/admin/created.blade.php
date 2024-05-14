@@ -9,7 +9,7 @@
 
     @section('content')    
     <div class="row">
-        <div class="col-8" style="margin-top: 20px;">
+        <div class="col-md-8" style="margin-top: 20px;">
             <div class="card shadow">
                 <div class="card-header py-3">
                     <p class="text-primary m-0 fw-bold">Formulario del Usuario</p>
@@ -112,7 +112,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-4" style="margin-top: 20px;">
+        <div class="col-md-4" style="margin-top: 20px;">
             <div class="card shadow">
                 <div class="card-header py-3">
                     <p class="text-primary m-0 fw-bold">Foto de Perfil</p>

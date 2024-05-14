@@ -88,7 +88,7 @@
                         @if(Auth::user()->image == null)
                             <img class="border rounded-circle img-profile" src="https://i.postimg.cc/hjSBbZX4/doctor.png">
                         @else
-                            <img class="border rounded-circle img-profile" src="{{url('public/storage/perfiles/' . Auth::user()->image)}}">
+                            <img class="border rounded-circle img-profile" src="{{Storage::url('public/perfiles/'.Auth::user()->image)}}">
                         @endif
                     </a>
                     <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in">

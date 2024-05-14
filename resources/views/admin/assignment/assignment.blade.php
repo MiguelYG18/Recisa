@@ -53,7 +53,7 @@
         <h3 class="text-dark mb-0">Asignación</h3>
     </div>
     <div class="row">
-        <div class="col" style="margin-top: 20px;">
+        <div class="col-md-5" style="margin-top: 20px;">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="text-primary fw-bold m-0">Asignar Doctor a Especialidad</h6>
@@ -140,7 +140,7 @@
                 </div>
             </div>
         </div>
-        <div class="col" style="margin-top: 20px;">
+        <div class="col-md-7" style="margin-top: 20px;">
             <div class="card shadow">
                 <div class="card-header py-3">
                     <p class="text-primary m-0 fw-bold">Lista de Especialidades</p>

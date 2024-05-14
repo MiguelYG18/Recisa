@@ -31,9 +31,10 @@ return [
     |
     */
 
-    'lifetime' => env('SESSION_LIFETIME', 120),
+    'lifetime' => env('SESSION_LIFETIME', 120), //El tiempo de sesión
 
-    'expire_on_close' => true,
+    'expire_on_close' => true, //La sesión se cierre cuando el navegador se cierra
+    //Pero si se dio en el recuerdame no va suceder
 
     /*
     |--------------------------------------------------------------------------

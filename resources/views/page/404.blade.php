@@ -6,9 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <link rel="icon" href="{{ url('public/assets/img/escudo.png') }}">
+        <link rel="icon" href="{{ asset('assets/img/escudo.png') }}">
         <title>404 Error-Sistema CIMEXA</title>
-        <link href="{{url('public/assets/css/template.css')}}" rel="stylesheet" />
+        <link href="{{asset('assets/css/template.css')}}" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     </head>
     <body>
@@ -19,7 +19,7 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-6">
                                 <div class="text-center mt-4">
-                                    <img class="mb-4 img-error" src="{{url('public/assets/img/error-404-monochrome.svg')}}" />
+                                    <img class="mb-4 img-error" src="{{asset('assets/img/error-404-monochrome.svg')}}" />
                                     <p class="lead">Esta URL solicitada no se encontró en este servidor.</p>
                                     @if(Auth::check())
                                         @switch(Auth::user()->user_level)
@@ -60,6 +60,6 @@
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="{{url('public/assets/js/scripts.js')}}"></script>
+        <script src="{{asset('assets/js/scripts.js')}}"></script>
     </body>
 </html>

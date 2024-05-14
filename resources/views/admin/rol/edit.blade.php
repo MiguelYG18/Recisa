@@ -5,7 +5,7 @@
 
     @section('content')      
         <div class="row">
-            <div class="col">
+            <div class="col-md-12">
                 <div class="card shadow">
                     <div class="card-header py-3">
                         <p class="text-primary m-0 fw-bold">

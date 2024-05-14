@@ -4,24 +4,23 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>RECISA| Login</title>
-    <link rel="stylesheet" href="{{('public/assets/bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
-    <link rel="stylesheet" href="{{('public/assets/fonts/fontawesome-all.min.css')}}">
-    <link rel="stylesheet" href="{{('public/assets/css/Footer-Basic-icons.css')}}">
-    <link rel="icon" href="{{ url('public/assets/img/escudo.png') }}">
+    <link rel="stylesheet" href="{{asset('assets/fonts/fontawesome-all.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/Footer-Basic-icons.css')}}">
+    <link rel="icon" href="{{asset('assets/img/escudo.png') }}">
 </head>
 
 <body class="bg-gradient-primary" style="background: radial-gradient(#007ea7 0%, #1a4669 100%), #007ea7;">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-9 col-lg-12 col-xl-10">
-                <div style="margin-top: 50px;height: 100px;text-align: center;"><img src="public/assets/img/PCM-Salud.webp" width="266" height="56" style="float: left;text-align: center;box-shadow: 5px 5px 20px #fff;"></div>
+                <div style="margin-top: 50px;height: 100px;text-align: center;"><img src="{{asset('assets/img/PCM-Salud.webp')}}" width="266" height="56" style="float: left;text-align: center;box-shadow: 5px 5px 20px #fff;"></div>
                 <div class="card shadow-lg o-hidden border-0 my-5">
                     <div class="card-body p-0">
                         <div class="row">
                             <div class="col-lg-6 d-none d-lg-flex">
-                                <div class="flex-grow-1 bg-login-image" style="background-image: url(&quot;public/assets/img/dogs/Red%20de%20Salud.png&quot;);"></div>
-                            </div>
+                                <div class="flex-grow-1 bg-login-image" style="background-image: url('{{ asset("assets/img/dogs/Red de Salud.png") }}');"></div>                            </div>
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
@@ -56,8 +55,8 @@
             </div>
         </div>
     </div>
-    <script src="{{url('public/assets/bootstrap/js/bootstrap.min.js')}}"></script>
-    <script src="{{url('public/assets/js/theme.js')}}"></script>
+    <script src="{{asset('assets/bootstrap/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('assets/js/theme.js')}}"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script>
         $('#dni').on('input', function () {
