@@ -56,15 +56,6 @@
                         <li class="sidebar-item2">
                             <a href="{{url('admin/specialization')}}" class="sidebar-link">Registrar Especialidad</a>
                         </li>
-                    </ul>
-                </li>
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
-                        data-bs-target="#auth4" aria-expanded="false" aria-controls="auth4">
-                        <i class="fa-solid fa-file-lines"></i>
-                        <span>Gestión Asignaciones</span>
-                    </a>
-                    <ul id="auth4" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item2">
                             <a href="{{url('admin/assignment')}}" class="sidebar-link">Asignar Especialidades</a>
                         </li>
@@ -78,10 +69,10 @@
                     </a>
                     <ul id="auth5" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item2">
-                            <a href="{{url('admin/admin/addPatient')}}"  class="sidebar-link">Registrar Paciente</a>
+                            <a href="{{url('admin/patient/add')}}"  class="sidebar-link">Registrar Paciente</a>
                         </li>
                         <li class="sidebar-item2">
-                            <a href="#" class="sidebar-link">Listar Pacientes</a>
+                            <a href="{{url('admin/patient/list')}}" class="sidebar-link">Listar Pacientes</a>
                         </li>
                     </ul>
                 </li>

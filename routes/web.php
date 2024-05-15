@@ -3,9 +3,11 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CitaController;
+use App\Http\Controllers\ClinicalHistoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DNIController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SpecializationController;
 use App\Http\Controllers\UserGroupController;
@@ -53,10 +55,6 @@ Route::group(['middleware'=>'admin'],function(){
     Route::get('/admin/admin/list',[AdminController::class,'list']);
     //La vista crear usuario
     Route::get('/admin/admin/add',[AdminController::class,'add']);
-    //La vista crear paciente
-    Route::get('/admin/admin/addPatient',[AdminController::class,'addPatient']);
-    //La vista crear historia clinica
-    Route::get('/admin/admin/addHistoryPatient',[AdminController::class,'addHistoryPatient']);
     //Validación de la API
     Route::post('/admin/admin/add-consulta', [DNIController::class, 'consultarDNI']);
     //Envio de datos para registrar
@@ -96,9 +94,6 @@ Route::group(['middleware'=>'admin'],function(){
     //delete get
     Route::get('admin/specialization/delete/{id}',[SpecializationController::class,'delete']);
     
-    //Rutas para las citas
-    Route::get('/admin/cita/list',[CitaController::class,'list']);
-
     //Rutas para asignar los doctores a un 
     //La vista de la asignación a doctor
     Route::get('/admin/assignment',[UserSpecializationController::class,'list']);
@@ -113,12 +108,22 @@ Route::group(['middleware'=>'admin'],function(){
     Route::post('admin/perfil/edit/{user}',[ProfileController::class,'update']);    
     //Envio de las foto de perfil
     Route::post('admin/perfil/photo/{user}',[ProfileController::class,'photo']);
+
+    //Ruta para pacientes
+    //La vista para listar
+    Route::get('/admin/patient/list',[PatientController::class,'list']);
+    //Agregar
+    Route::get('/admin/patient/add',[PatientController::class,'add']);
+    //Rutas para el historail
+    //Listar
+    //Vista add
+    Route::get('/admin/history/historypatient',[ClinicalHistoryController::class,'add']);
+    //Guardar los historiales
+
 });
 Route::group(['middleware'=>'secretary'],function(){
     //La vista del dashbaord
     Route::get('secretary/dashboard',[DashboardController::class,'dashboard']); 
-    //Rutas para las citas
-    Route::get('secretary/cita/list',[CitaController::class,'list']);
     //Ruta para ver el perfil
     Route::get('secretary/perfil',[ProfileController::class,'index']);
     //Enviar los datos del usuario en su perfil
