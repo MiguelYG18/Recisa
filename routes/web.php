@@ -118,6 +118,8 @@ Route::group(['middleware'=>'admin'],function(){
     //Listar
     //Vista add
     Route::get('/admin/history/historypatient',[ClinicalHistoryController::class,'add']);
+    //Buscar
+    Route::get('/admin/history/buscar-paciente',[ClinicalHistoryController::class,'search']);
     //Guardar los historiales
 
 });

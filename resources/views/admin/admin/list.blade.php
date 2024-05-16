@@ -149,6 +149,7 @@
                     "infoEmpty": "No hay registros disponibles",
                     "infoFiltered": "(filtrado de _MAX_ registros totales)",
                     "search": "Buscar:",
+                    "emptyTable": "No hay datos disponibles en la tabla",
                     "paginate":{
                         "next":">",
                         "previous":"<"
