@@ -3,12 +3,15 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CitaController;
+use App\Http\Controllers\ClinicalHistoriesController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SpecializationController;
 use App\Http\Controllers\UserGroupController;
 use App\Http\Controllers\UserSpecializationController;
+use App\Models\Patient;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -112,7 +115,27 @@ Route::group(['middleware'=>'admin'],function(){
     Route::post('admin/perfil/edit/{user}',[ProfileController::class,'update']);    
     //Envio de las foto de perfil
     Route::post('admin/perfil/photo/{user}',[ProfileController::class,'photo']);
+
+    //Rutas para crear los pacientes
+    //La vista de los pacientes
+    Route::get('/admin/patient/list',[PatientController::class,'list']);
+    //Mostrar vista createdPatient
+    Route::get('/admin/patient/add',[PatientController::class,'show']);
+    //Envio de datos para registrar
+    Route::post('/admin/patient/add',[PatientController::class,'insert']);
+    //Vista editar patient
+    Route::get('admin/patient/edit/{slug}',[PatientController::class,'edit']);
+    //Envio de datos para el edit patient
+    Route::post('admin/patient/edit/{slug}',[PatientController::class,'update']);
+    //delete get
+    Route::get('admin/patient/delete/{id}',[PatientController::class,'delete']);
+    //Validación de la API
+    Route::post('/admin/patient/add-consulta', [PatientController::class, 'consultarDNI']);
+    //Validación del Paciente
+    Route::post('/admin/patient/sheare-patient', [ClinicalHistoriesController::class, 'shearePatient']);
+
 });
+
 Route::group(['middleware'=>'secretary'],function(){
     //La vista del dashbaord
     Route::get('secretary/dashboard',[DashboardController::class,'dashboard']); 
