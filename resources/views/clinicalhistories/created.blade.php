@@ -3,14 +3,13 @@
 @push('css')
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/css/bootstrap-select.min.css">
+    <!--Anderson DOC-->
+    <link rel="stylesheet" href="{{asset("assets/css/style_history_patient.css")}}" />
+    <script src="https://kit.fontawesome.com/0ffeb346a7.js"crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet"/>
     <!--Alertas-->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <!--Subida de Arcivos-->
-    <script src="https://kit.fontawesome.com/0ffeb346a7.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap"rel="stylesheet" />
-    <link rel="stylesheet" href="{{ asset('assets/css/style_history_patient.css') }}" />
-    <!--Subida de Arcivos-->
 @endpush
 
 @section('content')
@@ -72,7 +71,7 @@
                             <div class="col-md-12">
                                 <div class="input-group">
                                     <span class="input-group-text" id="basic-addon3">Especialidad</span>
-                                    <select title="...." data-style="btn-info" data-size="3"
+                                    <select title="...." data-style="btn-secondary" data-size="3"
                                     class="form-control selectpicker show-tick" id="id_specialization"
                                     name="id_specialization">
                                     <option value="">Odoptología</option>
@@ -90,16 +89,15 @@
         </div>
         <div class="col-md-8" style="margin-top: 20px; width:55% !important">
             <div class="container_files">
-                <input type="file" id="file-input" multiple />
-                <label for="file-input" class="label">
+                  <input type="file" id="file-input" multiple />
+                  <label for="file-input" class="label">
                     <i class="fa-solid fa-arrow-up-from-bracket"></i>
                     &nbsp; Seleccione archivos a subir
-                </label>
-                <div id="num-of-files">No selecciono ningún archivo</div>
-                <ul id="files-list"></ul>
+                  </label>
+                  <div id="num-of-files">No selecciono ningún archivo</div>
+                  <ul id="files-list"></ul>
             </div>
-            <div id="popup"
-                style="display: none; position: fixed; width: 100%; height: 100%; top: 0; left: 0; background: rgba(0, 0, 0, 0.7); align-items: center; justify-content: center;">
+            <div id="popup" style="display: none; position: fixed; width: 100%; height: 100%; top: 0; left: 0; background: rgba(0, 0, 0, 0.7); align-items: center; justify-content: center;">
                 <div style="background: white; padding: 20px;">
                     <button id="close-popup" style="float: right;">Cerrar</button>
                     <img id="file-preview" src="" style="max-width: 100%;" />
@@ -112,6 +110,7 @@
 @push('js')
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/js/bootstrap-select.min.js"></script>
+    <script src="{{asset("assets/js/history_patient.js")}}"></script>
     <script>
         const fileInput = document.getElementById('file-input');
         const filePreview = document.getElementById('file-preview');
@@ -137,5 +136,4 @@
             popup.style.display = 'none';
         });
     </script>
-    <script src="{{ asset('assets/js/history_patient.js') }}"></script>
 @endpush
