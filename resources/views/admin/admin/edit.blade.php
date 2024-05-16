@@ -9,7 +9,7 @@
 
     @section('content')
         <div class="row">
-            <div class="col-8" style="margin-top: 20px;">
+            <div class="col-md-8" style="margin-top: 20px;">
                 <div class="card shadow">
                     <div class="card-header py-3">
                         <p class="text-primary m-0 fw-bold">Formulario del Usuario - {{$user->names}}</p>
@@ -126,7 +126,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-4" style="margin-top: 20px;">
+            <div class="col-md-4" style="margin-top: 20px;">
                 <div class="card shadow">
                     <div class="card-header py-3">
                         <p class="text-primary m-0 fw-bold">Foto de Perfil</p>
@@ -160,7 +160,7 @@
                                         @if ($user->image == null)
                                             <img class="rounded-circle mb-3 mt-4" src="https://i.postimg.cc/hjSBbZX4/doctor.png" width="160" height="160">
                                         @else
-                                            <img id="avatar-img" src="{{url('public/storage/perfiles/' .$user->image)}}" name="image" alt="{{$user->name}}" class="rounded-circle p-1 bg-primary" width="160" style="max-width: 160px; height: 160px; border-radius: 50%; object-fit: contain;">
+                                            <img id="avatar-img" src="{{Storage::url('public/perfiles/'.$user->image)}}" name="image" alt="{{$user->name}}" class="rounded-circle p-1 bg-primary" width="160" style="max-width: 160px; height: 160px; border-radius: 50%; object-fit: contain;">
                                         @endif
                                         <input type="file" id="avatar-input" name="image" accept="image/*" style="display: none;">
                                         <label for="avatar-input" class="boton-avatar position-absolute rounded-circle bg-primary" style="width: 40px; height: 40px; bottom: -10px; left: 60%; transform: translateX(-50%); border: 2px solid white;">

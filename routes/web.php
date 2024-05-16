@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CitaController;
 use App\Http\Controllers\ClinicalHistoriesController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DNIController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ProfileController;
@@ -55,12 +56,8 @@ Route::group(['middleware'=>'admin'],function(){
     Route::get('/admin/admin/list',[AdminController::class,'list']);
     //La vista crear usuario
     Route::get('/admin/admin/add',[AdminController::class,'add']);
-    //La vista crear paciente
-    Route::get('/admin/admin/addPatient',[AdminController::class,'addPatient']);
-    //La vista crear historia clinica
-    Route::get('/admin/admin/addHistoryPatient',[AdminController::class,'addHistoryPatient']);
     //Validación de la API
-    Route::post('/admin/admin/add-consulta', [AdminController::class, 'consultarDNI']);
+    Route::post('/admin/admin/add-consulta', [DNIController::class, 'consultarDNI']);
     //Envio de datos para registrar
     Route::post('/admin/admin/add',[AdminController::class,'insert']);
     //Vista editar
@@ -98,9 +95,6 @@ Route::group(['middleware'=>'admin'],function(){
     //delete get
     Route::get('admin/specialization/delete/{id}',[SpecializationController::class,'delete']);
     
-    //Rutas para las citas
-    Route::get('/admin/cita/list',[CitaController::class,'list']);
-
     //Rutas para asignar los doctores a un 
     //La vista de la asignación a doctor
     Route::get('/admin/assignment',[UserSpecializationController::class,'list']);
@@ -139,8 +133,6 @@ Route::group(['middleware'=>'admin'],function(){
 Route::group(['middleware'=>'secretary'],function(){
     //La vista del dashbaord
     Route::get('secretary/dashboard',[DashboardController::class,'dashboard']); 
-    //Rutas para las citas
-    Route::get('secretary/cita/list',[CitaController::class,'list']);
     //Ruta para ver el perfil
     Route::get('secretary/perfil',[ProfileController::class,'index']);
     //Enviar los datos del usuario en su perfil

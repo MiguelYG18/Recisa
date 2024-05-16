@@ -72,7 +72,7 @@
                                         <img class="rounded-circle mb-3 mt-4" src="https://i.postimg.cc/hjSBbZX4/doctor.png"
                                             width="160" height="160">
                                     @else
-                                        <img id="avatar-img" src="{{ url('public/storage/perfiles/' . $user->image) }}"
+                                        <img id="avatar-img" src="{{Storage::url('public/perfiles/'.$user->image)}}"
                                             name="image" alt="{{ $user->name }}" class="rounded-circle p-1 bg-primary"
                                             width="160"
                                             style="max-width: 160px; height: 160px; border-radius: 50%; object-fit: contain;">
@@ -221,8 +221,7 @@
                                                 style="--bs-primary: #00476D !important;--bs-primary-rgb: 0,72,110;background: #135578 !important;border-style: none;">
                                                 Guardar Cambios
                                             </button>
-                                        </div>
-                                        
+                                        </div>    
                                     </div>
                                 </form>
                             </div>

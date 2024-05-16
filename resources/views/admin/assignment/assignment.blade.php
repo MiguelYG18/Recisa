@@ -4,8 +4,7 @@
     <!--Alertas-->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/css/bootstrap-select.min.css">
     <!--CSS TABLA-->
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.bootstrap5.css">
 @endpush
@@ -49,11 +48,8 @@
             });
         </script>
     @endif
-    <div class="d-sm-flex justify-content-between align-items-center mb-4">
-        <h3 class="text-dark mb-0">Asignación</h3>
-    </div>
     <div class="row">
-        <div class="col" style="margin-top: 20px;">
+        <div class="col-md-5" style="margin-top: 20px;">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="text-primary fw-bold m-0">Asignar Doctor a Especialidad</h6>
@@ -85,7 +81,7 @@
                                 <div class="mb-3">
                                     <div class="input-group">
                                         <span class="input-group-text" id="basic-addon3">Especialidad</span>
-                                        <select title="...." data-style="btn-secondary" data-size="3"
+                                        <select title="...." data-style="btn-secondary" data-size="3" data-live-search="true"
                                             class="form-control selectpicker show-tick" id="id_specialization"
                                             name="id_specialization">
                                             @foreach ($specializations as $specialization)
@@ -110,7 +106,7 @@
                             <div class="col-md-7">
                                 <div class="input-group">
                                     <span class="input-group-text" id="basic-addon3">Doctor</span>
-                                    <select title="...." data-style="btn-secondary" data-size="3"
+                                    <select title="...." data-style="btn-secondary" data-size="3" data-live-search="true"
                                         id="id_doctor" class="form-control selectpicker show-tick"
                                         style="width: 120px;" name="id_doctor">
                                         @foreach ($doctor as $userDoctor)
@@ -140,7 +136,7 @@
                 </div>
             </div>
         </div>
-        <div class="col" style="margin-top: 20px;">
+        <div class="col-md-7" style="margin-top: 20px;">
             <div class="card shadow">
                 <div class="card-header py-3">
                     <p class="text-primary m-0 fw-bold">Lista de Especialidades</p>
@@ -170,7 +166,7 @@
                                             <td>
                                                 {{ $value->specialization->name }}
                                             </td>
-                                            <td>
+                                            <td class="text-center">
                                                 {{ $value->cupo_doctor}}
                                             </td>
                                             <td>{{ date('d-m-Y', strtotime($value->created_at)) }}</td>
@@ -237,6 +233,7 @@
                 "infoEmpty": "No hay registros disponibles",
                 "infoFiltered": "(filtrado de _MAX_ registros totales)",
                 "search": "Buscar:",
+                "emptyTable": "No hay datos disponibles en la tabla",
                 "paginate": {
                     "next": ">",
                     "previous": "<"

@@ -34,7 +34,7 @@
             </a>
         </div>
         <div class="row">
-            <div class="col">
+            <div class="col-md-12">
                 <div class="card shadow">
                     <div class="card-header py-3">
                         <p class="text-primary m-0 fw-bold">Lista de Usuarios</p>
@@ -61,9 +61,9 @@
                                             <td>
                                                 <div class="nav-item dropdown no-arrow">
                                                     @if($user->image == null)
-                                                        <img class="rounded-circle mb-3 mt-4" src="https://i.postimg.cc/hjSBbZX4/doctor.png" width="160" height="160">
+                                                        <img src="https://i.postimg.cc/hjSBbZX4/doctor.png" class="rounded-circle" alt="imagen circular" style="width: 80px; height: 80px; border: 2px solid #00476D !important;"> 
                                                     @else
-                                                        <img class="rounded-circle mb-3 mt-4" src="{{url('public/storage/perfiles/' .$user->image)}}" width="160" height="160">
+                                                        <img src="{{Storage::url('public/perfiles/'.$user->image)}}" class="rounded-circle" alt="imagen circular" style="width: 80px; height: 80px; border: 2px solid #00476D !important;">  
                                                     @endif
                                                 </div>
                                             </td>
@@ -149,6 +149,7 @@
                     "infoEmpty": "No hay registros disponibles",
                     "infoFiltered": "(filtrado de _MAX_ registros totales)",
                     "search": "Buscar:",
+                    "emptyTable": "No hay datos disponibles en la tabla",
                     "paginate":{
                         "next":">",
                         "previous":"<"

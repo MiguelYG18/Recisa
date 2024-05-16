@@ -77,6 +77,6 @@ class UserSpecializationController extends Controller
         // Eliminar la relación con la especialización específica
         $userSpecialization->delete();
         $specialization->save();
-        return redirect('admin/assignment')->with('success', 'La especialización ha sido eliminada del usuario ');
+        return redirect('admin/assignment')->with('success', 'La asignación fue eliminada');
     }
 }

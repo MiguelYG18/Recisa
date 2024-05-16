@@ -4,8 +4,7 @@
     <!--Alertas-->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/css/bootstrap-select.min.css">
     <!--CSS TABLA-->
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.bootstrap5.css">
 @endpush
@@ -31,7 +30,7 @@
         </script>
     @endif
     <div class="row">
-        <div class="col" style="margin-top: 20px;">
+        <div class="col-md-5" style="margin-top: 20px;">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="text-primary fw-bold m-0">Registrar Especialidad</h6>
@@ -71,7 +70,7 @@
                             </div>
                             <div class="col-md-5">
                                 <div class="input-group mb-3">
-                                    <label class="input-group-text" for="quantity_voucher">Cupos</label>
+                                    <label class="input-group-text" for="quantity_voucher">#</label>
                                     <select title="...." data-style="btn-secondary" data-size="3"
                                         class="form-control selectpicker show-tick" id="quantity_voucher_insert"
                                         name="quantity_voucher_insert">
@@ -96,7 +95,7 @@
                 </div>
             </div>
         </div>
-        <div class="col" style="margin-top: 20px;">
+        <div class="col-md-7" style="margin-top: 20px;">
             <div class="card shadow">
                 <div class="card-header py-3">
                     <p class="text-primary m-0 fw-bold">Lista de Especialidades</p>
@@ -198,6 +197,7 @@
                 "infoEmpty": "No hay registros disponibles",
                 "infoFiltered": "(filtrado de _MAX_ registros totales)",
                 "search": "Buscar:",
+                "emptyTable": "No hay datos disponibles en la tabla",
                 "paginate": {
                     "next": ">",
                     "previous": "<"

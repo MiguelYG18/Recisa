@@ -73,9 +73,6 @@ function updateFileList() {
     previewButton.appendChild(previewIcon);
     let previewTextNode = document.createTextNode(" "); // Agrega un espacio antes para separar el icono y el texto
     previewButton.appendChild(previewTextNode);
-
-
-
     
     previewButton.addEventListener("click", () => {
       // Mostrar vista previa del archivo
