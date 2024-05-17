@@ -302,11 +302,9 @@
     </div>
 @endsection
 @push('js')
-    <script>
-        $('#phone').on('input', function() {
-            this.value = this.value.replace(/\D/g, '');
-        });
-    </script>
+    <script src="{{ asset('assets/js/digitos_numericos.js') }}"></script>
+    <script src="{{ asset('assets/js/manejo_carga_imagen.js') }}"></script>
+    <script src="{{ asset('assets/js/profile_manejo.js') }}"></script>
     <script>
         $(document).ready(function() {
             var userLevel = {{ $user->user_level }}; // Nivel del usuario desde PHP/Laravel
@@ -335,21 +333,6 @@
                 event.preventDefault(); // Prevenir el comportamiento predeterminado
                 // Puedes añadir acciones adicionales aquí, si es necesario
             });
-        });
-    </script>
-    <script>
-        // JavaScript para manejar la carga de imagen
-        const avatarInput = document.getElementById('avatar-input');
-        const avatarImg = document.getElementById('avatar-img');
-        avatarInput.addEventListener('change', function() {
-            const file = this.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.addEventListener('load', function() {
-                    avatarImg.src = this.result;
-                });
-                reader.readAsDataURL(file);
-            }
         });
     </script>
 @endpush

@@ -94,12 +94,17 @@ class AdminController extends Controller
         });
         // Validaciones
         request()->validate([
-            'dni' => 'required|max:8|unique:users,dni,' . $user->id,
+            'dni' => 'required|digits:8|regex:/^[0-9]{8}$/|unique:users,dni,' . $user->id,
             'email' => 'required|email|max:255|unique:users,email,' . $user->id,
-            'phone' => 'required|min:9|max:9|unique:users,phone,' . $user->id,
+            'phone' => 'required|digits:9|regex:/^[0-9]{9}$/|unique:users,phone,' . $user->id,
             'password' => 'sometimes|nullable|same:password_confirm',
             'user_level' => 'required|integer|exists:user_groups,group_level',
             'status' => 'required'
+        ], [
+            'dni.digits' => 'El DNI debe tener exactamente 8 dígitos.',
+            'dni.regex' => 'El DNI debe contener solo números.',
+            'phone.required' => 'El campo teléfono es obligatorio.',
+            'phone.digits' => 'El teléfono debe tener exactamente 9 dígitos.'
         ]);
 
         // Actualizar campos del usuario

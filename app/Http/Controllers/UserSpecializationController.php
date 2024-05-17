@@ -59,7 +59,7 @@ class UserSpecializationController extends Controller
             DB::commit();  // Hacer commit solo después de que todo se haya completado con éxito
 
             return redirect('admin/assignment')->with('success', 'Asignación registrada con éxito.');
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             DB::rollBack();  // Asegúrate de hacer rollback en caso de error
             return redirect('admin/assignment')->with('error', 'Error al registrar la asignación.');
         }

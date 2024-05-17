@@ -17,20 +17,10 @@
                 <div class="card-body">
                     <div class="col-md-12">
                         @if ($errors->any())
-                            <div class="alert alert-danger alert-dismissible fade show" role="alert" id="auto-close-alert">
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                 <i class="fa-solid fa-circle-exclamation"></i>
                                 {{ implode(' ', $errors->all()) }}
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                <script>
-                                    // Después de 2 segundos (2000 ms), cierra la alerta automáticamente
-                                    setTimeout(function() {
-                                        var alert = document.getElementById("auto-close-alert");
-                                        if (alert) {
-                                            var alertInstance = new bootstrap.Alert(alert);
-                                            alertInstance.close();
-                                        }
-                                    }, 3500); // 2000 milisegundos = 2 segundos
-                                </script>
                             </div>
                         @endif
                     </div>
@@ -46,7 +36,7 @@
                         <div class="row g-3">
                             <div class="col-md-2">
                                 <label for="dni" class="form-label">DNI:</label>
-                                <input readonly class="form-control" type="text" name="dni" id="dni" value="{{old('dni')}}">
+                                <input  readonly class="form-control" maxlength="8" minlength="8" type="text" name="dni" id="dni" value="{{old('dni')}}">
                             </div>
                             <div class="col-md-3">
                                 <label for="names" class="form-label">Nombres:</label>
@@ -175,7 +165,6 @@
                     }
                 });
             }
-
             // Asociar evento click al botón #buscar
             $('#buscar').click(buscarDNI);
 
@@ -203,61 +192,8 @@
                     title: message
                 });                
             }
-            $('#documento,#phone').on('input', function () {
-                this.value = this.value.replace(/\D/g, '');
-            });
         </script>
-        <script>
-            // JavaScript para manejar la carga de imagen
-            const avatarInput = document.getElementById('avatar-input');
-            const avatarImg = document.getElementById('avatar-img');
-
-            avatarInput.addEventListener('change', function() {
-                const file = this.files[0];
-
-                if (file) {
-                    const reader = new FileReader();
-
-                    reader.addEventListener('load', function() {
-                        avatarImg.src = this.result;
-                    });
-
-                    reader.readAsDataURL(file);
-                }
-            });
-        </script>
-        <script>
-            $(document).ready(function () {
-                // Mostrar/ocultar contraseña
-                $('#show_password').click(function () {
-                    Password('password');
-                });
-
-                // Mostrar/ocultar confirmación de contraseña
-                $('#show_password_confirm').click(function () {
-                    Password_Confirm('password_confirm');
-                });
-
-                function Password(inputId) {
-                    var cambio = $('#' + inputId);
-                    if (cambio.attr('type') == 'password') {
-                        cambio.attr('type', 'text');
-                        $('.icon').removeClass('fa fa-eye-slash').addClass('fa fa-eye');
-                    } else {
-                        cambio.attr('type', 'password');
-                        $('.icon').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
-                    }
-                }
-                function Password_Confirm(inputId) {
-                    var cambio = $('#' + inputId);
-                    if (cambio.attr('type') == 'password') {
-                        cambio.attr('type', 'text');
-                        $('.icon_confirm').removeClass('fa fa-eye-slash').addClass('fa fa-eye');
-                    } else {
-                        cambio.attr('type', 'password');
-                        $('.icon_confirm').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
-                    }
-                }
-            });
-        </script>           
+        <script src="{{ asset('assets/js/digitos_numericos.js') }}"></script>
+        <script src="{{ asset('assets/js/manejo_carga_imagen.js') }}"></script>
+        <script src="{{ asset('assets/js/mostrar_ocultar.js') }}"></script>         
     @endpush

@@ -22,10 +22,10 @@ class StoreUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'dni'=>'required|max:8|unique:users,dni',
+            'dni'=>'required|digits:8|regex:/^[0-9]{8}$/|unique:users,dni',
             'names'=>'required|max:25',
             'surnames'=>'required|max:25',
-            'phone'=>'required|min:9|max:9|unique:users,phone',
+            'phone'=>'required|digits:9|regex:/^[0-9]{9}$/|unique:users,phone',
             'email'=>'required|email|max:255|unique:users,email',
             'password'=>'required|min:8|min:8|same:password_confirm',
             'user_level'=>'required|integer|exists:user_groups,group_level',
@@ -42,4 +42,12 @@ class StoreUserRequest extends FormRequest
             'password_confirm'=>'confirmar password'
         ];
     }
+    public function messages(){
+        return[
+            'dni.digits' => 'El DNI debe tener exactamente 8 dígitos numericos.',
+            'dni.regex' => 'El DNI es incorrecto.',
+            'phone.digits' => 'El celular debe tener exactamente 9 dígitos.',
+            'phone.regex' => 'El celular es incorrecto.'
+        ];
+    }       
 }

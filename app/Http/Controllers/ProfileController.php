@@ -38,9 +38,9 @@ class ProfileController extends Controller
     {
         //validamos nuestos datos
         request()->validate([
-            'dni' => 'required|max:8|unique:users,dni,' . $user->id,
+            'dni' => 'required|digits:8|regex:/^[0-9]{8}$/|unique:users,dni,' . $user->id,
             'email' => 'required|email|max:255|unique:users,email,' . $user->id,
-            'phone' => 'required|min:9|max:9|unique:users,phone,' . $user->id,
+            'phone' => 'required|digits:9|regex:/^[0-9]{9}$/|unique:users,phone,' . $user->id,
         ]);
         // Actualizar campos del usuario
         $user->phone = $request->phone;

@@ -182,62 +182,7 @@
     @endsection
     @push('js')
         <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/js/bootstrap-select.min.js"></script>
-        <script>
-            $('#phone').on('input', function () {
-                this.value = this.value.replace(/\D/g, '');
-            });
-        </script>
-        <script>
-            // JavaScript para manejar la carga de imagen
-            const avatarInput = document.getElementById('avatar-input');
-            const avatarImg = document.getElementById('avatar-img');
-
-            avatarInput.addEventListener('change', function() {
-                const file = this.files[0];
-
-                if (file) {
-                    const reader = new FileReader();
-
-                    reader.addEventListener('load', function() {
-                        avatarImg.src = this.result;
-                    });
-
-                    reader.readAsDataURL(file);
-                }
-            });
-        </script>
-        <script>
-            $(document).ready(function () {
-                // Mostrar/ocultar contraseña
-                $('#show_password').click(function () {
-                    Password('password');
-                });
-
-                // Mostrar/ocultar confirmación de contraseña
-                $('#show_password_confirm').click(function () {
-                    Password_Confirm('password_confirm');
-                });
-
-                function Password(inputId) {
-                    var cambio = $('#' + inputId);
-                    if (cambio.attr('type') == 'password') {
-                        cambio.attr('type', 'text');
-                        $('.icon').removeClass('fa fa-eye-slash').addClass('fa fa-eye');
-                    } else {
-                        cambio.attr('type', 'password');
-                        $('.icon').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
-                    }
-                }
-                function Password_Confirm(inputId) {
-                    var cambio = $('#' + inputId);
-                    if (cambio.attr('type') == 'password') {
-                        cambio.attr('type', 'text');
-                        $('.icon_confirm').removeClass('fa fa-eye-slash').addClass('fa fa-eye');
-                    } else {
-                        cambio.attr('type', 'password');
-                        $('.icon_confirm').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
-                    }
-                }
-            });
-        </script>       
+        <script src="{{ asset('assets/js/digitos_numericos.js') }}"></script>
+        <script src="{{ asset('assets/js/manejo_carga_imagen.js') }}"></script>
+        <script src="{{ asset('assets/js/mostrar_ocultar.js') }}"></script>          
     @endpush
