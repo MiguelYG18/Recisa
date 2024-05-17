@@ -9,7 +9,7 @@
 
     @section('content')
         <div class="row">
-            <div class="col-8" style="margin-top: 20px;">
+            <div class="col-8" style="margin-top: 20px; margin-left:auto; margin-right:auto;">
                 <div class="card shadow">
                     <div class="card-header py-3">
                         <p class="text-primary m-0 fw-bold">Formulario del Paciente - {{$patient->names}}</p>
@@ -34,7 +34,7 @@
                                 </script>
                             @endif
                         </div>
-                        <form action="{{ url('/admin/patient/edit/'.$patient->slug) }}" method="post">
+                        <form action="{{ url('/admin/patients/edit/'.$patient->slug) }}" method="post">
                             {{csrf_field()}}
                             <div class="row g-3">
                                 <div class="col-md-2">
@@ -49,11 +49,11 @@
                                     <label for="surnames" class="form-label">Apellido:</label>
                                     <input readonly class="form-control" type="text" name="surnames" id="surnames" value="{{old('surnames',$patient->surnames)}}">
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-3" style="width:15% !important">
                                     <label for="phone" class="form-label">Celular:</label>
                                     <input class="form-control" maxlength="9" minlength="9" type="text" name="phone" id="phone" value="{{old('phone',$patient->phone)}}">
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-3" style="width:8% !important">
                                     <label for="age" class="form-label">Edad:</label>
                                     <input class="form-control" type="text" name="age" id="age" value="{{old('age',$patient->age)}}">
                                 </div>

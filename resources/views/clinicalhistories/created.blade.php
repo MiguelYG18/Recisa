@@ -63,6 +63,7 @@
                                         <input type="text" class="form-control" style="border-radius:0px 10px 10px 0px !important; height:38px" maxlength="5" id="full_name" readonly
                                             name="full_name" aria-describedby="basic-addon3 basic-addon4"
                                             value="{{ old('full_name') }}">
+                                            <input type="hidden" name="ip_patient" id="ip_patient" value="{{old('ip_patient')}}">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -141,19 +142,23 @@
             function buscarPaciente() {
                 var dni = $('#dni').val().trim();
                 $.ajax({
-                    url: '/admin/history/buscar-paciente', // Ruta para la consulta del DNI
-                    type: 'GET',
+                    url: '{{ url('/admin/clinicalhistories/sheare-patient') }}', // Ruta para la consulta del DNI
+                    type: 'POST',
                     data: {
+                        '_token': '{{ csrf_token() }}',
                         'dni': dni
                     },
-                    dataType: 'json',
-                    success: function(response) {
-                        if (response.id_patient) {
-                            $('#id_patient').val(response.id_patient);
-                            $('#full_name').val(response.full_name);
+                    success: function(patient) {
+                        if (patient) {
+                            var nombreCompleto = patient.names + ' ' + patient.surnames;
+                            $('#full_name').val(nombreCompleto);
+                            $('#id_patient').val(patient.id);
                             $('#dni').val('');
                         } else {
                             showModal('El paciente no está registrado', 'error');
+                            $('#full_name').val('');
+                            $('#id_patient').val('');
+                            $('#dni').val('');
                         }
                     },
                     error: function(xhr, status, error) {

@@ -193,7 +193,7 @@
                                         <option value="20">20</option>
                                     </select>`,
                 "zeroRecords": "No se encontró nada - lo siento",
-                "info": "Mostrando la página _PAGE_ de _PAGES_ de _TOTAL_ usuarios",
+                "info": "Mostrando la página _PAGE_ de _PAGES_ de _TOTAL_ especialidades",
                 "infoEmpty": "No hay registros disponibles",
                 "infoFiltered": "(filtrado de _MAX_ registros totales)",
                 "search": "Buscar:",

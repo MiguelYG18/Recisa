@@ -22,10 +22,10 @@ class StorePatient extends FormRequest
     public function rules(): array
     {
         return [
-            'dni'=>'required|max:8|unique:patients,dni',
+            'dni'=>'required|digits:8|regex:/^[0-9]{8}$/|unique:patients,dni',
             'names'=>'required|max:25',
             'surnames'=>'required|max:25',
-            'phone'=>'required|min:9|max:9|unique:patients,phone',
+            'phone'=>'required|digits:9|regex:/^[0-9]{9}$/|unique:patients,phone',
             'age'=> 'required'
         ];
     }
@@ -38,4 +38,13 @@ class StorePatient extends FormRequest
             'age'=>'edad'
         ];
     }
+
+    public function messages(){
+        return[
+            'dni.digits' => 'El DNI debe tener exactamente 8 dígitos numericos.',
+            'dni.regex' => 'El DNI es incorrecto.',
+            'phone.digits' => 'El celular debe tener exactamente 9 dígitos.',
+            'phone.regex' => 'El celular es incorrecto.'
+        ];
+    } 
 }

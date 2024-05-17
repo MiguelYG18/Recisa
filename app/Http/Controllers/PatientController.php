@@ -13,15 +13,15 @@ use Illuminate\Support\Facades\Storage;
 
 class PatientController extends Controller
 {
-    public function show()
-    {
-        return view('patient.createdPatient');
-    }
-
     public function list()
     {
         $patients = Patient::all();
-        return view('patient.listPatient', compact('patients'));
+        return view('patients.list', compact('patients'));
+    }
+
+    public function add()
+    {
+        return view('patients.created');
     }
 
     public function insert(StorePatient $request)
@@ -44,25 +44,7 @@ class PatientController extends Controller
             DB::rollBack();
         }
 
-        return redirect('admin/patient/list')->with('sucess', 'Paciente registrado');
-    }
-
-    public function consultarDNI(Request $request)
-    {
-        // Datos
-        $token = 'apis-token-7996.PIiKyia80PyE1SFB7pFSdgtIclJJpaKj';
-        $dni = $request->dni;
-        
-        // Llamar a la API
-        $response = Http::withHeaders([
-            'Referer' => 'https://apis.net.pe/consulta-dni-api',
-            'Authorization' => 'Bearer ' . $token
-        ])->get('https://api.apis.net.pe/v2/reniec/dni', [
-            'numero' => $dni
-        ]);
-
-        // Retornar los datos en formato JSON
-        return $response->json();
+        return redirect('admin/patients/list')->with('sucess', 'Paciente registrado');
     }
 
     public function edit($slug)
@@ -74,7 +56,7 @@ class PatientController extends Controller
         if(empty($patient)){
             return view('page.404');
         }
-        return view('patient.editPatient', compact('patient'));
+        return view('patients.edit', compact('patient'));
     }
 
     public function update($slug, Request $request)
@@ -98,12 +80,12 @@ class PatientController extends Controller
         $patient->age = $request->age;
 
         $patient->save();
-        return redirect('admin/patient/list')->with('success', 'El paciente ' . $patient->names . ' fue actualizado');
+        return redirect('admin/patients/list')->with('success', 'El paciente ' . $patient->names . ' fue actualizado');
     }
 
     public function delete($id){
         $patient=Patient::find($id);
         $patient->delete();
-        return redirect('admin/patient/list')->with('success','El paciente '.$patient->names.' fue eliminado'); 
+        return redirect('admin/patients/list')->with('success','El paciente '.$patient->names.' fue eliminado'); 
     }
 }

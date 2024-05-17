@@ -46,7 +46,7 @@
                                 style="background-color: #00476D !important; border:none  ;color: #ffff ">Buscar</button>
                         </div>
                     </div>
-                    <form action="" method="POST" enctype="multipart/form-data">
+                    <form action="" method="POST">
                         {{ csrf_field() }}
                         <div class="row g-3">
                             <div class="col-md-2">
@@ -64,10 +64,15 @@
                                 <input readonly class="form-control" type="text" name="surnames" id="surnames"
                                     value="{{ old('surnames') }}">
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-3" style="width:15% !important">
                                 <label for="phone" class="form-label">Celular:</label>
-                                <input class="form-control" maxlength="9" minlength="9" type="text" name="phone"
+                                <input class="form-control" maxlength="9" minlength="9" type="text" name="phone" 
                                     id="phone" value="{{ old('phone') }}">
+                            </div>
+                            <div class="col-md-3" style="width:8% !important">
+                                <label for="age" class="form-label">Edad:</label>
+                                <input class="form-control" maxlength="2" minlength="1" type="text" name="age" 
+                                    id="age" value="{{ old('age') }}">
                             </div>
                             <div class="col-md-12 text-center mt-3">
                                 <button class="btn btn-primary btn-sm" type="submit"
@@ -82,14 +87,14 @@
         </div>
         <div class="row g-3" style="justify-content:center; text-align: center;">
             <div class="col-md-2">
-                <a href="{{ url('admin/history/historypatient') }}">
+                <a href="{{ url('admin/clinicalhistories/created') }}">
                     <img src="{{ asset('assets/img/avatars/historia-clinica.png') }}" alt=""
                         style="height: 128px; box-shadow:8px 8px 20px #0000"><br>
                     <span style="color:#00476D;">Historias Clínicas</span>
                 </a>
             </div>
             <div class="col-md-2">
-                <a href="{{ url('admin/patient/list') }}"">
+                <a href="{{ url('admin/patients/list') }}">
                     <img src="{{ asset('assets/img/avatars/lista.png') }}" alt=""
                         style="height: 134px; box-shadow:8px 8px 20px #0000; margin-top:-8px"><br>
                     <span style="color:#00476D;">Lista de Pacientes</span>

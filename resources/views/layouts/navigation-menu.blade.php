@@ -69,10 +69,10 @@
                     </a>
                     <ul id="auth5" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item2">
-                            <a href="{{url('admin/patient/add')}}"  class="sidebar-link">Registrar Paciente</a>
+                            <a href="{{url('admin/patients/add')}}"  class="sidebar-link">Registrar Paciente</a>
                         </li>
                         <li class="sidebar-item2">
-                            <a href="{{url('admin/patient/list')}}" class="sidebar-link">Listar Pacientes</a>
+                            <a href="{{url('admin/patients/list')}}" class="sidebar-link">Listar Pacientes</a>
                         </li>
                     </ul>
                 </li>

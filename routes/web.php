@@ -3,7 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CitaController;
-use App\Http\Controllers\ClinicalHistoriesController;
+use App\Http\Controllers\ClinicalHistoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DNIController;
 use App\Http\Controllers\DoctorController;
@@ -12,7 +12,6 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SpecializationController;
 use App\Http\Controllers\UserGroupController;
 use App\Http\Controllers\UserSpecializationController;
-use App\Models\Patient;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -112,21 +111,21 @@ Route::group(['middleware'=>'admin'],function(){
 
     //Rutas para crear los pacientes
     //La vista de los pacientes
-    Route::get('/admin/patient/list',[PatientController::class,'list']);
+    Route::get('/admin/patients/list',[PatientController::class,'list']);
     //Mostrar vista createdPatient
-    Route::get('/admin/patient/add',[PatientController::class,'show']);
+    Route::get('/admin/patients/add',[PatientController::class,'add']);
     //Envio de datos para registrar
-    Route::post('/admin/patient/add',[PatientController::class,'insert']);
+    Route::post('/admin/patients/add',[PatientController::class,'insert']);
     //Vista editar patient
-    Route::get('admin/patient/edit/{slug}',[PatientController::class,'edit']);
+    Route::get('admin/patients/edit/{slug}',[PatientController::class,'edit']);
     //Envio de datos para el edit patient
-    Route::post('admin/patient/edit/{slug}',[PatientController::class,'update']);
+    Route::post('admin/patients/edit/{slug}',[PatientController::class,'update']);
     //delete get
-    Route::get('admin/patient/delete/{id}',[PatientController::class,'delete']);
-    //Validación de la API
-    Route::post('/admin/patient/add-consulta', [PatientController::class, 'consultarDNI']);
+    Route::get('admin/patients/delete/{id}',[PatientController::class,'delete']);
     //Validación del Paciente
-    Route::post('/admin/patient/sheare-patient', [ClinicalHistoriesController::class, 'shearePatient']);
+    Route::post('/admin/clinicalhistories/sheare-patient', [ClinicalHistoryController::class, 'shearePatient']);
+    //Abrir historial
+    Route::get('admin/clinicalhistories/created', [ClinicalHistoryController::class, 'add']);
 
 });
 

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Asignación')
+@section('title', 'Asignaciones')
 @push('css')
     <!--Alertas-->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -139,12 +139,12 @@
         <div class="col-md-7" style="margin-top: 20px;">
             <div class="card shadow">
                 <div class="card-header py-3">
-                    <p class="text-primary m-0 fw-bold">Lista de Especialidades</p>
+                    <p class="text-primary m-0 fw-bold">Lista de Asignaciones</p>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive table mt-2" id="dataTable-1" role="grid"
                         aria-describedby="dataTable_info">
-                        <table class="table my-0" id="asignacion">
+                        <table class="table my-0" id="asignaciones">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -217,7 +217,7 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/js/bootstrap-select.min.js"></script>
     <script>
-        $('#asignacion').DataTable({
+        $('#asignaciones').DataTable({
             responsive: true,
             autoWidth: false,
             "language": {
@@ -229,7 +229,7 @@
                                         <option value="20">20</option>
                                     </select>`,
                 "zeroRecords": "No se encontró nada - lo siento",
-                "info": "Mostrando la página _PAGE_ de _PAGES_ de _TOTAL_ usuarios",
+                "info": "Mostrando la página _PAGE_ de _PAGES_ de _TOTAL_ asignaciones",
                 "infoEmpty": "No hay registros disponibles",
                 "infoFiltered": "(filtrado de _MAX_ registros totales)",
                 "search": "Buscar:",
