@@ -13,6 +13,7 @@
         "mpdf/mpdf": "*"
     },
     "require-dev": {
+        "enlightn/enlightn": "^2.10",
         "fakerphp/faker": "^1.9.1",
         "laravel-lang/common": "^6.2",
         "laravel/pint": "^1.0",
