@@ -39,9 +39,8 @@
         </script>
     @endif
     <div class="container-fluid">
-        <h3 class="text-dark mb-4">Perfil - {{ $user->names }}</h3>
         <div class="row mb-3">
-            <div class="col-lg-4">
+            <div class="col-md-4">
                 <div class="col-md-12">
                     @if ($errors->has('image'))
                         @foreach ($errors->all() as $image)
@@ -94,39 +93,116 @@
                         </div>
                     </form>
                 </div>
-            </div>
-            <div class="col-lg-8">
-                <div class="row mb-3 d-none">
-                    <div class="col">
-                        <div class="card text-white bg-primary shadow">
-                            <div class="card-body">
-                                <div class="row mb-2">
-                                    <div class="col">
-                                        <p class="m-0">Peformance</p>
-                                        <p class="m-0"><strong>65.2%</strong></p>
+                @if ($user->user_level == 1)
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <p class="text-primary m-0 fw-bold"
+                                style="--bs-primary: #00486E;--bs-primary-rgb: 0,72,110;">
+                                Grupo del Personal
+                            </p>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12 mt-3 text-center">
+                                    <div class="dropdown show" style="margin-top: -20px;">
+                                        <button class="btn btn-primary dropdown-toggle" type="button"
+                                            id="dropdownButton"
+                                            style="background: #00476D !important; width: 170px; border-style: none;">
+                                            Administrador
+                                        </button>
+                                        <div class="dropdown-menu" data-bs-popper="none" style="width: 170px;">
+                                            <a class="dropdown-item" href="#">Médico</a>
+                                            <a class="dropdown-item" href="#">Secretaria</a>
+                                            <a class="dropdown-item" href="#">Administrador</a>
+                                        </div>
                                     </div>
-                                    <div class="col-auto"><i class="fas fa-rocket fa-2x"></i></div>
                                 </div>
-                                <p class="text-white-50 small m-0">
-                                    <i class="fas fa-arrow-up"></i>&nbsp;5% since last month
-                                </p>
                             </div>
                         </div>
                     </div>
-                    <div class="col">
-                        <div class="card text-white bg-success shadow">
-                            <div class="card-body">
-                                <div class="row mb-2">
-                                    <div class="col">
-                                        <p class="m-0">Peformance</p>
-                                        <p class="m-0"><strong>65.2%</strong></p>
+
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <p class="text-primary m-0 fw-bold"
+                                style="--bs-primary: #00486E;--bs-primary-rgb: 0,72,110;">
+                                Estado del Personal
+                            </p>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <div class="mb-3">
+                                        <div>
+                                            <div class="btn-group" role="group"
+                                                aria-label="Basic radio toggle button group"
+                                                style="--bs-primary: #00486E;--bs-primary-rgb: 0,72,110;">
+                                                <input type="radio" id="btnradio1" class="btn-check"
+                                                    name="btnradio" autocomplete="on"
+                                                    @if ($user->status == 1) checked @endif
+                                                    @if ($user->status == 0) disabled @endif>
+                                                <label class="form-label btn btn-outline-primary" for="btnradio1"
+                                                    style="background: rgb(80,173,57); border-color: #00486E;color: white;">
+                                                    Activo
+                                                </label>
+                                                <input type="radio" id="btnradio2" class="btn-check"
+                                                    name="btnradio" autocomplete="off"
+                                                    @if ($user->status == 0) checked @endif disabled>
+                                                <label class="form-label btn btn-outline-primary" for="btnradio2"
+                                                    style="background: #d9a238; border-color: #00486E; color: white;">
+                                                    Inactivo
+                                                </label>
+                                                <input type="radio" id="btnradio3" class="btn-check"
+                                                    name="btnradio" autocomplete="off" disabled>
+                                                <label class="form-label btn btn-outline-primary" for="btnradio3"
+                                                    style="background: #d23838; border-color: #00486E; color: white;">
+                                                    Baja
+                                                </label>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-auto"><i class="fas fa-rocket fa-2x"></i></div>
                                 </div>
-                                <p class="text-white-50 small m-0">
-                                    <i class="fas fa-arrow-up"></i>
-                                    &nbsp;5% since last month
+                            </div>
+                        </div>
+                    </div>
+                @endif
+            </div>
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <p class="text-primary m-0 fw-bold"
+                                    style="border-color: #00486E;--bs-primary: #00486E;--bs-primary-rgb: 0,72,110;">
+                                    Información Personal
                                 </p>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-5">
+                                      <p class="mb-0">Apellidos</p>
+                                    </div>
+                                    <div class="col-md-7">
+                                      <p class="text-muted mb-0">{{$user->surnames}}</p>
+                                    </div>
+                                  </div>
+                                  <hr>
+                                  <div class="row">
+                                    <div class="col-md-5">
+                                      <p class="mb-0">Nombres</p>
+                                    </div>
+                                    <div class="col-md-7">
+                                      <p class="text-muted mb-0">{{$user->names}}</p>
+                                    </div>
+                                  </div>
+                                  <hr>
+                                  <div class="row">
+                                    <div class="col-md-5">
+                                      <p class="mb-0">DNI</p>
+                                    </div>
+                                    <div class="col-md-7">
+                                      <p class="text-muted mb-0">{{$user->dni}}</p>
+                                    </div>
+                                  </div>
                             </div>
                         </div>
                     </div>
@@ -137,12 +213,12 @@
                             <div class="card-header py-3">
                                 <p class="text-primary m-0 fw-bold"
                                     style="border-color: #00486E;--bs-primary: #00486E;--bs-primary-rgb: 0,72,110;">
-                                    Información Personal
+                                    Ajustes del Perfil
                                 </p>
                             </div>
                             <div class="card-body">
                                 <div class="col-md-12">
-                                    @if ($errors->hasAny(['dni','phone', 'email']))
+                                    @if ($errors->hasAny(['phone', 'email']))
                                         <div class="alert alert-danger alert-dismissible fade show" role="alert" id="auto-close-alert">
                                             <i class="fa-solid fa-circle-exclamation"></i>
                                             {{ implode(' ', $errors->all()) }}
@@ -162,39 +238,6 @@
                                 </div>
                                 <form action="{{$profile_url}}" method="post">
                                     {{csrf_field()}}
-                                    <div class="row">
-                                        <div class="col-lg-6 col-xl-3" style="width: 250px;">
-                                            <div class="mb-3">
-                                                <label class="form-label" for="username">
-                                                    <strong>DNI</strong>
-                                                    <br>
-                                                </label>
-                                                <div style="display: flex;align-items: center;">
-                                                    <input class="form-control" type="text" id="dni"
-                                                        style="width: 180px;/*float: left;*/text-align: center;"
-                                                        name="dni" readonly value="{{ old('dni', $user->dni) }}">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col" style="width: 230px;">
-                                            <div class="mb-3">
-                                                <label class="form-label" for="surnames">
-                                                    <strong>Apellidos</strong>
-                                                </label>
-                                                <input class="form-control" type="text" id="surnames" name="surnames"
-                                                    readonly value="{{ old('surnames', $user->surnames) }}">
-                                            </div>
-                                        </div>
-                                        <div class="col" style="width: 250px;">
-                                            <div class="mb-3">
-                                                <label class="form-label" for="names">
-                                                    <strong>Nombres</strong>
-                                                </label>
-                                                <input class="form-control" type="text" id="names" name="names"
-                                                    readonly value="{{ old('names', $user->names) }}">
-                                            </div>
-                                        </div>
-                                    </div>
                                     <div class="row">
                                         <div class="col">
                                             <div class="mb-3">
@@ -226,74 +269,6 @@
                                 </form>
                             </div>
                         </div>
-                        @if ($user->user_level == 1)
-                            <div class="card shadow">
-                                <div class="card-header py-3">
-                                    <p class="text-primary m-0 fw-bold"
-                                        style="--bs-primary: #00486E;--bs-primary-rgb: 0,72,110;">
-                                        Estado de Personal
-                                    </p>
-                                </div>
-                                <div class="card-body">
-                                    <div class="mb-3"></div>
-                                    <div class="row">
-                                        <div class="col-xl-7" style="width: 200px;">
-                                            <div class="mb-3">
-                                                <label class="form-label" for="city">
-                                                    <strong>Grupo</strong>
-                                                </label>
-                                            </div>
-                                            <div class="dropdown show" style="margin-top: -20px;">
-                                                <button class="btn btn-primary dropdown-toggle" type="button"
-                                                    id="dropdownButton"
-                                                    style="background: #00476D !important; width: 170px; border-style: none;">
-                                                    Administrador
-                                                </button>
-                                                <div class="dropdown-menu" data-bs-popper="none" style="width: 170px;">
-                                                    <a class="dropdown-item" href="#">Médico</a>
-                                                    <a class="dropdown-item" href="#">Secretaria</a>
-                                                    <a class="dropdown-item" href="#">Administrador</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="mb-3">
-                                                <label class="form-label" for="country">
-                                                    <strong>Estado</strong>
-                                                </label>
-                                                <div>
-                                                    <div class="btn-group" role="group"
-                                                        aria-label="Basic radio toggle button group"
-                                                        style="--bs-primary: #00486E;--bs-primary-rgb: 0,72,110;">
-                                                        <input type="radio" id="btnradio1" class="btn-check"
-                                                            name="btnradio" autocomplete="on"
-                                                            @if ($user->status == 1) checked @endif
-                                                            @if ($user->status == 0) disabled @endif>
-                                                        <label class="form-label btn btn-outline-primary" for="btnradio1"
-                                                            style="background: rgb(80,173,57); border-color: #00486E;color: white;">
-                                                            Activo
-                                                        </label>
-                                                        <input type="radio" id="btnradio2" class="btn-check"
-                                                            name="btnradio" autocomplete="off"
-                                                            @if ($user->status == 0) checked @endif disabled>
-                                                        <label class="form-label btn btn-outline-primary" for="btnradio2"
-                                                            style="background: #d9a238; border-color: #00486E; color: white;">
-                                                            Inactivo
-                                                        </label>
-                                                        <input type="radio" id="btnradio3" class="btn-check"
-                                                            name="btnradio" autocomplete="off" disabled>
-                                                        <label class="form-label btn btn-outline-primary" for="btnradio3"
-                                                            style="background: #d23838; border-color: #00486E; color: white;">
-                                                            Baja
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @endif
                     </div>
                 </div>
             </div>

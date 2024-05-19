@@ -38,14 +38,11 @@ class ProfileController extends Controller
     {
         //validamos nuestos datos
         request()->validate([
-            'dni' => 'required|regex:/^[0-9]{8}$/|unique:users,dni,' . $user->id,
-            'names'=>'required|string|regex:/^[\pL\s]+$/u|max:25',
-            'surnames'=>'required|string|regex:/^[\pL\s]+$/u|max:25',
             'email' => [
                 'required',
                 'email',
                 'max:255',
-                'unique:users,email',
+                'unique:users,email,'.$user->id,
                 function ($attribute, $value, $fail) {
                     $allowedDomains = ['outlook.com', 'hotmail.com','gmail.com'];
                     $domain = explode('@', $value)[1];
