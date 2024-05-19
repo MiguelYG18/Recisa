@@ -38,9 +38,23 @@ class ProfileController extends Controller
     {
         //validamos nuestos datos
         request()->validate([
-            'dni' => 'required|digits:8|regex:/^[0-9]{8}$/|unique:users,dni,' . $user->id,
-            'email' => 'required|email|max:255|unique:users,email,' . $user->id,
-            'phone' => 'required|digits:9|regex:/^[0-9]{9}$/|unique:users,phone,' . $user->id,
+            'dni' => 'required|regex:/^[0-9]{8}$/|unique:users,dni,' . $user->id,
+            'names'=>'required|string|regex:/^[\pL\s]+$/u|max:25',
+            'surnames'=>'required|string|regex:/^[\pL\s]+$/u|max:25',
+            'email' => [
+                'required',
+                'email',
+                'max:255',
+                'unique:users,email',
+                function ($attribute, $value, $fail) {
+                    $allowedDomains = ['outlook.com', 'hotmail.com','gmail.com'];
+                    $domain = explode('@', $value)[1];
+                    if (!in_array($domain, $allowedDomains)) {
+                        $fail("El dominio del correo electrónico no está permitido.");
+                    }
+                },
+            ],
+            'phone' => 'required|regex:/^[0-9]{9}$/|unique:users,phone,' . $user->id,
         ]);
         // Actualizar campos del usuario
         $user->phone = $request->phone;

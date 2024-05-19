@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AuthRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -27,7 +28,7 @@ class AuthController extends Controller
         return view('auth.login');
     }
     //Validar los datos ingresados en el login
-    public function AuthLogin(Request $request){
+    public function AuthLogin(AuthRequest $request){
         $remember = $request->filled('remember');
         // Intentar iniciar sesión del usuario
         if (Auth::attempt(['dni' => $request->dni, 'password' => $request->password], $remember)) {
