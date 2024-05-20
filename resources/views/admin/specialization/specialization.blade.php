@@ -56,7 +56,7 @@
                         @endif
                     </div>
                     <form action="" method="post">
-                        {{ csrf_field() }}
+                        @csrf
                         <div class="row g-3">
                             <div class="col-md-7">
                                 <div class="mb-3">
@@ -123,7 +123,7 @@
                                         <td>{{ $value->name }}</td>
                                         <td>
                                             <form action="{{ url('admin/specialization/edit/' . $value->id) }}" method="post">
-                                                {{ csrf_field() }}
+                                                @csrf
                                                 <input type="hidden" name="specialization_id" value="{{ $value->id }}">
                                                 <input type="text" class="form-control quantity_voucher_update_input" style="width: 50px;" maxlength="2"
                                                     id="quantity_voucher_update" name="quantity_voucher_update" aria-describedby="basic-addon3 basic-addon4"

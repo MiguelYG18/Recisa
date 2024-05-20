@@ -45,9 +45,6 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @php
-                                    $count = 1; // Inicializamos el contador
-                                @endphp
                                 @foreach ($roles as $index=>$value)
                                     <tr>
                                         <td>{{$index + 1}}</td>

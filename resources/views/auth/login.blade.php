@@ -35,7 +35,7 @@
                                         @endif 
                                     </div>
                                     <form method="post" action="{{url('login')}}" class="user">
-                                        {{ csrf_field() }} 
+                                        @csrf
                                         <div class="mb-3"><input class="form-control form-control-user" maxlength="8" type="text" id="dni" aria-describedby="emailHelp" placeholder="DNI" name="dni" value="{{ session('dni') ? session('dni') : '' }}"></div>
                                         <div class="mb-3"><input class="form-control form-control-user" type="password" id="password" placeholder="Contraseña" name="password"></div>
                                         <div class="mb-3">

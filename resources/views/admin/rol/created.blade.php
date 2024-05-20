@@ -33,7 +33,7 @@
                             @endif
                         </div>
                         <form action="" method="post">
-                            {{csrf_field()}}
+                            @csrf
                             <div class="row g-3 justify-content-center">
                                 <div class="col-md-4">
                                     <label for="group_level" class="form-label">Nivel de Usuario:</label>

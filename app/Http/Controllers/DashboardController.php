@@ -15,7 +15,20 @@ class DashboardController extends Controller
         $user= Auth::user();        
         if($user->user_level == 1){
             $doctor= User::where('user_level',3)->count();
-            return view('admin.dashboard',compact('doctor'));
+            $maxquatity= DB::table('specializations')->sum('quantity_voucher');
+            $quatity = DB::table('specializations')
+                    ->select('quantity_voucher')
+                    ->unionAll(DB::table('user_specialization')->select('cupo_doctor'))
+                    ->get()
+                    ->sum('quantity_voucher');
+            //Validadcion para maxquatity null
+            if(is_null($quatity)){
+                $quatity=0;
+            }        
+            $appointment=Appointment::where('status','=','0')->count(); 
+            $maxquatity=   $quatity + $appointment;    
+            $patient=Patient::count();
+            return view('admin.dashboard',compact('doctor','appointment','patient','maxquatity'));
         } 
         if($user->user_level == 2){
             return view('secretary.dashboard');

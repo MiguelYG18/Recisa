@@ -35,7 +35,7 @@
                             @endif
                         </div>
                         <form action="{{ url('/admin/admin/edit/'.$user->slug) }}" method="post">
-                            {{csrf_field()}}
+                            @csrf
                             <div class="row g-3">
                                 <div class="col-md-2">
                                     <label for="dni" class="form-label">DNI:</label>

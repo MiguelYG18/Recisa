@@ -84,10 +84,10 @@
                     </a>
                     <ul id="auth4" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item2">
-                            <a href="#" class="sidebar-link">Registrar Cita</a>
+                            <a href="{{url('admin/appoitnment/add')}}" class="sidebar-link">Registrar Cita</a>
                         </li>
                         <li class="sidebar-item2">
-                            <a href="#" class="sidebar-link">Listar Citas</a>
+                            <a href="{{url('admin/appoitnment/list')}}" class="sidebar-link">Listar Citas</a>
                         </li>
                     </ul>
                 </li>

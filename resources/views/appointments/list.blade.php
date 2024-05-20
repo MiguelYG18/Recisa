@@ -27,12 +27,7 @@
                 });
             </script>            
         @endif   
-        <div class="d-sm-flex justify-content-between align-items-center mb-4">
-            <h3 class="text-dark mb-0">Citas</h3>
-            <a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#" style="--bs-primary: #00486E;--bs-primary-rgb: 0,72,110;--bs-body-bg: #00486E;background: #00486E;">
-                <i class="fas fa-user fa-sm text-white-50"></i>&nbsp;Crear Cita
-            </a>
-        </div>
+
         <div class="row">
             <div class="col">
                 <div class="card shadow">
@@ -44,17 +39,47 @@
                             <table id="usuarios" class="table my-0">
                                 <thead>
                                     <tr>
-                                        <th style="width: 20px;">Foto</th>
-                                        <th style="width: 250px;">DNI</th>
-                                        <th style="width: 300px;">Usuario</th>
-                                        <th style="width: 250px;">Celular</th>
-                                        <th style="width: 300px;">Email</th>
-                                        <th style="width: 150px;">Rol</th>
-                                        <th style="width: 200px;">Estado</th>
-                                        <th style="width: 200px;">Creación</th>
+                                        <th style="width: 20px; font-weight:bold; text-align:center">#</th>
+                                        <th style="width: 250px;">Paciente</th>
+                                        <th style="width: 300px;">Doctor</th>
+                                        <th style="width: 250px;">Especialidad</th>
+                                        <th style="width: 300px;">Fecha</th>
+                                        <th style="width: 150px;">Hora</th>
+                                        <th style="width: 150px;">Estado</th>
                                         <th class="text-center">Opciones</th>
                                     </tr>
                                 </thead>
+                                <tbody>
+                                    @foreach ($appointments as $index=>$appointment)
+                                        <tr>
+                                            <td>{{$index + 1}}</td>
+                                            <td>{{$appointment->patient->names}} {{$appointment->patient->surnames}}</td>
+                                            <td>{{$appointment->doctor->user->names}} {{$appointment->doctor->user->surnames}}</td>
+                                            <td>{{$appointment->doctor->specialization->name}}</td>
+                                            <td>{{date('d-m-Y', strtotime($appointment->date))}}</td>
+                                            <td>{{$appointment->time}}</td>
+                                            <td class="text-center">
+                                                @switch($appointment->status)
+                                                    @case(0)
+                                                        <span class="fw-bolder p-1 rounded border border-warning border-2">Espera</span>
+                                                        @break
+                                                    @case(1)
+                                                        <span class="fw-bolder p-1 rounded border border-success border-2">Atendido</span>
+                                                        @break
+                                                    @case(2)
+                                                        <span class="fw-bolder p-1 rounded border border-danger border-2">No Asistio</span>
+                                                        @break
+                                                    @default
+                                                @endswitch
+                                            </td>
+                                            <td>
+                                                <div class="btn-group" role="group">
+                                                    <a href="#" class="btn btn-primary" style="background: #F4D03F !important;"><i class="fa-solid fa-eye"></i></a>
+                                                </div>
+                                            </td>
+                                        </tr>                                      
+                                    @endforeach
+                                </tbody>                                
                             </table>
                         </div>
                     </div>
@@ -80,6 +105,7 @@
                     "infoEmpty": "No hay registros disponibles",
                     "infoFiltered": "(filtrado de _MAX_ registros totales)",
                     "search": "Buscar:",
+                    "emptyTable": "No hay datos disponibles en la tabla",
                     "paginate":{
                         "next":">",
                         "previous":"<"

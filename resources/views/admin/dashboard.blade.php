@@ -25,7 +25,7 @@
                     <div class="row align-items-center no-gutters">
                         <div class="col me-2">
                             <div class="text-uppercase text-success fw-bold text-xs mb-1"><span style="font-size: 20px;">PACIENTES</span></div>
-                            <div class="text-dark fw-bold h5 mb-0"><span>125</span></div>
+                            <div class="text-dark fw-bold h5 mb-0"><span>{{$patient}}</span></div>
                         </div>
                         <div class="col-auto"><i class="fas fa-user-injured fa-2x text-gray-300"></i></div>
                     </div>
@@ -40,11 +40,21 @@
                             <div class="text-uppercase text-info fw-bold text-xs mb-1"><span style="font-size: 20px;">RESERVAS</span></div>
                             <div class="row g-0 align-items-center">
                                 <div class="col-auto">
-                                    <div class="text-dark fw-bold h5 mb-0 me-3"><span>23</span></div>
+                                    <div class="text-dark fw-bold h5 mb-0 me-3"><span>{{$appointment}}</span></div>
                                 </div>
                                 <div class="col">
+                                    @php
+                                        $percentage = ($appointment / $maxquatity) * 100;
+                                    @endphp
                                     <div class="progress progress-sm">
-                                        <div class="progress-bar bg-info" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%;"><span class="visually-hidden">50%</span></div>
+                                        <div class="progress-bar bg-info" 
+                                            role="progressbar" 
+                                            aria-valuenow="<?php echo $percentage; ?>" 
+                                            aria-valuemin="0" 
+                                            aria-valuemax="100" 
+                                            style="width: <?php echo $percentage; ?>%;">
+                                            <span class="visually"><?php echo round($percentage); ?>%</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

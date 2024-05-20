@@ -75,7 +75,7 @@
                         @endif
                     </div>
                     <form action="" method="post" id="form_assignment">
-                        {{ csrf_field() }}
+                        @csrf
                         <div class="row g-3">
                             <div class="col-md-7">
                                 <div class="mb-3">

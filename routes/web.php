@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CitaController;
 use App\Http\Controllers\ClinicalHistoryController;
@@ -122,10 +123,17 @@ Route::group(['middleware'=>'admin'],function(){
     Route::post('admin/patients/edit/{slug}',[PatientController::class,'update']);
     //delete get
     Route::get('admin/patients/delete/{id}',[PatientController::class,'delete']);
-    //Validación del Paciente
+    //Buscar el paciente
     Route::post('/admin/clinicalhistories/sheare-patient', [ClinicalHistoryController::class, 'shearePatient']);
+
+    //Rutas para el historila clinico
     //Abrir historial
     Route::get('admin/clinicalhistories/created', [ClinicalHistoryController::class, 'add']);
+
+    //Rutas para las citas
+    Route::get('admin/appoitnment/list',[AppointmentController::class,'list']);
+    Route::get('admin/appoitnment/add',[AppointmentController::class,'add']);
+    Route::post('admin/appoitnment/add',[AppointmentController::class,'insert']);
 
 });
 

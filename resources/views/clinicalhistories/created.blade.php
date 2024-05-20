@@ -55,7 +55,7 @@
                             </div>
                         </div>                        
                         <form action="" method="post" id="form_assignment">
-                            {{ csrf_field() }}
+                            @csrf
                             <div class="row g-3 mt-1" style="justify-content:center">
                                 <div class="col-md-12">
                                     <div class="input-group mb-3">
