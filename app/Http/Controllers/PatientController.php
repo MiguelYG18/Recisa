@@ -70,8 +70,8 @@ class PatientController extends Controller
         });
         // Validaciones
         request()->validate([
-            'dni' => 'required|max:8|unique:patients,dni,' . $patient->id,
-            'phone' => 'required|min:9|max:9|unique:patients,phone,' . $patient->id,
+            'dni' => 'required|regex:/^[0-9]{8}$/|unique:patients,dni,' . $patient->id,
+            'phone' => 'required|regex:/^[0-9]{9}$/|unique:patients,phone,' . $patient->id,
             'age' => 'required'
         ]);
 

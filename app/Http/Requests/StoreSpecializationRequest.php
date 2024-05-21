@@ -22,7 +22,7 @@ class StoreSpecializationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name_insert'=>'required|max:30|unique:specializations,name',
+            'name_insert'=>'required|string|regex:/^[\pL\s]+$/u|max:30|unique:specializations,name',
             'quantity_voucher_insert'=>'required',
         ];
     }

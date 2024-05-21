@@ -23,8 +23,8 @@ class StorePatient extends FormRequest
     {
         return [
             'dni'=>'required|digits:8|regex:/^[0-9]{8}$/|unique:patients,dni',
-            'names'=>'required|max:25',
-            'surnames'=>'required|max:25',
+            'names'=>'required|string|regex:/^[\pL\s]+$/u|max:25',
+            'surnames'=>'required|string|regex:/^[\pL\s]+$/u|max:25',
             'phone'=>'required|digits:9|regex:/^[0-9]{9}$/|unique:patients,phone',
             'age'=> 'required'
         ];

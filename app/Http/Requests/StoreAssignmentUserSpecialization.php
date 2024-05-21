@@ -23,8 +23,8 @@ class StoreAssignmentUserSpecialization extends FormRequest
     public function rules(): array
     {
         return [
-            'id_doctor'=>'required',
-            'id_specialization' => 'required',
+            'id_doctor'=>'required|integer|exists:users,id',
+            'id_specialization' => 'required|integer|exists:specializations,id',
             'vaucher_specialization'=>'required|numeric|max:'.$this->input('max_voucher')
         ];
     }
