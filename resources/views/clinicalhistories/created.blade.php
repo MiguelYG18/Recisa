@@ -142,7 +142,7 @@
             function buscarPaciente() {
                 var dni = $('#dni').val().trim();
                 $.ajax({
-                    url: '{{ url('/admin/clinicalhistories/sheare-patient') }}', // Ruta para la consulta del DNI
+                    url: '{{ url('/recisa/clinicalhistories/sheare-patient') }}', // Ruta para la consulta del DNI
                     type: 'POST',
                     data: {
                         '_token': '{{ csrf_token() }}',

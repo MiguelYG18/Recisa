@@ -69,10 +69,10 @@
                     </a>
                     <ul id="auth5" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item2">
-                            <a href="{{url('admin/patients/add')}}"  class="sidebar-link">Registrar Paciente</a>
+                            <a href="{{url('recisa/patients/add')}}"  class="sidebar-link">Registrar Paciente</a>
                         </li>
                         <li class="sidebar-item2">
-                            <a href="{{url('admin/patients/list')}}" class="sidebar-link">Listar Pacientes</a>
+                            <a href="{{url('recisa/patients/list')}}" class="sidebar-link">Listar Pacientes</a>
                         </li>
                     </ul>
                 </li>
@@ -84,10 +84,10 @@
                     </a>
                     <ul id="auth4" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item2">
-                            <a href="{{url('admin/appoitnment/add')}}" class="sidebar-link">Registrar Cita</a>
+                            <a href="{{url('recisa/appoitnment/add')}}" class="sidebar-link">Registrar Cita</a>
                         </li>
                         <li class="sidebar-item2">
-                            <a href="{{url('admin/appoitnment/list')}}" class="sidebar-link">Listar Citas</a>
+                            <a href="{{url('recisa/appoitnment/list')}}" class="sidebar-link">Listar Citas</a>
                         </li>
                     </ul>
                 </li>
@@ -98,7 +98,37 @@
                         <i class="fa-solid fa-house"></i>
                         <span>Perfil</span>
                     </a>
-                </li>             
+                </li>     
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                        data-bs-target="#auth5" aria-expanded="false" aria-controls="auth5">
+                        <i class="fa-solid fa-hospital-user"></i>
+                        <span>Gestión de Pacientes</span>
+                    </a>
+                    <ul id="auth5" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item2">
+                            <a href="{{url('recisa/patients/add')}}"  class="sidebar-link">Registrar Paciente</a>
+                        </li>
+                        <li class="sidebar-item2">
+                            <a href="{{url('recisa/patients/list')}}" class="sidebar-link">Listar Pacientes</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                        data-bs-target="#auth4" aria-expanded="false" aria-controls="auth4">
+                        <i class="fa-solid fa-list-check"></i>
+                        <span>Gestión de citas</span>
+                    </a>
+                    <ul id="auth4" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item2">
+                            <a href="{{url('recisa/appoitnment/add')}}" class="sidebar-link">Registrar Cita</a>
+                        </li>
+                        <li class="sidebar-item2">
+                            <a href="{{url('recisa/appoitnment/list')}}" class="sidebar-link">Listar Citas</a>
+                        </li>
+                    </ul>
+                </li>                        
                 @break
             @case(3)
                 <li class="sidebar-item">

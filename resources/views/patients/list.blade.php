@@ -62,7 +62,7 @@
                                             <td>{{date('d-m-Y', strtotime($patient->created_at))}}</td>
                                             <td class="text-center">
                                                 <div class="btn-group" role="group">
-                                                    <a href="{{ url('admin/patients/edit/' . $patient->slug) }}" class="btn btn-primary" style="background: #7BDE7C;"><i class="fas fa-pencil-alt"></i></a>
+                                                    <a href="{{ url('recisa/patients/edit/' . $patient->slug) }}" class="btn btn-primary" style="background: #7BDE7C;"><i class="fas fa-pencil-alt"></i></a>
                                                     <button type="button" class="btn btn-danger" style="background: #EB5C5E;" data-bs-toggle="modal" data-bs-target="#staticBackdrop-{{$patient->id}}">
                                                         <i class="far fa-trash-alt"></i>
                                                     </button>
@@ -79,7 +79,7 @@
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                                                    <a href="{{url('admin/patients/delete/'.$patient->id)}}" class="btn btn-danger"style="background: #EB5C5E;">
+                                                                    <a href="{{url('recisa/patients/delete/'.$patient->id)}}" class="btn btn-danger"style="background: #EB5C5E;">
                                                                         Eliminar
                                                                     </a>
                                                                 </div>

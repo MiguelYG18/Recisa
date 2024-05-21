@@ -67,6 +67,7 @@ class Kernel extends HttpKernel
         //Roles creados 
         'admin' => \App\Http\Middleware\AdminMiddleware::class, 
         'secretary' => \App\Http\Middleware\SecretaryMiddleware::class,  
-        'doctor' => \App\Http\Middleware\DoctorMiddleware::class,       
+        'doctor' => \App\Http\Middleware\DoctorMiddleware::class,  
+        'admin_or_secretary' => \App\Http\Middleware\AdminOrSecretaryMiddleware::class,    
     ];
 }

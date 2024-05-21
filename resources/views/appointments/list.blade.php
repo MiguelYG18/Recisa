@@ -74,7 +74,7 @@
                                             </td>
                                             <td>
                                                 <div class="btn-group" role="group">
-                                                    <a href="{{url('admin/appoitnment/show/'.$appointment->id)}}" class="btn btn-primary" style="background: #F4D03F !important;"><i class="fa-solid fa-eye"></i></a>
+                                                    <a href="{{url('recisa/appoitnment/show/'.$appointment->id)}}" class="btn btn-primary" style="background: #F4D03F !important;"><i class="fa-solid fa-eye"></i></a>
                                                 </div>
                                             </td>
                                         </tr>                                      

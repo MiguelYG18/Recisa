@@ -42,7 +42,7 @@ class AppointmentController extends Controller
         } catch (Exception $e) {
             DB::rollBack();
         }
-        return redirect('admin/appoitnment/list')->with('success','Cita Registrada'); 
+        return redirect('recisa/appoitnment/list')->with('success','Cita Registrada'); 
     }
     public function show(Appointment $appointment){
         return view('appointments.show',compact('appointment'));

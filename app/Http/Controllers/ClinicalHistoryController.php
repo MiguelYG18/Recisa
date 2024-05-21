@@ -38,7 +38,7 @@ class ClinicalHistoryController extends Controller
             DB::rollBack();
         }
 
-        return redirect('admin/patient/list')->with('sucess', 'Historial clinicos registrados a pacientes.');
+        return redirect('recisa/patient/list')->with('sucess', 'Historial clinicos registrados a pacientes.');
 
     }
 }

@@ -34,7 +34,7 @@
                                 </script>
                             @endif
                         </div>
-                        <form action="{{ url('/admin/patients/edit/'.$patient->slug) }}" method="post">
+                        <form action="{{ url('/recisa/patients/edit/'.$patient->slug) }}" method="post">
                             @csrf
                             <div class="row g-3">
                                 <div class="col-md-2">

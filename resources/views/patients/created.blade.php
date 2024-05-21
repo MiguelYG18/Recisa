@@ -87,14 +87,14 @@
         </div>
         <div class="row g-3" style="justify-content:center; text-align: center;">
             <div class="col-md-2">
-                <a href="{{ url('admin/clinicalhistories/created') }}">
+                <a href="{{ url('recisa/clinicalhistories/created') }}">
                     <img src="{{ asset('assets/img/avatars/historia-clinica.png') }}" alt=""
                         style="height: 128px; box-shadow:8px 8px 20px #0000"><br>
                     <span style="color:#00476D;">Historias Clínicas</span>
                 </a>
             </div>
             <div class="col-md-2">
-                <a href="{{ url('admin/patients/list') }}">
+                <a href="{{ url('recisa/patients/list') }}">
                     <img src="{{ asset('assets/img/avatars/lista.png') }}" alt=""
                         style="height: 134px; box-shadow:8px 8px 20px #0000; margin-top:-8px"><br>
                     <span style="color:#00476D;">Lista de Pacientes</span>
@@ -120,7 +120,7 @@
             }
 
             $.ajax({
-                url: '{{ url('/admin/admin/add-consulta') }}', // Ruta para la consulta del DNI
+                url: '{{ url('/recisa/patients/add-consulta') }}', // Ruta para la consulta del DNI
                 type: 'POST',
                 data: {
                     '_token': '{{ csrf_token() }}',

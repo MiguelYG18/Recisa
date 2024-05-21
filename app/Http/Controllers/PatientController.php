@@ -44,7 +44,7 @@ class PatientController extends Controller
             DB::rollBack();
         }
 
-        return redirect('admin/patients/list')->with('sucess', 'Paciente registrado');
+        return redirect('recisa/patients/list')->with('sucess', 'Paciente registrado');
     }
 
     public function edit($slug)
@@ -80,12 +80,12 @@ class PatientController extends Controller
         $patient->age = $request->age;
 
         $patient->save();
-        return redirect('admin/patients/list')->with('success', 'El paciente ' . $patient->names . ' fue actualizado');
+        return redirect('recisa/patients/list')->with('success', 'El paciente ' . $patient->names . ' fue actualizado');
     }
 
     public function delete($id){
         $patient=Patient::find($id);
         $patient->delete();
-        return redirect('admin/patients/list')->with('success','El paciente '.$patient->names.' fue eliminado'); 
+        return redirect('recisa/patients/list')->with('success','El paciente '.$patient->names.' fue eliminado'); 
     }
 }

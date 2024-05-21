@@ -113,34 +113,7 @@ Route::group(['middleware'=>'admin'],function(){
     //Envio de las foto de perfil
     Route::post('admin/perfil/photo/{user}',[AdminProfileController::class,'photo']);
 
-    //Rutas para crear los pacientes
-    //La vista de los pacientes
-    Route::get('/admin/patients/list',[PatientController::class,'list']);
-    //Mostrar vista createdPatient
-    Route::get('/admin/patients/add',[PatientController::class,'add']);
-    //Envio de datos para registrar
-    Route::post('/admin/patients/add',[PatientController::class,'insert']);
-    //Vista editar patient
-    Route::get('admin/patients/edit/{slug}',[PatientController::class,'edit']);
-    //Envio de datos para el edit patient
-    Route::post('admin/patients/edit/{slug}',[PatientController::class,'update']);
-    //delete get
-    Route::get('admin/patients/delete/{id}',[PatientController::class,'delete']);
-    //Buscar el paciente
-    Route::post('/admin/clinicalhistories/sheare-patient', [ClinicalHistoryController::class, 'shearePatient']);
-
-    //Rutas para el historila clinico
-    //Abrir historial
-    Route::get('admin/clinicalhistories/created', [ClinicalHistoryController::class, 'add']);
-
-    //Rutas para las citas
-    Route::get('admin/appoitnment/list',[AppointmentController::class,'list']);
-    Route::get('admin/appoitnment/add',[AppointmentController::class,'add']);
-    Route::post('admin/appoitnment/add',[AppointmentController::class,'insert']);
-    Route::get('admin/appoitnment/show/{appointment}',[AppointmentController::class,'show']);
-
 });
-
 Route::group(['middleware'=>'secretary'],function(){
     //La vista del dashbaord
     Route::get('secretary/dashboard',[DashboardController::class,'dashboard']); 
@@ -162,4 +135,28 @@ Route::group(['middleware'=>'doctor'],function(){
     Route::post('doctor/perfil/photo/{user}',[DoctorProfileController::class,'photo']); 
     //Doctor vea sus especialidades y progreso
     Route::get('doctor/specialization/list',[DoctorProfileController::class,'list']);
+});
+//Admin y la secretaria comparten las rutas para poder generar el proceso de citas
+Route::group(['middleware'=>'admin_or_secretary'],function(){
+    //Rutas para crear los pacientes
+    //La vista de los pacientes
+    Route::get('/recisa/patients/list',[PatientController::class,'list']);
+    Route::get('/recisa/patients/add',[PatientController::class,'add']);
+    Route::post('/recisa/patients/add-consulta', [DNIController::class, 'consultarDNI']);
+    Route::post('/recisa/patients/add',[PatientController::class,'insert']);
+    Route::get('/recisa/patients/edit/{slug}',[PatientController::class,'edit']);
+    Route::post('/recisa/patients/edit/{slug}',[PatientController::class,'update']);
+    Route::get('/recisa/patients/delete/{id}',[PatientController::class,'delete']);
+    //Buscar el paciente
+    Route::post('/recisa/clinicalhistories/sheare-patient', [ClinicalHistoryController::class, 'shearePatient']);
+
+    //Rutas para el historila clinico
+    //Abrir historial
+    Route::get('/recisa/clinicalhistories/created', [ClinicalHistoryController::class, 'add']);
+
+    //Rutas para las citas
+    Route::get('/recisa/appoitnment/list',[AppointmentController::class,'list']);
+    Route::get('/recisa/appoitnment/add',[AppointmentController::class,'add']);
+    Route::post('/recisa/appoitnment/add',[AppointmentController::class,'insert']);
+    Route::get('/recisa/appoitnment/show/{appointment}',[AppointmentController::class,'show']);
 });
