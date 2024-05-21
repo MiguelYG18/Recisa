@@ -70,7 +70,7 @@
                                 <button type="button" class="btn btn-outline-success ms-1">Atendido</button>
                                 @break
                             @case(2)
-                                <button type="button" class="btn btn-outline-danger ms-1">No Asistior</button>
+                                <button type="button" class="btn btn-outline-danger ms-1">No Asistio</button>
                                 @break
                             @default
                         @endswitch
