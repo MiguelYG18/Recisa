@@ -44,7 +44,7 @@
                                 </div>
                                 <div class="col">
                                     @php
-                                        $percentage = ($appointment / $maxquatity) * 100;
+                                        $percentage = $maxquatity != 0 ? ($appointment / $maxquatity) * 100 : 0;
                                     @endphp
                                     <div class="progress progress-sm">
                                         <div class="progress-bar bg-info" 

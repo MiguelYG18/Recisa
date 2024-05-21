@@ -56,6 +56,10 @@ class User extends Authenticatable
     {
         return $this->belongsTo(UserGroup::class, 'user_level', 'group_level');
     }
+    public function specializations()
+    {
+        return $this->hasMany(UserSpecialization::class, 'id_user');
+    }
     //Guardar nuestas images 
     public function hanbleUploadImage($image)
     {

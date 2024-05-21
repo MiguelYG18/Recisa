@@ -29,54 +29,29 @@
         @endif   
 
         <div class="row">
-            <div class="col">
+            <div class="col-md-8">
                 <div class="card shadow">
                     <div class="card-header py-3">
-                        <p class="text-primary m-0 fw-bold">Lista de Citas</p>
+                        <p class="text-primary m-0 fw-bold">Especialidades a Cargo</p>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive table" id="dataTable-2" role="grid" aria-describedby="dataTable_info">
-                            <table id="citas" class="table my-0">
+                            <table id="especialidades" class="table my-0">
                                 <thead>
                                     <tr>
                                         <th style="width: 20px; font-weight:bold; text-align:center">#</th>
-                                        <th style="width: 250px;">Paciente</th>
-                                        <th style="width: 300px;">Doctor</th>
-                                        <th style="width: 250px;">Especialidad</th>
-                                        <th style="width: 300px;">Fecha</th>
-                                        <th style="width: 150px;">Hora</th>
-                                        <th style="width: 150px;">Estado</th>
-                                        <th class="text-center">Opciones</th>
+                                        <th style="width: 250px; text-align:center;">Especialidad</th>
+                                        <th style="width: 150px; text-align:center;">Cupos disponibles</th>
+                                        <th style="width: 150px; text-align:center;">Total de Citas</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($appointments as $index=>$appointment)
+                                    @foreach ($asignaciones as $index=>$value)
                                         <tr>
-                                            <td>{{$index + 1}}</td>
-                                            <td>{{$appointment->patient->names}} {{$appointment->patient->surnames}}</td>
-                                            <td>{{$appointment->doctor->user->names}} {{$appointment->doctor->user->surnames}}</td>
-                                            <td>{{$appointment->doctor->specialization->name}}</td>
-                                            <td>{{date('d-m-Y', strtotime($appointment->date))}}</td>
-                                            <td>{{$appointment->time}}</td>
-                                            <td class="text-center">
-                                                @switch($appointment->status)
-                                                    @case(0)
-                                                        <span class="fw-bolder p-1 rounded border border-warning border-2">Por atender</span>
-                                                        @break
-                                                    @case(1)
-                                                        <span class="fw-bolder p-1 rounded border border-success border-2">Atendido</span>
-                                                        @break
-                                                    @case(2)
-                                                        <span class="fw-bolder p-1 rounded border border-danger border-2">No Asistio</span>
-                                                        @break
-                                                    @default
-                                                @endswitch
-                                            </td>
-                                            <td>
-                                                <div class="btn-group" role="group">
-                                                    <a href="{{url('recisa/appoitnment/show/'.$appointment->id)}}" class="btn btn-primary" style="background: #F4D03F !important;"><i class="fa-solid fa-eye"></i></a>
-                                                </div>
-                                            </td>
+                                            <td class="text-center">{{$index + 1}}</td>
+                                            <td class="text-center">{{$value->specialization->name}}</td>
+                                            <td class="text-center">{{$value->cupo_doctor}}</td>
+                                            <td class="text-center">{{$value->appointment_count}}</td>
                                         </tr>                                      
                                     @endforeach
                                 </tbody>                                
@@ -85,11 +60,28 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-4">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="text-primary fw-bold m-0">Avance de Atención</h6>
+                    </div>
+                    <div class="card-body">
+                        @foreach ($asignaciones as $asignacion)
+                            <h4 class="small fw-bold">{{$asignacion->specialization->name}}<span class="float-end">20%</span></h4>
+                            <div class="progress progress-sm mb-3">
+                                <div class="progress-bar bg-success" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%;">
+                                    <span class="visually-hidden">20%</span>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>            
         </div>   
     @endsection
     @push('js')
         <script>
-            $('#citas').DataTable({
+            $('#especialidades').DataTable({
                 responsive: true,
                 autoWidth:false,
                 "language": {
@@ -101,7 +93,7 @@
                                         <option value="20">20</option>
                                     </select>`,
                     "zeroRecords": "No se encontró nada - lo siento",
-                    "info": "Mostrando la página _PAGE_ de _PAGES_ de _TOTAL_ citas",
+                    "info": "Mostrando la página _PAGE_ de _PAGES_ de _TOTAL_ especialidades a cargo",
                     "infoEmpty": "No hay registros disponibles",
                     "infoFiltered": "(filtrado de _MAX_ registros totales)",
                     "search": "Buscar:",

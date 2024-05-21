@@ -7,11 +7,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
-class SecretaryProfileController extends Controller
+class ProfileController extends Controller
 {
     public function index(){
         $user=User::find(Auth::user()->id);
-        return view('profile.secretaryprofile',compact('user'));
+        return view('profile.profile',compact('user'));
     }
     public function update(Request $request, User $user)
     {
@@ -37,7 +37,7 @@ class SecretaryProfileController extends Controller
         $user->email = $request->email;
         //Guardamos los cambios
         $user->save();
-        return redirect('secretary/perfil')->with('success', 'Cambios guardados');
+        return redirect('recisa/perfil')->with('success', 'Cambios guardados');
     }
     public function photo(User $user, Request $request){
         // Validaciones
@@ -55,6 +55,6 @@ class SecretaryProfileController extends Controller
         }
         $user->image = $name;
         $user->save();
-        return redirect('secretary/perfil')->with('success', 'Cambios guardados');       
+        return redirect('recisa/perfil')->with('success', 'Cambios guardados');       
     }
 }

@@ -92,24 +92,9 @@
                         @endif
                     </a>
                     <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in">
-                        @switch(Auth::user()->user_level)
-                            @case(1)                           
-                                <a class="dropdown-item" href="{{url('admin/perfil')}}"><i class="fas fa-user fa-sm fa-fw me-2 text-gray-400">
-                                    </i>&nbsp;Perfil
-                                </a>
-                                @break
-                            @case(2)
-                                <a class="dropdown-item" href="{{url('secretary/perfil')}}"><i class="fas fa-user fa-sm fa-fw me-2 text-gray-400">
-                                    </i>&nbsp;Perfil
-                                </a>
-                                @break
-                            @case(3)
-                                <a class="dropdown-item" href="{{url('doctor/perfil')}}"><i class="fas fa-user fa-sm fa-fw me-2 text-gray-400">
-                                    </i>&nbsp;Perfil
-                                </a>                              
-                            @break
-                            @default
-                        @endswitch
+                        <a class="dropdown-item" href="{{url('recisa/perfil')}}"><i class="fas fa-user fa-sm fa-fw me-2 text-gray-400">
+                            </i>&nbsp;Perfil
+                        </a>
                         <a class="dropdown-item" href="#"><i class="fas fa-list fa-sm fa-fw me-2 text-gray-400">
                             </i>&nbsp;Activity log
                         </a>

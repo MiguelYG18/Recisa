@@ -106,35 +106,15 @@ Route::group(['middleware'=>'admin'],function(){
     //delete get
     Route::get('admin/assignment/delete/{id}',[UserSpecializationController::class,'delete']);
 
-    //Ruta para ver el perfil
-    Route::get('admin/perfil',[AdminProfileController::class,'index']);
-    //Enviar los datos del usuario en su perfil
-    Route::post('admin/perfil/edit/{user}',[AdminProfileController::class,'update']);    
-    //Envio de las foto de perfil
-    Route::post('admin/perfil/photo/{user}',[AdminProfileController::class,'photo']);
-
 });
 Route::group(['middleware'=>'secretary'],function(){
     //La vista del dashbaord
     Route::get('secretary/dashboard',[DashboardController::class,'dashboard']); 
-    //Ruta para ver el perfil
-    Route::get('secretary/perfil',[SecretaryProfileController::class,'index']);
-    //Enviar los datos del usuario en su perfil
-    Route::post('secretary/perfil/edit/{user}',[SecretaryProfileController::class,'update']);    
-    //Envio de las foto de perfil
-    Route::post('secretary/perfil/photo/{user}',[SecretaryProfileController::class,'photo']);
 });
 Route::group(['middleware'=>'doctor'],function(){
     //La vista del dashbaord
     Route::get('doctor/dashboard',[DashboardController::class,'dashboard']);
-    //Ruta para ver el perfil
-    Route::get('doctor/perfil',[DoctorProfileController::class,'index']);
-    //Enviar los datos del usuario en su perfil
-    Route::post('doctor/perfil/edit/{user}',[DoctorProfileController::class,'update']);      
-    //Envio de las foto de perfil
-    Route::post('doctor/perfil/photo/{user}',[DoctorProfileController::class,'photo']); 
-    //Doctor vea sus especialidades y progreso
-    Route::get('doctor/specialization/list',[DoctorProfileController::class,'list']);
+    Route::get('doctor/specialization/list',[DoctorController::class,'index']);
 });
 //Admin y la secretaria comparten las rutas para poder generar el proceso de citas
 Route::group(['middleware'=>'admin_or_secretary'],function(){
@@ -149,14 +129,22 @@ Route::group(['middleware'=>'admin_or_secretary'],function(){
     Route::get('/recisa/patients/delete/{id}',[PatientController::class,'delete']);
     //Buscar el paciente
     Route::post('/recisa/clinicalhistories/sheare-patient', [ClinicalHistoryController::class, 'shearePatient']);
-
     //Rutas para el historila clinico
     //Abrir historial
     Route::get('/recisa/clinicalhistories/created', [ClinicalHistoryController::class, 'add']);
-
     //Rutas para las citas
     Route::get('/recisa/appoitnment/list',[AppointmentController::class,'list']);
     Route::get('/recisa/appoitnment/add',[AppointmentController::class,'add']);
     Route::post('/recisa/appoitnment/add',[AppointmentController::class,'insert']);
     Route::get('/recisa/appoitnment/show/{appointment}',[AppointmentController::class,'show']);
+});
+Route::group(['middleware'=>'profile'],function(){
+    //Ruta para ver el perfil
+    Route::get('recisa/perfil',[ProfileController::class,'index']);
+    //Enviar los datos del usuario en su perfil
+    Route::post('recisa/perfil/edit/{user}',[ProfileController::class,'update']);      
+    //Envio de las foto de perfil
+    Route::post('recisa/perfil/photo/{user}',[ProfileController::class,'photo']); 
+    //Doctor vea sus especialidades y progreso
+    Route::get('recisa/specialization/list',[ProfileController::class,'list']);
 });

@@ -13,4 +13,9 @@ class Specialization extends Model
         'name',
         'quantity_voucher'
     ];
+    
+    public function userSpecializations()
+    {
+        return $this->hasMany(UserSpecialization::class, 'id_specialization');
+    }
 }
