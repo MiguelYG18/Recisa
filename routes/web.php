@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminProfileController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CitaController;
@@ -8,8 +9,10 @@ use App\Http\Controllers\ClinicalHistoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DNIController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\DoctorProfileController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SecretaryProfileController;
 use App\Http\Controllers\SpecializationController;
 use App\Http\Controllers\UserGroupController;
 use App\Http\Controllers\UserSpecializationController;
@@ -104,11 +107,11 @@ Route::group(['middleware'=>'admin'],function(){
     Route::get('admin/assignment/delete/{id}',[UserSpecializationController::class,'delete']);
 
     //Ruta para ver el perfil
-    Route::get('admin/perfil',[ProfileController::class,'index']);
+    Route::get('admin/perfil',[AdminProfileController::class,'index']);
     //Enviar los datos del usuario en su perfil
-    Route::post('admin/perfil/edit/{user}',[ProfileController::class,'update']);    
+    Route::post('admin/perfil/edit/{user}',[AdminProfileController::class,'update']);    
     //Envio de las foto de perfil
-    Route::post('admin/perfil/photo/{user}',[ProfileController::class,'photo']);
+    Route::post('admin/perfil/photo/{user}',[AdminProfileController::class,'photo']);
 
     //Rutas para crear los pacientes
     //La vista de los pacientes
@@ -142,21 +145,21 @@ Route::group(['middleware'=>'secretary'],function(){
     //La vista del dashbaord
     Route::get('secretary/dashboard',[DashboardController::class,'dashboard']); 
     //Ruta para ver el perfil
-    Route::get('secretary/perfil',[ProfileController::class,'index']);
+    Route::get('secretary/perfil',[SecretaryProfileController::class,'index']);
     //Enviar los datos del usuario en su perfil
-    Route::post('secretary/perfil/edit/{user}',[ProfileController::class,'update']);    
+    Route::post('secretary/perfil/edit/{user}',[SecretaryProfileController::class,'update']);    
     //Envio de las foto de perfil
-    Route::post('secretary/perfil/photo/{user}',[ProfileController::class,'photo']);
+    Route::post('secretary/perfil/photo/{user}',[SecretaryProfileController::class,'photo']);
 });
 Route::group(['middleware'=>'doctor'],function(){
     //La vista del dashbaord
     Route::get('doctor/dashboard',[DashboardController::class,'dashboard']);
     //Ruta para ver el perfil
-    Route::get('doctor/perfil',[ProfileController::class,'index']);
+    Route::get('doctor/perfil',[DoctorProfileController::class,'index']);
     //Enviar los datos del usuario en su perfil
-    Route::post('doctor/perfil/edit/{user}',[ProfileController::class,'update']);      
+    Route::post('doctor/perfil/edit/{user}',[DoctorProfileController::class,'update']);      
     //Envio de las foto de perfil
-    Route::post('doctor/perfil/photo/{user}',[ProfileController::class,'photo']); 
+    Route::post('doctor/perfil/photo/{user}',[DoctorProfileController::class,'photo']); 
     //Doctor vea sus especialidades y progreso
-    Route::get('doctor/specialization/list',[DoctorController::class,'list']);
+    Route::get('doctor/specialization/list',[DoctorProfileController::class,'list']);
 });

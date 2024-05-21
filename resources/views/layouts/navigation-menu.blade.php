@@ -99,24 +99,12 @@
                         <span>Perfil</span>
                     </a>
                 </li>             
-                <li class="nav-item">
-                    <a class="nav-link @if (Request::segment(2)=='dashboard') active @endif" href="{{url('secretary/dashboard')}}" style="text-align: center;font-size: 15px;">
-                        <i class="fas fa-tachometer-alt" style="font-size: 20px;"></i>
-                        <span style="font-size: 15px;">Dashboard</span>
-                    </a>
-                </li>
                 @break
             @case(3)
                 <li class="sidebar-item">
                     <a href="{{url('doctor/dashboard')}}" class="sidebar-link">
                         <i class="fa-solid fa-user"></i>
                         <span>Perfil</span>
-                    </a>
-                </li>
-                <li class="sidebar-item">
-                    <a href="{{url('doctor/specialization/list')}}" class="sidebar-link">
-                        <i class="fa-solid fa-chalkboard-user"></i>
-                        <span>Especialidades</span>
                     </a>
                 </li>
                 @break    
