@@ -134,6 +134,7 @@ Route::group(['middleware'=>'admin'],function(){
     Route::get('admin/appoitnment/list',[AppointmentController::class,'list']);
     Route::get('admin/appoitnment/add',[AppointmentController::class,'add']);
     Route::post('admin/appoitnment/add',[AppointmentController::class,'insert']);
+    Route::get('admin/appoitnment/show/{appointment}',[AppointmentController::class,'show']);
 
 });
 

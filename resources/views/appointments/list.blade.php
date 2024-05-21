@@ -61,7 +61,7 @@
                                             <td class="text-center">
                                                 @switch($appointment->status)
                                                     @case(0)
-                                                        <span class="fw-bolder p-1 rounded border border-warning border-2">Espera</span>
+                                                        <span class="fw-bolder p-1 rounded border border-warning border-2">Por atender</span>
                                                         @break
                                                     @case(1)
                                                         <span class="fw-bolder p-1 rounded border border-success border-2">Atendido</span>
@@ -74,7 +74,7 @@
                                             </td>
                                             <td>
                                                 <div class="btn-group" role="group">
-                                                    <a href="#" class="btn btn-primary" style="background: #F4D03F !important;"><i class="fa-solid fa-eye"></i></a>
+                                                    <a href="{{url('admin/appoitnment/show/'.$appointment->id)}}" class="btn btn-primary" style="background: #F4D03F !important;"><i class="fa-solid fa-eye"></i></a>
                                                 </div>
                                             </td>
                                         </tr>                                      
