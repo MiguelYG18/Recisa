@@ -14,6 +14,7 @@ use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SecretaryProfileController;
 use App\Http\Controllers\SpecializationController;
+use App\Http\Controllers\TicketController;
 use App\Http\Controllers\UserGroupController;
 use App\Http\Controllers\UserSpecializationController;
 use Illuminate\Support\Facades\Route;
@@ -114,7 +115,9 @@ Route::group(['middleware'=>'secretary'],function(){
 Route::group(['middleware'=>'doctor'],function(){
     //La vista del dashbaord
     Route::get('doctor/dashboard',[DashboardController::class,'dashboard']);
-    Route::get('doctor/specialization/list',[DoctorController::class,'index']);
+    Route::get('doctor/citas/list',[DoctorController::class,'index']);
+    Route::get('doctor/attend/edit/{appointment}',[DoctorController::class,'edit']);
+    Route::post('doctor/attend/edit/{appointment}',[DoctorController::class,'update']);
 });
 //Admin y la secretaria comparten las rutas para poder generar el proceso de citas
 Route::group(['middleware'=>'admin_or_secretary'],function(){

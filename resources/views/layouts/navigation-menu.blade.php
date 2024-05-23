@@ -138,7 +138,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="{{url('doctor/specialization/list')}}" class="sidebar-link">
+                    <a href="{{url('doctor/citas/list')}}" class="sidebar-link">
                         <i class="fa-solid fa-chalkboard-user"></i>
                         <span>Especialidades</span>
                     </a>

@@ -1,25 +1,18 @@
 @extends('Layouts.app')
-@section('title', 'Ver Cita')
+@section('title', 'Atención')
 @push('css')
+    <!--Alertas-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/css/bootstrap-select.min.css">
 @endpush
 @section('content')
     <div class="row mt-3">
         <div class="col-md-4">
             <div class="card mb-4">
                 <div class="card-header py-3">
-                    <p class="text-primary m-0 fw-bold">Doctor</p>
+                    <p class="text-primary m-0 fw-bold">Especialidad</p>
                 </div>
                 <div class="card-body text-center">
-                    @if ($appointment->doctor->user->image == null)
-                        <img src="https://i.postimg.cc/hjSBbZX4/doctor.png" class="rounded-circle" alt="imagen circular"
-                            style="width: 150px; height: 150px; border: 2px solid #00476D !important;">
-                    @else
-                        <img src="{{ Storage::url('public/perfiles/' . $appointment->doctor->user->image) }}"
-                            class="rounded-circle" alt="imagen circular"
-                            style="width: 150px; height: 150px; border: 2px solid #00476D !important;">
-                    @endif
-                    <h5 class="my-3">{{ $appointment->doctor->user->names }}</h5>
-                    <p class="text-muted mb-1">{{ $appointment->doctor->user->surnames }}</p>
                     <p class="text-muted mb-4">Especialidad: {{ $appointment->doctor->specialization->name }}</p>
                 </div>
             </div>
@@ -61,32 +54,42 @@
                     <p class="text-primary m-0 fw-bold">Estado de la cita</p>
                 </div>
                 <div class="card-body">
+                    <div class="col-md-12">
+                        @if ($errors->any())
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <i class="mdi mdi-alert-circle"></i> {{ implode(' ', $errors->all()) }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                            </div>
+                        @endif
+                    </div>
                     <div class="d-flex justify-content-center mb-2">
-                        @switch($appointment->status)
-                            @case(0)
-                                <button type="button" class="btn btn-outline-warning ms-1">Por atender</button>
-                                @break
-                            @case(1)
-                                <button type="button" class="btn btn-outline-success ms-1">Atendido</button>
-                                @break
-                            @case(2)
-                                <button type="button" class="btn btn-outline-danger ms-1" data-bs-toggle="modal" data-bs-target="#sin-{{$appointment->id}}">No Asistio</button>
-                                <div class="modal fade" id="sin-{{$appointment->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Descripción de la Cita</h1>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                {{$appointment->description}}
-                                            </div>
-                                        </div>
+                        @if ($appointment->status == 0)
+                            <form action="{{ url('/doctor/attend/edit/' . $appointment->id) }}" method="post">
+                                @csrf
+                                <div class="row">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-stethoscope"></i></span>
+                                        <select class="form-select" id="status" name="status">
+                                            <option selected>Atención...</option>
+                                            <option value="1" {{old('status') == '1' ? 'selected' : ''}}>Atendido</option>
+                                            <option value="2" {{old('status') == '1' ? 'selected' : ''}}>No asistio</option>
+                                        </select>                                          
+                                    </div>
+                                    <div id="description-div" style="display: none;">
+                                        <label for="exampleFormControlTextarea1" class="form-label">Descripción</label>
+                                        <textarea class="form-control" id="description" name="description" style="text-align: left;">
+                                            {{old('description')}}
+                                        </textarea>
+                                    </div>
+                                    <div class="col-md-12 text-center mt-3">
+                                        <button type="submit" class="btn btn-primary" style="background-color: #00476D !important;">Atender</button>
                                     </div>
                                 </div>
-                                @break
-                            @default
-                        @endswitch
+                            </form>    
+                        @else
+                            <button type="button" class="btn btn-outline-success ms-1">Atendido</button>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -178,4 +181,24 @@
     </div>
 @endsection
 @push('js')
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/js/bootstrap-select.min.js"></script>
+    <script>
+        function toggleTextarea() {
+            var selectElement = document.getElementById('status');
+            var textareaDivElement = document.getElementById('description-div');
+            if (selectElement.value === '2') {
+                textareaDivElement.style.display = 'block';
+            } else {
+                textareaDivElement.style.display = 'none';
+            }
+        }
+
+        window.onload = function() {
+            // Inicializa el estado del div que contiene el textarea cuando se carga la página
+            toggleTextarea();
+            // Agrega el event listener al select para cambiar la visibilidad del div que contiene el textarea
+            document.getElementById('status').addEventListener('change', toggleTextarea);
+        };
+    </script>
 @endpush

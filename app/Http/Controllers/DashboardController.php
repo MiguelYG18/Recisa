@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Appointment;
 use App\Models\Patient;
 use App\Models\User;
+use App\Models\UserSpecialization;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -35,10 +36,29 @@ class DashboardController extends Controller
             return view('secretary.dashboard');
         }
         if($user->user_level == 3){
-            $appointments = Appointment::join('user_specialization', 'appointments.id_quota', '=', 'user_specialization.id')
-            ->where('user_specialization.id_user', $user->id)
-            ->count();
-            return view('doctor.dashboard', compact('appointments')); 
+            // Obtener las especializaciones del usuario junto con el conteo de citas
+            $assignments = UserSpecialization::where('id_user', $user->id)
+                            ->with(['specialization'])
+                            ->withCount([
+                                'appointment as appointment_pending_count' => function ($query) {
+                                    $query->where('status', 0);
+                                }
+                            ])
+                            ->get();
+            // Saber el avance de la atención de citas
+            $atendidos = UserSpecialization::where('id_user', $user->id)
+                        ->with(['specialization'])
+                        ->withCount([
+                            'appointment as appointment_pending_count' => function ($query) {
+                                $query->where('status', 1);
+                            },
+                            'appointment as appointment_cancel_count' => function ($query) {
+                                $query->where('status', 2);
+                            },
+                            'appointment as appointment_count'
+                        ])
+                        ->get();                      
+            return view('doctor.dashboard', compact('assignments','atendidos')); 
         }
 
     }

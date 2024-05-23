@@ -27,12 +27,11 @@
                 });
             </script>            
         @endif   
-
         <div class="row">
             <div class="col-md-8">
                 <div class="card shadow">
                     <div class="card-header py-3">
-                        <p class="text-primary m-0 fw-bold">Especialidades a Cargo</p>
+                        <p class="text-primary m-0 fw-bold">Citas Pendientes</p>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive table" id="dataTable-2" role="grid" aria-describedby="dataTable_info">
@@ -40,21 +39,31 @@
                                 <thead>
                                     <tr>
                                         <th style="width: 20px; font-weight:bold; text-align:center">#</th>
-                                        <th style="width: 250px; text-align:center;">Especialidad</th>
-                                        <th style="width: 150px; text-align:center;">Cupos disponibles</th>
-                                        <th style="width: 150px; text-align:center;">Total de Citas</th>
+                                        <th style="width: 250px;">Paciente</th>
+                                        <th style="width: 250px;">Especialidad</th>
+                                        <th style="width: 150px;">Fecha</th>
+                                        <th style="width: 150px;">Hora</th>
+                                        <th class="text-center">Opciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($asignaciones as $index=>$value)
+                                    @foreach ($appointments as $value => $appointment)
                                         <tr>
-                                            <td class="text-center">{{$index + 1}}</td>
-                                            <td class="text-center">{{$value->specialization->name}}</td>
-                                            <td class="text-center">{{$value->cupo_doctor}}</td>
-                                            <td class="text-center">{{$value->appointment_count}}</td>
-                                        </tr>                                      
+                                            <td>{{ $value + 1 }}</td>
+                                            <td>{{ $appointment->patient->names }} {{ $appointment->patient->surnames }}</td>
+                                            <td>{{ $appointment->doctor->specialization->name }}</td>
+                                            <td>{{ $appointment->date }}</td>
+                                            <td>{{ $appointment->time }}</td>
+                                            <td class="text-center">
+                                                <div class="btn-group" role="group">
+                                                    <a href="{{ url('doctor/attend/edit/'.$appointment->id) }}" class="btn btn-primary" style="background: #F4D03F !important;">
+                                                        <i class="fa-solid fa-eye"></i>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
                                     @endforeach
-                                </tbody>                                
+                                </tbody>
                             </table>
                         </div>
                     </div>
@@ -66,11 +75,20 @@
                         <h6 class="text-primary fw-bold m-0">Avance de Atención</h6>
                     </div>
                     <div class="card-body">
-                        @foreach ($asignaciones as $asignacion)
-                            <h4 class="small fw-bold">{{$asignacion->specialization->name}}<span class="float-end">20%</span></h4>
+                        @foreach ($atendidos as $atendido)
+                            @php
+                                $maxquatity= (($atendido->appointment_pending_count + $atendido->appointment_cancel_count) / ($atendido->cupo_doctor + $atendido->appointment_count))*100;
+                            @endphp
+                            <h4 class="small fw-bold">{{$atendido->specialization->name}}
+                                @if ($maxquatity == 100)
+                                    <span class="float-end">Completado !</span>
+                                @else
+                                    <span class="float-end"><?php echo round($maxquatity); ?>%</span>
+                                @endif
+                            </h4>
                             <div class="progress progress-sm mb-3">
-                                <div class="progress-bar bg-success" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%;">
-                                    <span class="visually-hidden">20%</span>
+                                <div class="progress-bar bg-success" aria-valuenow="<?php echo $maxquatity; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $maxquatity; ?>%;">
+                                    <span class="visually"><?php echo round($maxquatity); ?>%</span>
                                 </div>
                             </div>
                         @endforeach
@@ -93,7 +111,7 @@
                                         <option value="20">20</option>
                                     </select>`,
                     "zeroRecords": "No se encontró nada - lo siento",
-                    "info": "Mostrando la página _PAGE_ de _PAGES_ de _TOTAL_ especialidades a cargo",
+                    "info": "Mostrando la página _PAGE_ de _PAGES_ de _TOTAL_ citas pendientes",
                     "infoEmpty": "No hay registros disponibles",
                     "infoFiltered": "(filtrado de _MAX_ registros totales)",
                     "search": "Buscar:",

@@ -31,6 +31,7 @@ class AppointmentController extends Controller
                  'id_patient'=>$request->id_patient,
                  'date'=>$request->date,
                  'time'=>$request->time,
+                 'description'=>null,
                  'status'=>0
             ]);
             $appointment->save();
