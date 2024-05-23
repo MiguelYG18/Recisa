@@ -26,7 +26,7 @@ class DashboardController extends Controller
             if(is_null($quatity)){
                 $quatity=0;
             }        
-            $appointment=Appointment::where('status','=','0')->count(); 
+            $appointment=Appointment::count(); 
             $maxquatity=   $quatity + $appointment; 
             /**************************************************************************************/   
             $patient=Patient::count();
