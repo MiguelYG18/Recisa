@@ -64,12 +64,17 @@
                                 <input readonly class="form-control" type="text" name="surnames" id="surnames"
                                     value="{{ old('surnames') }}">
                             </div>
-                            <div class="col-md-3" style="width:15% !important">
+                            <div class="col-md-3">
+                                <label for="phone" class="form-label">Número Historial:</label>
+                                <input class="form-control" maxlength="10" minlength="10" type="text" name="history_number" 
+                                    id="history_number" value="{{ old('history_number') }}">
+                            </div>
+                            <div class="col-md-2">
                                 <label for="phone" class="form-label">Celular:</label>
                                 <input class="form-control" maxlength="9" minlength="9" type="text" name="phone" 
                                     id="phone" value="{{ old('phone') }}">
                             </div>
-                            <div class="col-md-3" style="width:8% !important">
+                            <div class="col-md-1">
                                 <label for="age" class="form-label">Edad:</label>
                                 <input class="form-control" maxlength="2" minlength="1" type="text" name="age" 
                                     id="age" value="{{ old('age') }}">
@@ -167,7 +172,7 @@
                 title: message
             });
         }
-        $('#documento,#dni,#phone').on('input', function() {
+        $('#documento,#dni,#phone,#history_number').on('input', function() {
             this.value = this.value.replace(/\D/g, '');
         });
     </script>

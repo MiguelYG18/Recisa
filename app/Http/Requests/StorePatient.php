@@ -25,8 +25,9 @@ class StorePatient extends FormRequest
             'dni'=>'required|digits:8|regex:/^[0-9]{8}$/|unique:patients,dni',
             'names'=>'required|string|regex:/^[\pL\s]+$/u|max:25',
             'surnames'=>'required|string|regex:/^[\pL\s]+$/u|max:25',
-            'phone'=>'required|regex:/^[0-9]{9}$/|unique:users,phone',
-            'age'=> 'required|regex:/^[0-9]{2}$/'
+            'phone'=>'required|regex:/^[0-9]{9}$/|unique:patients,phone',
+            'age'=> 'required|regex:/^[0-9]{2}$/',
+            'history_number' => 'required|regex:/^[0-9]{10}$/|unique:patients,history_number'
         ];
     }
 
@@ -35,7 +36,8 @@ class StorePatient extends FormRequest
         return[
             'names'=>'nombres',
             'surnames'=>'apellidos',
-            'age'=>'edad'
+            'age'=>'edad',
+            'history_number' => 'número de historial',
         ];
     }
 
@@ -44,7 +46,8 @@ class StorePatient extends FormRequest
             'dni.digits' => 'El DNI debe tener exactamente 8 dígitos numericos.',
             'dni.regex' => 'El DNI es incorrecto.',
             'phone.digits' => 'El celular debe tener exactamente 9 dígitos.',
-            'phone.regex' => 'El celular es incorrecto.'
+            'phone.regex' => 'El celular es incorrecto.',
+            'history_number.digits' => 'El número historial clinico debe tener exactamente 10 dígitos.'
         ];
     } 
 }

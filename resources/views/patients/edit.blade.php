@@ -49,11 +49,15 @@
                                     <label for="surnames" class="form-label">Apellido:</label>
                                     <input readonly class="form-control" type="text" name="surnames" id="surnames" value="{{old('surnames',$patient->surnames)}}">
                                 </div>
-                                <div class="col-md-3" style="width:15% !important">
+                                <div class="col-md-3">
+                                    <label for="phone" class="form-label">Número Historial:</label>
+                                    <input readonly class="form-control" maxlength="10" minlength="10" type="text" name="history_number" id="history_number" value="{{old('history_number',$patient->history_number)}}">
+                                </div>
+                                <div class="col-md-2">
                                     <label for="phone" class="form-label">Celular:</label>
                                     <input class="form-control" maxlength="9" minlength="9" type="text" name="phone" id="phone" value="{{old('phone',$patient->phone)}}">
                                 </div>
-                                <div class="col-md-3" style="width:8% !important">
+                                <div class="col-md-1">
                                     <label for="age" class="form-label">Edad:</label>
                                     <input class="form-control" type="text" name="age" id="age" value="{{old('age',$patient->age)}}">
                                 </div>

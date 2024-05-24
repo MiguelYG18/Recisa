@@ -22,7 +22,8 @@ class Patient extends Model
         'names',
         'surnames',
         'phone',
-        'age'
+        'age',
+        'history_number'
     ];
 
     public function appointments()

@@ -42,7 +42,6 @@ class ClinicalHistoryController extends Controller
                     $name=$clinicalHistories->hanbleUploadFile($file);
                     $clinicalHistories2 = new ClinicalHistories();
                     $clinicalHistories2->id_patient = $request->id_patient;
-                    $clinicalHistories2->history_number = $request->history_number;
                     $clinicalHistories2->datetime_created = $request->datetime_created;
                     $clinicalHistories2->source_pdf = $name;
                     $clinicalHistories2->save();

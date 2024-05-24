@@ -35,7 +35,8 @@ class PatientController extends Controller
                     'names'=>$request->names,
                     'surnames'=>$request->surnames,
                     'phone'=>$request->phone,
-                    'age'=>$request->age
+                    'age'=>$request->age,
+                    'history_number'=>$request->history_number
                ]);
 
                 $patient->save();

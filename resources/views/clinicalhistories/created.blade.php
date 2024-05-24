@@ -118,7 +118,7 @@
                                     <label class="input-group-text" for="quantity_voucher">Número Historial</label>
                                     <input type="text" class="form-control"
                                         style="border-radius:0px 10px 10px 0px !important; height:38px" maxlength="10"
-                                        minlength="10" id="history_number" name="history_number"
+                                        minlength="10" id="history_number" name="history_number" readonly
                                         aria-describedby="basic-addon3 basic-addon4" value="{{ old('history_number') }}">
                                 </div>
                             </div>
@@ -198,11 +198,13 @@
                         var nombreCompleto = patient.names + ' ' + patient.surnames;
                         $('#full_name').val(nombreCompleto);
                         $('#id_patient').val(patient.id);
+                        $('#history_number').val(patient.history_number);
                         $('#dni').val('');
                     } else {
                         showModal('El paciente no está registrado', 'error');
                         $('#full_name').val('');
                         $('#id_patient').val('');
+                        $('#history_number').val('');
                         $('#dni').val('');
                     }
                 },

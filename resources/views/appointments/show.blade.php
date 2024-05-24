@@ -105,6 +105,15 @@
                     <hr>
                     <div class="row">
                         <div class="col-sm-3">
+                            <p class="mb-0">Número Historial</p>
+                        </div>
+                        <div class="col-sm-9">
+                            <p class="text-muted mb-0">{{ $appointment->patient->history_number }}</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
                             <p class="mb-0">Celular</p>
                         </div>
                         <div class="col-sm-9">
@@ -134,8 +143,7 @@
                                 <table id="usuarios" class="table my-0">
                                     <thead>
                                         <tr style="">
-                                            <th style="width: 1000px;text-align: center !important; font-weight:bold">Número
-                                                del Historial</th>
+                                            <th style="width: 1000px;text-align: center !important; font-weight:bold">Nombre de Archivo</th>
                                             <th style="width: 1000px;text-align: center !important; font-weight:bold">Fecha
                                                 de creación</th>
                                             <th style="width: 1000px;text-align: center !important; font-weight:bold">PDF
@@ -145,7 +153,7 @@
                                     <tbody>
                                         @foreach($clinical_histories as $clinical_history)
                                         <tr>
-                                            <td class="text-center">{{$clinical_history->history_number}}</td>
+                                            <td class="text-center">{{$clinical_history->source_pdf}}</td>
                                             <td class="text-center">{{$clinical_history->datetime_created}}</td>
                                             <td class="text-center">
                                                 <a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" target="_blank"

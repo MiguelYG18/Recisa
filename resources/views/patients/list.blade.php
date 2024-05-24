@@ -46,6 +46,7 @@
                                     <tr style="">
                                         <th style="width: 100px;text-align: center !important; font-weight:bold">DNI</th>
                                         <th style="width: 1000px;text-align: center !important; font-weight:bold">Paciente</th>
+                                        <th style="width: 1000px;text-align: center !important; font-weight:bold">Número Historial</th>
                                         <th style="width: 100px;text-align: center !important; font-weight:bold">Celular</th>
                                         <th style="width: 300px;text-align: center !important; font-weight:bold">Edad</th>
                                         <th style="width: 300px;text-align: center !important; font-weight:bold">Creación</th>
@@ -57,6 +58,7 @@
                                         <tr>
                                             <td>{{$patient->dni}}</td>
                                             <td>{{$patient->names}}, {{$patient->surnames}}</td>
+                                            <td>{{$patient->history_number}}</td>
                                             <td>{{$patient->phone}}</td>
                                             <td>{{$patient->age}}</td>
                                             <td>{{date('d-m-Y', strtotime($patient->created_at))}}</td>

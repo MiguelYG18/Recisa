@@ -22,7 +22,8 @@ class StoreClinicalHistoriesRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'history_number' => 'required|regex:/^[0-9]{10}$/|unique:clinical_histories,history_number',
+            'id_patient'=> 'required',
+            'datetime_created'=> 'required',
             'files' => 'required|array',
             'files.*' => 'file|mimes:pdf|max:2000',
         ];
@@ -31,7 +32,8 @@ class StoreClinicalHistoriesRequest extends FormRequest
     public function attributes()
     {
         return [
-            'history_number' => 'número de historial',
+            'id_patient'=>'id paciente',
+            'datetime_created'=> 'fecha',
             'files' => 'archivos',
             'files.*' => 'cada archivo'
         ];

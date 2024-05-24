@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('surnames',25);
             $table->char('phone',9);
             $table->char('age',3);
+            $table->string('history_number',10);
             $table->timestamps();
         });
     }
