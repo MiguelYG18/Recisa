@@ -13,7 +13,7 @@
                     <p class="text-primary m-0 fw-bold">Especialidad</p>
                 </div>
                 <div class="card-body text-center">
-                    <p class="text-muted mb-4">Especialidad: {{ $appointment->doctor->specialization->name }}</p>
+                    <p class="text-muted mb-4">{{ $appointment->doctor->specialization->name }}</p>
                 </div>
             </div>
             <div class="card mb-4 mb-lg-0">
@@ -121,6 +121,15 @@
                     <hr>
                     <div class="row">
                         <div class="col-sm-3">
+                            <p class="mb-0">Historial Clínico</p>
+                        </div>
+                        <div class="col-sm-9">
+                            <p class="text-muted mb-0">{{ $appointment->patient->history_number }}</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
                             <p class="mb-0">Celular</p>
                         </div>
                         <div class="col-sm-9">
@@ -150,26 +159,25 @@
                                 <table id="usuarios" class="table my-0">
                                     <thead>
                                         <tr style="">
-                                            <th style="width: 1000px;text-align: center !important; font-weight:bold">Número
-                                                del Historial</th>
-                                            <th style="width: 1000px;text-align: center !important; font-weight:bold">Fecha
-                                                de creación</th>
-                                            <th style="width: 1000px;text-align: center !important; font-weight:bold">PDF
-                                            </th>
+                                            <th style="width: 1000px;text-align: center !important; font-weight:bold">Número del Historial</th>
+                                            <th style="width: 1000px;text-align: center !important; font-weight:bold">Fecha de creación</th>
+                                            <th style="width: 1000px;text-align: center !important; font-weight:bold">PDF</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach($clinical_histories as $clinical_history)
                                         <tr>
-                                            <td class="text-center">8731287</td>
-                                            <td class="text-center">12/05/2023</td>
+                                            <td class="text-center">{{$clinical_history->source_pdf}}</td>
+                                            <td class="text-center">{{$clinical_history->datetime_created}}</td>
                                             <td class="text-center">
-                                                <a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button"
-                                                    href="#"
+                                                <a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" target="_blank"
+                                                    href="{{Storage::url('public/clinical_histories/'.$clinical_history->source_pdf)}}"
                                                     style="--bs-primary: #00486E;--bs-primary-rgb: 0,72,110;--bs-body-bg: #00476D;background: #00476D !important;">
                                                     <i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Ver historial
                                                 </a>
                                             </td>
                                         </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

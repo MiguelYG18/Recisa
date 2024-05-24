@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Appointment;
+use App\Models\ClinicalHistories;
 use App\Models\UserSpecialization;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -35,7 +36,8 @@ class DoctorController extends Controller
         return view('doctor.citas.index',compact('atendidos','appointments'));
     }
     public function edit(Appointment $appointment){
-        return view('doctor.citas.show', compact('appointment'));
+        $clinical_histories = ClinicalHistories::where('id_patient', $appointment->patient->id)->get();
+        return view('doctor.citas.show', compact('appointment','clinical_histories'));
     }
     public function update(Request $request,$id){
         $validator = Validator::make($request->all(), [

@@ -58,9 +58,9 @@
                                         <tr>
                                             <td>{{$patient->dni}}</td>
                                             <td>{{$patient->names}}, {{$patient->surnames}}</td>
-                                            <td>{{$patient->history_number}}</td>
+                                            <td class="text-center">{{$patient->history_number}}</td>
                                             <td>{{$patient->phone}}</td>
-                                            <td>{{$patient->age}}</td>
+                                            <td class="text-center">{{$patient->age}}</td>
                                             <td>{{date('d-m-Y', strtotime($patient->created_at))}}</td>
                                             <td class="text-center">
                                                 <div class="btn-group" role="group">
