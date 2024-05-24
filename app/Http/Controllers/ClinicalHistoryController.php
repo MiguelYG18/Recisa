@@ -12,9 +12,9 @@ use Illuminate\Support\Facades\DB;
 
 class ClinicalHistoryController extends Controller
 {
-    public function add(){
-        $specializations = Specialization::all();
-        return view('clinicalhistories.created',compact('specializations'));
+    public function add()
+    {
+        return view('clinicalhistories.created');
     }
 
     public function shearePatient(Request $request)
@@ -27,18 +27,32 @@ class ClinicalHistoryController extends Controller
 
     public function insert(StoreClinicalHistoriesRequest $request)
     {
-        try{
+        try {
             DB::beginTransaction();
-                $clinicalHistories = new ClinicalHistories();
 
-                
-                $clinicalHistories->save();
+            // Crear una instancia del modelo ClinicalHistories
+            $clinicalHistories = new ClinicalHistories();
+            
+
+            // Almacenar los archivos y obtener sus rutas
+            if ($request->hasFile('files')) {
+                $files = $request->file('files');
+                $filePaths = [];
+                foreach ($files as $file) {
+                    $name=$clinicalHistories->hanbleUploadFile($file);
+                    $clinicalHistories2 = new ClinicalHistories();
+                    $clinicalHistories2->id_patient = $request->id_patient;
+                    $clinicalHistories2->history_number = $request->history_number;
+                    $clinicalHistories2->datetime_created = $request->datetime_created;
+                    $clinicalHistories2->source_pdf = $name;
+                    $clinicalHistories2->save();
+                }
+            }
             DB::commit();
-        }catch (Exception $e){
+        } catch (Exception $e) {
             DB::rollBack();
         }
-
-        return redirect('recisa/patient/list')->with('sucess', 'Historial clinicos registrados a pacientes.');
-
+        return redirect('recisa/patients/list')->with('success','Historia clinica registrado');
+        
     }
 }

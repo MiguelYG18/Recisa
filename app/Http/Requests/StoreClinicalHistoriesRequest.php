@@ -22,15 +22,18 @@ class StoreClinicalHistoriesRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'history_number'=>'required|max:25',
-            'source_pdf'=>'nullable|source_pdf|mimes:pdf|max:10000'
+            'history_number' => 'required|regex:/^[0-9]{10}$/|unique:clinical_histories,history_number',
+            'files' => 'required|array',
+            'files.*' => 'file|mimes:pdf|max:2000',
         ];
     }
 
     public function attributes()
     {
-        return[
-            'history_number'=>'número de historial'
+        return [
+            'history_number' => 'número de historial',
+            'files' => 'archivos',
+            'files.*' => 'cada archivo'
         ];
     }
 }

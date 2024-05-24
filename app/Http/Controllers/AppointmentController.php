@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreApointment;
 use App\Models\Appointment;
+use App\Models\ClinicalHistories;
 use App\Models\Patient;
 use App\Models\UserSpecialization;
 use Exception;
@@ -46,6 +47,7 @@ class AppointmentController extends Controller
         return redirect('recisa/appoitnment/list')->with('success','Cita Registrada'); 
     }
     public function show(Appointment $appointment){
-        return view('appointments.show',compact('appointment'));
+        $clinical_histories = ClinicalHistories::where('id_patient', $appointment->patient->id)->get();
+        return view('appointments.show',compact('appointment','clinical_histories'));
     }
 }

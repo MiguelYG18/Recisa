@@ -6,12 +6,20 @@ let numOfFiles = document.getElementById("num-of-files");
 let allFiles = [];
 
 fileInput.addEventListener("change", () => {
-  // Añadir nuevos archivos a la lista global
-  for (let i = 0; i < fileInput.files.length; i++) {
-    allFiles.push(fileInput.files[i]);
-  }
+  let selectedFiles = Array.from(fileInput.files);
 
-  // Actualizar la lista de archivos
+  // Filtrar los archivos que ya están en allFiles
+  selectedFiles.forEach(file => {
+    if (!allFiles.some(existingFile => existingFile.name === file.name && existingFile.size === file.size)) {
+      allFiles.push(file);
+    }
+  });
+
+  // Crear un nuevo DataTransfer para actualizar el input de archivos
+  const dataTransfer = new DataTransfer();
+  allFiles.forEach(file => dataTransfer.items.add(file));
+  fileInput.files = dataTransfer.files;
+
   updateFileList();
 });
 
@@ -20,11 +28,10 @@ function updateFileList() {
   fileList.innerHTML = "";
 
   // Actualizar el número de archivos seleccionados
-  // Actualizar el número de archivos seleccionados
   numOfFiles.textContent = `${allFiles.length} archivos seleccionados`;
 
   // Actualizar la lista de archivos
-  allFiles.forEach((file) => {
+  allFiles.forEach((file, index) => {
     let listItem = document.createElement("li");
     listItem.style.display = "flex";
     listItem.style.alignItems = "center";
@@ -37,7 +44,7 @@ function updateFileList() {
     fileDetails.style.alignItems = "center";
     fileDetails.style.gap = "10px";
     fileDetails.innerHTML = `<p style="margin: 0; align-self: center;">${fileName}</p><p style="margin: 0; align-self: center;">${fileSize}KB</p>`;
-    
+
     if (fileSize >= 1024) {
       fileSize = (fileSize / 1024).toFixed(1);
       fileDetails.innerHTML = `<p style="margin: 0; align-self: center;">${fileName}</p><p style="margin: 0; align-self: center;">${fileSize}MB</p>`;
@@ -52,17 +59,15 @@ function updateFileList() {
     let icon = document.createElement("i");
     icon.className = "fa-solid fa-trash";
     deleteButton.appendChild(icon);
-    let textNode = document.createTextNode(" "); // Agrega un espacio antes para separar el icono y el texto
-    deleteButton.appendChild(textNode);
-
+    deleteButton.appendChild(document.createTextNode(" "));
     deleteButton.addEventListener("click", () => {
-      // Eliminar archivo de la lista
-      let index = allFiles.indexOf(file);
-      if (index > -1) {
-        allFiles.splice(index, 1);
-      }
+      allFiles.splice(index, 1);
 
-      // Actualizar la lista de archivos
+      // Crear un nuevo DataTransfer para actualizar el input de archivos
+      const dataTransfer = new DataTransfer();
+      allFiles.forEach(file => dataTransfer.items.add(file));
+      fileInput.files = dataTransfer.files;
+
       updateFileList();
     });
 
@@ -71,18 +76,14 @@ function updateFileList() {
     let previewIcon = document.createElement("i");
     previewIcon.className = "fa-solid fa-eye";
     previewButton.appendChild(previewIcon);
-    let previewTextNode = document.createTextNode(" "); // Agrega un espacio antes para separar el icono y el texto
-    previewButton.appendChild(previewTextNode);
-    
+    previewButton.appendChild(document.createTextNode(" ")); // Agrega un espacio antes para separar el icono y el texto
     previewButton.addEventListener("click", () => {
-      // Mostrar vista previa del archivo
       window.open(URL.createObjectURL(file), '_blank');
     });
 
     // Agregar los botones al contenedor
     buttonContainer.appendChild(previewButton);
     buttonContainer.appendChild(deleteButton);
-   
 
     // Agregar el contenedor a la lista
     listItem.appendChild(fileDetails);

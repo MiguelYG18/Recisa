@@ -70,20 +70,7 @@
                                 <button type="button" class="btn btn-outline-success ms-1">Atendido</button>
                                 @break
                             @case(2)
-                                <button type="button" class="btn btn-outline-danger ms-1" data-bs-toggle="modal" data-bs-target="#sin-{{$appointment->id}}">No Asistio</button>
-                                <div class="modal fade" id="sin-{{$appointment->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Descripción de la Cita</h1>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                {{$appointment->description}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <button type="button" class="btn btn-outline-danger ms-1">No Asistio</button>
                                 @break
                             @default
                         @endswitch
@@ -156,17 +143,19 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach($clinical_histories as $clinical_history)
                                         <tr>
-                                            <td class="text-center">8731287</td>
-                                            <td class="text-center">12/05/2023</td>
+                                            <td class="text-center">{{$clinical_history->history_number}}</td>
+                                            <td class="text-center">{{$clinical_history->datetime_created}}</td>
                                             <td class="text-center">
-                                                <a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button"
-                                                    href="#"
+                                                <a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" target="_blank"
+                                                    href="{{Storage::url('public/clinical_histories/'.$clinical_history->source_pdf)}}"
                                                     style="--bs-primary: #00486E;--bs-primary-rgb: 0,72,110;--bs-body-bg: #00476D;background: #00476D !important;">
                                                     <i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Ver historial
                                                 </a>
                                             </td>
                                         </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

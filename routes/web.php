@@ -135,6 +135,8 @@ Route::group(['middleware'=>'admin_or_secretary'],function(){
     //Rutas para el historila clinico
     //Abrir historial
     Route::get('/recisa/clinicalhistories/created', [ClinicalHistoryController::class, 'add']);
+    //registrar historial
+    Route::post('/recisa/clinicalhistories/created', [ClinicalHistoryController::class, 'insert']);
     //Rutas para las citas
     Route::get('/recisa/appoitnment/list',[AppointmentController::class,'list']);
     Route::get('/recisa/appoitnment/add',[AppointmentController::class,'add']);
