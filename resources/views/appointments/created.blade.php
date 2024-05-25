@@ -68,8 +68,8 @@
                                 <div class="col-md-6 mt-3">
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="inputGroup-sizing-default">Fecha de atención</span>
-                                        <input type="date" name="date" id="date" class="form-control boder-success"
-                                            value="{{ old('date') }}">
+                                        <input readonly type="date" name="date" id="date" class="form-control boder-success"
+                                        value="<?php echo date("Y-m-d");?>">
                                     </div>
                                 </div>
                                 <!--hora-->
