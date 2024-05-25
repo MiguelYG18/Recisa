@@ -25,16 +25,6 @@ class AdminController extends Controller
         $rol=UserGroup::all();
         return view('admin.admin.created',compact('rol'));
     }
-
-    public function addPatient(){
-        $rol=UserGroup::all();
-        return view('admin.admin.createdPatient',compact('rol'));
-    }
-
-    public function addHistoryPatient(){
-        $rol=UserGroup::all();
-        return view('patient.createdHistoryPatient',compact('rol'));
-    }
     public function insert(StoreUserRequest $request){
         try {
             DB::beginTransaction();
