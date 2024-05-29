@@ -29,7 +29,7 @@
             </script>            
         @endif   
         <div class="d-sm-flex align-items-center mb-4" style="justify-content: right;">
-            <a class="btn btn-primary btn-sm d-none d-sm-inline-block" target="_blank" role="button" href="{{url('admin/admin/reporte')}}" style="--bs-primary: #00486E;--bs-primary-rgb: 0,72,110;--bs-body-bg: #00476D;background: #00476D !important;">
+            <a class="btn btn-primary btn-sm d-none d-sm-inline-block" target="_blank" role="button" href="{{url('recisa/patients/reporte')}}" style="--bs-primary: #00486E;--bs-primary-rgb: 0,72,110;--bs-body-bg: #00476D;background: #00476D !important;">
                 <i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generar Reporte
             </a>
         </div>
@@ -51,6 +51,7 @@
                                         <th style="width: 300px;text-align: center !important; font-weight:bold">Edad</th>
                                         <th style="width: 300px;text-align: center !important; font-weight:bold">Creación</th>
                                         <th class="title-table" style="width: 300px;text-align: center !important; font-weight:bold">Opciones</th>
+                                        <th class="title-table" style="width: 300px;text-align: center !important; font-weight:bold">Reporte</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -84,11 +85,15 @@
                                                                     <a href="{{url('recisa/patients/delete/'.$patient->id)}}" class="btn btn-danger"style="background: #EB5C5E;">
                                                                         Eliminar
                                                                     </a>
+
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>                                                
+                                                    </div> 
                                                 </div>
+                                            </td>
+                                            <td class="text-center">
+                                                <a href="{{url('recisa/patients/reporte/'.$patient->dni)}}" target="_blank" class="btn btn-primary" style="background: #58D68D !important;"><i class="fa-solid fa-file-pdf"></i></a>                                               
                                             </td>
                                         </tr>
                                     @endforeach

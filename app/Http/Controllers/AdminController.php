@@ -151,7 +151,7 @@ class AdminController extends Controller
         // Obtener todos los usuarios
         $users = User::all(); // O personaliza la consulta si es necesario
         // Cargar la vista y pasar los datos de los usuarios
-        $view = View::make('admin.reporte.report', ['users' => $users]);
+        $view = View::make('report.user_report', ['users' => $users]);
         // Obtener el contenido HTML de la vista
         $html = $view->render();
         // Crear una instancia de mPDF

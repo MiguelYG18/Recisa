@@ -10,6 +10,8 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\View;
+use Mpdf\Mpdf;
 
 class PatientController extends Controller
 {
@@ -89,4 +91,40 @@ class PatientController extends Controller
         $patient->delete();
         return redirect('recisa/patients/list')->with('success','El paciente '.$patient->names.' fue eliminado'); 
     }
+    public function reporte(){
+        // Obtener todos los usuarios
+        $patients = Patient::all(); // O personaliza la consulta si es necesario
+        // Cargar la vista y pasar los datos de los usuarios
+        $view = View::make('report.patient_report', ['patients' => $patients]);
+        // Obtener el contenido HTML de la vista
+        $html = $view->render();
+        // Crear una instancia de mPDF
+        $mpdf = new Mpdf();
+        // Configurar el pie de página centrado
+        $footerHtml = '<footer>Página {PAGENO} de {nbpg}</footer>';
+        $mpdf->SetHTMLFooter($footerHtml);      
+        // Escribir el contenido HTML en el PDF
+        $mpdf->WriteHTML($html);
+        // Devolver el PDF como respuesta
+        return response($mpdf->Output('reporte_pacientes.pdf', 'I')) // 'I' para Inline, 'D' para Descargar
+            ->header('Content-Type', 'application/pdf');  
+    }
+    public function report_patient($dni){
+        // Obtener todos los usuarios
+        $patient = Patient::where('dni', $dni)->first();
+        // Cargar la vista y pasar los datos de los usuarios
+        $view = View::make('report.patient_dni_report', ['patient' => $patient]);
+        // Obtener el contenido HTML de la vista
+        $html = $view->render();
+        // Crear una instancia de mPDF
+        $mpdf = new Mpdf();
+        // Configurar el pie de página centrado
+        $footerHtml = '<footer>Página {PAGENO} de {nbpg}</footer>';
+        $mpdf->SetHTMLFooter($footerHtml);      
+        // Escribir el contenido HTML en el PDF
+        $mpdf->WriteHTML($html);
+        // Devolver el PDF como respuesta
+        return response($mpdf->Output('reporte_pacientes.pdf', 'I')) // 'I' para Inline, 'D' para Descargar
+            ->header('Content-Type', 'application/pdf');  
+    }    
 }

@@ -1,20 +1,15 @@
 <?php
 
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\AdminProfileController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\CitaController;
 use App\Http\Controllers\ClinicalHistoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DNIController;
 use App\Http\Controllers\DoctorController;
-use App\Http\Controllers\DoctorProfileController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\SecretaryProfileController;
 use App\Http\Controllers\SpecializationController;
-use App\Http\Controllers\TicketController;
 use App\Http\Controllers\UserGroupController;
 use App\Http\Controllers\UserSpecializationController;
 use Illuminate\Support\Facades\Route;
@@ -142,6 +137,9 @@ Route::group(['middleware'=>'admin_or_secretary'],function(){
     Route::get('/recisa/appoitnment/add',[AppointmentController::class,'add']);
     Route::post('/recisa/appoitnment/add',[AppointmentController::class,'insert']);
     Route::get('/recisa/appoitnment/show/{appointment}',[AppointmentController::class,'show']);
+    //Reporte de Pacientes Total
+    Route::get('/recisa/patients/reporte',[PatientController::class,'reporte']);
+    Route::get('/recisa/patients/reporte/{dni}',[PatientController::class,'report_patient']); 
 });
 Route::group(['middleware'=>'profile'],function(){
     //Ruta para ver el perfil
