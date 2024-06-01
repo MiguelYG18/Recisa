@@ -34,24 +34,24 @@
                 <div class="date">Horarios: 7.00 A 19.00 HORAS</div>
             </div>
         </div>
-        <table border="0" cellspacing="0" cellpadding="0">
+        <table>
             <thead>
-                <tr>
-                    <th class="no">#</th>
-                    <th class="desc">USUARIO</th>
-                    <th class="unit">DNI</th>
-                    <th class="qty">CELULAR</th>
-                    <th class="total">EMAIL</th>
+                <tr style="border: 2px solid; border-color: #acacb1da;">
+                    <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">#</th>
+                    <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">USUARIO</th>
+                    <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">DNI</th>
+                    <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">CELULAR</th>
+                    <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">EMAIL</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($users as $index => $user)
                     <tr>
-                        <td class="no">{{ $index + 1 }}</td>
-                        <td class="desc">{{ $user->surnames }}, {{ $user->names }}</td>
-                        <td class="unit">{{ $user->dni }}</td>
-                        <td class="qty">{{ $user->phone }}</td>
-                        <td class="total">{{ $user->email }}</td>
+                        <td style="border: 2px solid; text-align: center; border-color: #acacb1da;">{{ $index + 1 }}</td>
+                        <td style="border: 2px solid; text-align: center; border-color: #acacb1da;">{{ $user->surnames }}, {{ $user->names }}</td>
+                        <td style="border: 2px solid; text-align: center; border-color: #acacb1da;">{{ $user->dni }}</td>
+                        <td style="border: 2px solid; text-align: center; border-color: #acacb1da;">{{ $user->phone }}</td>
+                        <td style="border: 2px solid; text-align: center; border-color: #acacb1da;">{{ $user->email }}</td>
                     </tr>
                 @endforeach
             </tbody>

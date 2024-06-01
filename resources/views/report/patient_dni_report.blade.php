@@ -23,23 +23,6 @@
     <main>
         <div id="details" class="clearfix">
             <div id="client">
-                <div class="to">
-                    @switch(Auth::user()->user_level)
-                        @case(1)
-                            ADMINISTRADOR:
-                            @break
-                        @case(2)
-                            SECRETARIO(A):
-                            @break
-                        @default
-                    @endswitch
-                </div>
-                <h2 class="name">{{ Auth::user()->surnames }}, {{ Auth::user()->names }}</h2>
-                <div class="address">{{ Auth::user()->phone }}</div>
-                <div class="email"><a href="mailto: {{ Auth::user()->email }}">{{ Auth::user()->email }}</a></div>
-            </div>
-            <br><br>
-            <div id="client">
                 <div class="to">PACIENTE:</div>
                 <h2 class="name">{{$patient->surnames}}, {{$patient->names}}</h2>
                 <div class="address">DNI: {{$patient->dni}}</div>
@@ -52,24 +35,24 @@
                 <div class="date">Horarios: 7.00 A 19.00 HORAS</div>
             </div>
         </div>
-        <table border="0" cellspacing="0" cellpadding="0">
+        <table>
             <thead>
-                <tr>
-                    <th class="no">#</th>
-                    <th class="desc">DOCTOR</th>
-                    <th class="unit">ESPECIALIDAD</th>
-                    <th class="qty">FECHA</th>
-                    <th class="total">HORA</th>
+                <tr style="border: 2px solid; border-color: #acacb1da;">
+                    <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">#</th>
+                    <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">DOCTOR</th>
+                    <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">ESPECIALIDAD</th>
+                    <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">FECHA</th>
+                    <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">HORA</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($patient as $value)
+                @foreach ($patient->appointments as $index => $appointment)
                     <tr>
-                        <th class="no">1</th>
-                        <th class="desc">{{$value->appointments->doctor->user->$surnames}}</th>
-                        <th class="unit">{{$value->appointments->doctor->specialization->$name}}</th>
-                        <th class="qty">FECHA</th>
-                        <th class="total">HORA</th>
+                        <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">{{ $index + 1 }}</th>
+                        <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">{{ $appointment->doctor->user->surnames}}, {{$appointment->doctor->user->names}}</th>
+                        <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">{{ $appointment->doctor->specialization->name}}</th>
+                        <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">{{ $appointment->date }}</th>
+                        <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">{{ $appointment->time }}</th>
                     </tr>
                 @endforeach
             </tbody>

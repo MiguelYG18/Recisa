@@ -111,7 +111,7 @@ class PatientController extends Controller
     }
     public function report_patient($dni){
         // Obtener todos los usuarios
-        $patient = Patient::where('dni', $dni)->first();
+        $patient = Patient::where('dni', $dni)->firstOrFail();
         // Cargar la vista y pasar los datos de los usuarios
         $view = View::make('report.patient_dni_report', ['patient' => $patient]);
         // Obtener el contenido HTML de la vista

@@ -46,24 +46,24 @@
         </div>
         <table border="0" cellspacing="0" cellpadding="0">
             <thead>
-                <tr>
-                    <th class="no">#</th>
-                    <th class="desc">PACIENTE</th>
-                    <th class="unit">DNI</th>
-                    <th class="qty">CELULAR</th>
-                    <th class="unit">EDAD</th>
-                    <th class="total">Nº HISTORIAL</th>
+                <tr style="border: 2px solid; border-color: #acacb1da;">
+                    <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">#</th>
+                    <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">PACIENTE</th>
+                    <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">DNI</th>
+                    <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">CELULAR</th>
+                    <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">EDAD</th>
+                    <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">Nº HISTORIAL</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($patients as $index => $patient)
                     <tr>
-                        <td class="no">{{ $index + 1 }}</td>
-                        <td class="desc">{{ $patient->surnames }}, {{ $patient->names }}</td>
-                        <td class="unit">{{ $patient->dni }}</td>
-                        <td class="qty">{{ $patient->phone }}</td>
-                        <td class="unit" style="text-align: center">{{ $patient->age }}</td>
-                        <td class="total">{{ $patient->history_number}}</td>
+                        <td style="border: 2px solid; text-align: center; border-color: #acacb1da;">{{ $index + 1 }}</td>
+                        <td style="border: 2px solid; text-align: center; border-color: #acacb1da;">{{ $patient->surnames }}, {{ $patient->names }}</td>
+                        <td style="border: 2px solid; text-align: center; border-color: #acacb1da;">{{ $patient->dni }}</td>
+                        <td style="border: 2px solid; text-align: center; border-color: #acacb1da;">{{ $patient->phone }}</td>
+                        <td style="border: 2px solid; text-align: center; border-color: #acacb1da;">{{ $patient->age }}</td>
+                        <td style="border: 2px solid; text-align: center; border-color: #acacb1da;">{{ $patient->history_number}}</td>
                     </tr>
                 @endforeach
             </tbody>
