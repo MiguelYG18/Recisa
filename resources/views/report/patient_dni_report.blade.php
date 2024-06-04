@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>RECISA | Reportes Usuarios</title>
+    <title>RECISA | Reporte Paciente</title>
     <link rel="stylesheet" href="{{ asset('assets/css/Report.css') }}" media="all" />
     <link rel="icon" href="{{ asset('assets/img/escudo.png') }}">
 </head>
@@ -43,6 +43,7 @@
                     <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">ESPECIALIDAD</th>
                     <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">FECHA</th>
                     <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">HORA</th>
+                    <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">ESTADO</th>
                 </tr>
             </thead>
             <tbody>
@@ -53,6 +54,20 @@
                         <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">{{ $appointment->doctor->specialization->name}}</th>
                         <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">{{ $appointment->date }}</th>
                         <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">{{ $appointment->time }}</th>
+                        <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">
+                            @switch($appointment->status)
+                                @case(0)
+                                    Por atender
+                                    @break
+                                @case(1)
+                                    Atendido
+                                    @break
+                                @case(2)
+                                    No atendido
+                                    @break
+                                @default
+                            @endswitch
+                        </th>
                     </tr>
                 @endforeach
             </tbody>
