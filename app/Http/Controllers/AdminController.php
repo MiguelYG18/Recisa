@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUserRequest;
 use App\Models\User;
+use App\Models\UserSpecialization;
 use App\Models\UserGroup;
 use Exception;
 use Illuminate\Http\Request;
@@ -19,7 +20,8 @@ class AdminController extends Controller
     {
         //all recuperar todos nuestris registros
         $users=User::all();
-        return view('admin.admin.list',compact('users'));
+        $quotas = UserSpecialization::with(['user', 'specialization'])->get();
+        return view('admin.admin.list',compact('users','quotas'));
     }
     public function add(){
         $rol=UserGroup::all();
@@ -166,4 +168,24 @@ class AdminController extends Controller
             ->header('Content-Type', 'application/pdf');  
     }    
 
+    public function report_doctor(Request $request){
+        // Obtener todos los usuarios
+        $patientDoctor = UserSpecialization::with(['user', 'appointment.patient', 'specialization'])
+        ->where('id_specialization', $request->id_select)
+        ->get();
+        // Cargar la vista y pasar los datos de los usuarios
+        $view = View::make('report.doctor_report', ['patientDoctor' => $patientDoctor]);
+        // Obtener el contenido HTML de la vista
+        $html = $view->render();
+        // Crear una instancia de mPDF
+        $mpdf = new Mpdf();
+        // Configurar el pie de página centrado
+        $footerHtml = '<footer>Página {PAGENO} de {nbpg}</footer>';
+        $mpdf->SetHTMLFooter($footerHtml);      
+        // Escribir el contenido HTML en el PDF
+        $mpdf->WriteHTML($html);
+        // Devolver el PDF como respuesta
+        return response($mpdf->Output('reporte_doctor.pdf', 'I')) // 'I' para Inline, 'D' para Descargar
+            ->header('Content-Type', 'application/pdf');  
+    }  
 }

@@ -140,6 +140,8 @@ Route::group(['middleware'=>'admin_or_secretary'],function(){
     //Reporte de Pacientes Total
     Route::get('/recisa/patients/reporte',[PatientController::class,'reporte']);
     Route::get('/recisa/patients/reporte/{dni}',[PatientController::class,'report_patient']); 
+    //Reporte de Doctores y su especialidad y pacientes
+    Route::get('/recisa/admin/reporte/doctor',[AdminController::class, 'report_doctor']);
 });
 Route::group(['middleware'=>'profile'],function(){
     //Ruta para ver el perfil

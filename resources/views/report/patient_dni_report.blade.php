@@ -46,29 +46,40 @@
                     <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">ESTADO</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody>   
                 @foreach ($patient->appointments as $index => $appointment)
-                    <tr>
-                        <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">{{ $index + 1 }}</th>
-                        <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">{{ $appointment->doctor->user->surnames}}, {{$appointment->doctor->user->names}}</th>
-                        <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">{{ $appointment->doctor->specialization->name}}</th>
-                        <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">{{ $appointment->date }}</th>
-                        <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">{{ $appointment->time }}</th>
-                        <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">
-                            @switch($appointment->status)
-                                @case(0)
-                                    Por atender
-                                    @break
-                                @case(1)
-                                    Atendido
-                                    @break
-                                @case(2)
-                                    No atendido
-                                    @break
-                                @default
-                            @endswitch
-                        </th>
-                    </tr>
+                    @switch($appointment->status)
+                        @case(0)
+                        <tr>
+                            <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">{{ $index + 1 }}</th>
+                            <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">{{ $appointment->doctor->user->surnames}}, {{$appointment->doctor->user->names}}</th>
+                            <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">{{ $appointment->doctor->specialization->name}}</th>
+                            <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">{{ $appointment->date }}</th>
+                            <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">{{ $appointment->time }}</th>
+                            <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">
+                                @switch($appointment->status)
+                                    @case(0)
+                                        Por atender
+                                        @break
+                                    @case(1)
+                                        Atendido
+                                        @break
+                                    @case(2)
+                                        No atendido
+                                        @break
+                                    @default
+                                @endswitch
+                            </th>
+                        </tr>
+                            @break
+                        @case(2)
+                            <tr>
+                                <th colspan="7" style="color: #6dc36d;border: 2px solid; text-align: center; border-color: #acacb1da;">ATENDIDO</th>
+                            </tr>
+                            @break
+                        @default
+                            
+                    @endswitch    
                 @endforeach
             </tbody>
         </table>
