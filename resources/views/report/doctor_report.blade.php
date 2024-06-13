@@ -82,11 +82,10 @@
                                     @break
                                 @case(1)
                                     <tr>
-                                        <th colspan="5" style="color: #6dc36d;border: 2px solid; text-align: center; border-color: #acacb1da;">NO HAY PACIENTES POR ATENDER</th>
+                                        <th colspan="7" style="color: #6dc36d;border: 2px solid; text-align: center; border-color: #acacb1da;">NO HAY PACIENTES POR ATENDER</th>
                                     </tr>
                                     @break
                                 @default
-                                    
                             @endswitch
                         @endforeach
                     @endif

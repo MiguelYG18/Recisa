@@ -48,17 +48,12 @@
                                             data-live-search="true" data-size="3" class="form-control selectpicker">
                                             <option value="" disabled selected>Seleccionar</option>
                                             @foreach ($quotas as $quota)
-                                                <optgroup
-                                                    label="{{ $quota->user->surnames }}, {{ $quota->user->names }} -> cupos: {{ $quota->cupo_doctor }}">
-                                                    @foreach ($quotas as $specialization)
-                                                        @if ($specialization->id_specialization == $quota->id_specialization)
-                                                            <option value="{{ $specialization->id }}"
-                                                                {{ old('id_quota') == $specialization->id ? 'selected' : '' }}
-                                                                {{ $specialization->cupo_doctor == 0 ? 'disabled' : '' }}>
-                                                                {{ $specialization->specialization->name }}
-                                                            </option>
-                                                        @endif
-                                                    @endforeach
+                                                <optgroup label="{{ $quota->user->surnames }}, {{ $quota->user->names }} -> cupos: {{ $quota->cupo_doctor }}">
+                                                    <option value="{{ $quota->id }}"
+                                                        {{ old('id_quota') == $quota->id ? 'selected' : '' }}
+                                                        {{ $quota->cupo_doctor == 0 ? 'disabled' : '' }}>
+                                                        {{ $quota->specialization->name }}
+                                                    </option>
                                                 </optgroup>
                                             @endforeach
                                         </select>

@@ -19,7 +19,7 @@ class AppointmentController extends Controller
     }
     public function add(){
         $quotas = UserSpecialization::with(['user', 'specialization'])->get();
-        $patients=Patient::all();
+        $patients= Patient::all();
         return view('appointments.created',compact('quotas','patients'));
     }
     public function insert(StoreApointment $request){

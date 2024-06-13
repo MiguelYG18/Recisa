@@ -59,14 +59,11 @@
                                     <option value="" disabled selected>Seleccionar</option>
                                     @foreach ($quotas as $quota)
                                         <optgroup label="{{ $quota->user->surnames }}, {{ $quota->user->names }}">
-                                            @foreach ($quotas as $specialization)
-                                                @if ($specialization->id_specialization == $quota->id_specialization)
-                                                    <option value="{{ $specialization->id }}"
-                                                        {{ old('id_quota') == $specialization->id ? 'selected' : '' }}>
-                                                        {{ $specialization->specialization->name }}
-                                                    </option>
-                                                @endif
-                                            @endforeach
+                                            <option value="{{ $quota->id }}"
+                                                {{ old('id_quota') == $quota->id ? 'selected' : '' }}
+                                                {{ $quota->cupo_doctor}}>
+                                                {{ $quota->specialization->name }}
+                                            </option>
                                         </optgroup>
                                     @endforeach
                                 </select>
