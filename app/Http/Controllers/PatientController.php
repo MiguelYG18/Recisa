@@ -40,7 +40,6 @@ class PatientController extends Controller
                     'age'=>$request->age,
                     'history_number'=>$request->history_number
                ]);
-
                 $patient->save();
             DB::commit();
         }catch (Exception $e) {

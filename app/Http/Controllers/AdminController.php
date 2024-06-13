@@ -173,7 +173,8 @@ class AdminController extends Controller
         $patientDoctor = UserSpecialization::with(['user', 'appointment' => function($query) {
             $query->where('status', 0);
         }, 'specialization'])
-        ->where('id_specialization', $request->id_select)
+        ->where('id_specialization', $request->quota_id)
+        ->where('id_user', $request->user_id)
         ->get();
         // Cargar la vista y pasar los datos de los usuarios
         $view = View::make('report.doctor_report', ['patientDoctor' => $patientDoctor]);

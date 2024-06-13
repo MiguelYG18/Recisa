@@ -46,6 +46,8 @@
             <div class="modal-content">
                 <form action="{{ url('/recisa/admin/reporte/doctor') }}" method="GET" id="form-doctor" target="_blank">
                     @csrf
+                    <input type="hidden" name="quota_id" id="quota_id">
+                    <input type="hidden" name="user_id" id="user_id">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="staticBackdropLabel">Buscar doctores para su reporte</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -59,9 +61,8 @@
                                     <option value="" disabled selected>Seleccionar</option>
                                     @foreach ($quotas as $quota)
                                         <optgroup label="{{ $quota->user->surnames }}, {{ $quota->user->names }}">
-                                            <option value="{{ $quota->id }}"
-                                                {{ old('id_quota') == $quota->id ? 'selected' : '' }}
-                                                {{ $quota->cupo_doctor}}>
+                                            <option value="{{ $quota->id }}" data-quota-id="{{ $quota->specialization->id }}"
+                                                data-user-id="{{ $quota->user->id }}">
                                                 {{ $quota->specialization->name }}
                                             </option>
                                         </optgroup>
@@ -72,9 +73,8 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="button" id="realizar" class="btn btn-danger"style="background: #EB5C5E;">
-                            Realizar
-                        </button>
+                        <button type="submit" id="realizar" class="btn btn-danger"
+                            style="background: #EB5C5E;">Realizar</button>
                     </div>
                 </form>
             </div>
@@ -153,8 +153,8 @@
                                                 <a href="{{ url('admin/admin/edit/' . $user->slug) }}"
                                                     class="btn btn-primary" style="background: #7BDE7C;"><i
                                                         class="fas fa-pencil-alt"></i></a>
-                                                <button type="button" class="btn btn-danger" style="background: #EB5C5E;"
-                                                    data-bs-toggle="modal"
+                                                <button type="button" class="btn btn-danger"
+                                                    style="background: #EB5C5E;" data-bs-toggle="modal"
                                                     data-bs-target="#staticBackdrop-{{ $user->id }}">
                                                     <i class="far fa-trash-alt"></i>
                                                 </button>
@@ -256,5 +256,14 @@
                 }
             });
         }
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#id_select').on('change', function() {
+                var selectedOption = $(this).find('option:selected');
+                $('#quota_id').val(selectedOption.data('quota-id'));
+                $('#user_id').val(selectedOption.data('user-id'));
+            });
+        });
     </script>
 @endpush

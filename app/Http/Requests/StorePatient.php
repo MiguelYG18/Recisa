@@ -36,6 +36,7 @@ class StorePatient extends FormRequest
         return[
             'names'=>'nombres',
             'surnames'=>'apellidos',
+            'phone' => 'celular',
             'age'=>'edad',
             'history_number' => 'número de historial',
         ];
