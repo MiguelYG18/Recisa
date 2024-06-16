@@ -27,8 +27,7 @@
                     <div class="to">DOCTOR:</div>
                     <h2 class="name">{{ $specialization->user->surnames }}, {{ $specialization->user->names }}</h2>
                     <div class="address">{{ $specialization->specialization->name }}</div>
-                    <div class="email"><a
-                            href="mailto:{{ $specialization->user->email }}">{{ $specialization->user->email }}</a>
+                    <div class="email"><a href="mailto:{{ $specialization->user->email }}">{{ $specialization->user->email }}</a>
                     </div>
                 </div>
                 <div id="invoice">
@@ -46,7 +45,6 @@
                     <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">PACIENTE</th>
                     <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">NUMERO HISTORIAL</th>
                     <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">TELEFONO</th>
-                    <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">DIA</th>
                     <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">HORA</th>
                 </tr>
             </thead>
@@ -71,9 +69,6 @@
                                         </td>
                                         <td style="border: 2px solid; text-align: center; border-color: #acacb1da;">
                                             {{ $appointments->patient->phone }}
-                                        </td>
-                                        <td style="border: 2px solid; text-align: center; border-color: #acacb1da;">
-                                            {{ $appointments->date }}
                                         </td>
                                         <td style="border: 2px solid; text-align: center; border-color: #acacb1da;">
                                             {{ $appointments->time }}
