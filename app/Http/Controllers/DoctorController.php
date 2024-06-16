@@ -19,10 +19,12 @@ class DoctorController extends Controller
                         ->with(['specialization'])
                         ->withCount([
                             'appointment as appointment_pending_count' => function ($query) {
-                                $query->where('status', 1);
+                                $query->where('status', 1)
+                                      ->where('date',date('Y-m-d'));
                             },
                             'appointment as appointment_cancel_count' => function ($query) {
-                                $query->where('status', 2);
+                                $query->where('status', 2)
+                                      ->where('date',date('Y-m-d'));
                             },
                             'appointment as appointment_count'
                         ])
@@ -32,6 +34,7 @@ class DoctorController extends Controller
                             $query->where('id_user', $user->id);
                         })
                         ->where('status', 0)
+                        ->where('date',date('Y-m-d'))
                         ->get();
         return view('doctor.citas.index',compact('atendidos','appointments'));
     }

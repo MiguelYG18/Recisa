@@ -6,6 +6,7 @@ use App\Http\Requests\StoreApointment;
 use App\Models\Appointment;
 use App\Models\ClinicalHistories;
 use App\Models\Patient;
+use App\Models\User;
 use App\Models\UserSpecialization;
 use Exception;
 use Illuminate\Http\Request;
@@ -20,7 +21,10 @@ class AppointmentController extends Controller
     public function add(){
         $quotas = UserSpecialization::with(['user', 'specialization'])->get();
         $patients= Patient::all();
-        return view('appointments.created',compact('quotas','patients'));
+        $today=date('Y-m-d');
+        $doctors=User::with(['specializations.specialization.userSpecializations.appointment'])
+                      ->where('user_level',3)->get();
+        return view('appointments.created',compact('quotas','patients','today','doctors'));
     }
     public function insert(StoreApointment $request){
         try {
