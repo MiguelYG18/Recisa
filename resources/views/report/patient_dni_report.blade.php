@@ -41,7 +41,6 @@
                     <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">#</th>
                     <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">DOCTOR</th>
                     <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">ESPECIALIDAD</th>
-                    <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">FECHA</th>
                     <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">HORA</th>
                     <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">ESTADO</th>
                 </tr>
@@ -54,7 +53,6 @@
                             <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">{{ $index + 1 }}</th>
                             <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">{{ $appointment->doctor->user->surnames}}, {{$appointment->doctor->user->names}}</th>
                             <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">{{ $appointment->doctor->specialization->name}}</th>
-                            <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">{{ $appointment->date }}</th>
                             <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">{{ $appointment->time }}</th>
                             <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">
                                 @switch($appointment->status)

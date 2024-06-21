@@ -48,7 +48,7 @@
                                         <th style="width: 1000px;text-align: center !important; font-weight:bold">Paciente</th>
                                         <th style="width: 1000px;text-align: center !important; font-weight:bold">Número Historial</th>
                                         <th style="width: 100px;text-align: center !important; font-weight:bold">Celular</th>
-                                        <th style="width: 300px;text-align: center !important; font-weight:bold">Edad</th>
+                                        <th style="width: 300px;text-align: center !important; font-weight:bold">Fecha de Nacimiento</th>
                                         <th style="width: 300px;text-align: center !important; font-weight:bold">Creación</th>
                                         <th class="title-table" style="width: 300px;text-align: center !important; font-weight:bold">Opciones</th>
                                         <th class="title-table" style="width: 300px;text-align: center !important; font-weight:bold">Reporte</th>
@@ -61,7 +61,7 @@
                                             <td>{{$patient->names}}, {{$patient->surnames}}</td>
                                             <td class="text-center">{{$patient->history_number}}</td>
                                             <td>{{$patient->phone}}</td>
-                                            <td class="text-center">{{$patient->age}}</td>
+                                            <td class="text-center">{{$patient->date}}</td>
                                             <td>{{date('d-m-Y', strtotime($patient->created_at))}}</td>
                                             <td class="text-center">
                                                 <div class="btn-group" role="group">

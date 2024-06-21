@@ -31,13 +31,13 @@ class PatientController extends Controller
         try{
             DB::beginTransaction();
                 $patient=new Patient();
-
+                
                 $patient->fill([
                     'dni'=>$request->dni,
                     'names'=>$request->names,
                     'surnames'=>$request->surnames,
                     'phone'=>$request->phone,
-                    'age'=>$request->age,
+                    'date'=>$request->date,
                     'history_number'=>$request->history_number
                ]);
                 $patient->save();
@@ -73,13 +73,11 @@ class PatientController extends Controller
         // Validaciones
         request()->validate([
             'dni' => 'required|regex:/^[0-9]{8}$/|unique:patients,dni,' . $patient->id,
-            'phone' => 'required|regex:/^[0-9]{9}$/|unique:patients,phone,' . $patient->id,
-            'age' => 'required'
+            'phone' => 'required|regex:/^[0-9]{9}$/|unique:patients,phone,' . $patient->id
         ]);
 
         // Actualizar campos del paciente
         $patient->phone = $request->phone;
-        $patient->age = $request->age;
 
         $patient->save();
         return redirect('recisa/patients/list')->with('success', 'El paciente ' . $patient->names . ' fue actualizado');

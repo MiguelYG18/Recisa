@@ -22,7 +22,7 @@ class Patient extends Model
         'names',
         'surnames',
         'phone',
-        'age',
+        'date',
         'history_number'
     ];
 

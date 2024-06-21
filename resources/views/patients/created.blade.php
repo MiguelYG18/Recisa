@@ -2,7 +2,8 @@
 @section('title', 'Crear Paciente')
 @push('css')
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/css/bootstrap-select.min.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/css/bootstrap-select.min.css">
     <!--Alertas-->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @endpush
@@ -66,18 +67,18 @@
                             </div>
                             <div class="col-md-3">
                                 <label for="phone" class="form-label">Número Historial:</label>
-                                <input class="form-control" maxlength="10" minlength="10" type="text" name="history_number" 
-                                    id="history_number" value="{{ old('history_number') }}">
+                                <input class="form-control" maxlength="10" minlength="10" type="text"
+                                    name="history_number" id="history_number" value="{{ old('history_number') }}">
                             </div>
                             <div class="col-md-2">
                                 <label for="phone" class="form-label">Celular:</label>
-                                <input class="form-control" maxlength="9" minlength="9" type="text" name="phone" 
+                                <input class="form-control" maxlength="9" minlength="9" type="text" name="phone"
                                     id="phone" value="{{ old('phone') }}">
                             </div>
-                            <div class="col-md-1">
-                                <label for="age" class="form-label">Edad:</label>
-                                <input class="form-control" maxlength="2" minlength="1" type="text" name="age" 
-                                    id="age" value="{{ old('age') }}">
+                            <div class="col-md-3">
+                                <label for="date" class="form-label">Fecha Nacimiento</label>
+                                <input type="date" name="date" id="date" class="form-control"
+                                    value="{{ old('date') }}">
                             </div>
                             <div class="col-md-12 text-center mt-3">
                                 <button class="btn btn-primary btn-sm" type="submit"
@@ -86,7 +87,7 @@
                                 </button>
                             </div>
                         </div>
-                    </form>    
+                    </form>
                 </div>
             </div>
         </div>

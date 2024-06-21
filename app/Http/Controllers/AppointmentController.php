@@ -11,6 +11,7 @@ use App\Models\UserSpecialization;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class AppointmentController extends Controller
 {
@@ -52,6 +53,12 @@ class AppointmentController extends Controller
     }
     public function show(Appointment $appointment){
         $clinical_histories = ClinicalHistories::where('id_patient', $appointment->patient->id)->get();
-        return view('appointments.show',compact('appointment','clinical_histories'));
+
+        $birthDate = Carbon::parse($appointment->patient->date);
+        $currentDate = Carbon::now();
+        $age = $currentDate->diffInYears($birthDate);
+
+
+        return view('appointments.show',compact('appointment','clinical_histories', 'age'));
     }
 }

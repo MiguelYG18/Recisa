@@ -26,7 +26,7 @@ class StorePatient extends FormRequest
             'names'=>'required|string|regex:/^[\pL\s]+$/u|max:25',
             'surnames'=>'required|string|regex:/^[\pL\s]+$/u|max:25',
             'phone'=>'required|regex:/^[0-9]{9}$/|unique:patients,phone',
-            'age'=> 'required|regex:/^[0-9]{2}$/',
+            'date' => 'required|date',
             'history_number' => 'required|regex:/^[0-9]{10}$/|unique:patients,history_number'
         ];
     }
@@ -37,7 +37,7 @@ class StorePatient extends FormRequest
             'names'=>'nombres',
             'surnames'=>'apellidos',
             'phone' => 'celular',
-            'age'=>'edad',
+            'date'=>'fecha nacimiento',
             'history_number' => 'número de historial',
         ];
     }

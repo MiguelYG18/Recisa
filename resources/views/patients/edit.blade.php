@@ -57,9 +57,10 @@
                                     <label for="phone" class="form-label">Celular:</label>
                                     <input class="form-control" maxlength="9" minlength="9" type="text" name="phone" id="phone" value="{{old('phone',$patient->phone)}}">
                                 </div>
-                                <div class="col-md-1">
-                                    <label for="age" class="form-label">Edad:</label>
-                                    <input class="form-control" type="text" name="age" id="age" value="{{old('age',$patient->age)}}">
+                                <div class="col-md-3">
+                                    <label for="date" class="form-label">Fecha Nacimiento</label>
+                                    <input readonly type="date" name="date" id="date" class="form-control"
+                                        value="{{ old('date',$patient->date) }}">
                                 </div>
                                 <div class="col-md-12 text-center">
                                     <button type="submit" class="btn btn-primary" style="background-color: #00476D !important;">Guardar</button>

@@ -51,7 +51,7 @@
                     <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">PACIENTE</th>
                     <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">DNI</th>
                     <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">CELULAR</th>
-                    <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">EDAD</th>
+                    <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">FECHA NACIMIENTO</th>
                     <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">Nº HISTORIAL</th>
                 </tr>
             </thead>
@@ -62,7 +62,7 @@
                         <td style="border: 2px solid; text-align: center; border-color: #acacb1da;">{{ $patient->surnames }}, {{ $patient->names }}</td>
                         <td style="border: 2px solid; text-align: center; border-color: #acacb1da;">{{ $patient->dni }}</td>
                         <td style="border: 2px solid; text-align: center; border-color: #acacb1da;">{{ $patient->phone }}</td>
-                        <td style="border: 2px solid; text-align: center; border-color: #acacb1da;">{{ $patient->age }}</td>
+                        <td style="border: 2px solid; text-align: center; border-color: #acacb1da;">{{ $patient->date }}</td>
                         <td style="border: 2px solid; text-align: center; border-color: #acacb1da;">{{ $patient->history_number}}</td>
                     </tr>
                 @endforeach
