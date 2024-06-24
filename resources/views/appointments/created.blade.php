@@ -268,6 +268,10 @@
     </script>
     <script>
         $(document).ready(function() {
+            // Pasar las horas reservadas desde PHP a JavaScript y convertirlas al formato correcto
+            var reservedHours = @json($hour->pluck('time')->toArray()).map(function(time) {
+                return time.slice(0, 5); // Convertir "12:00:00" a "12:00"
+            });
             var select = $('#time');
 
             // Horas disponibles
@@ -289,18 +293,19 @@
             // Agregar la opción inicial "Selecciona una hora"
             select.append('<option value="">Selecciona una hora</option>');
 
-            // Agregar las opciones de mañana
-            $.each(horasManana, function(key, value) {
-                select.append('<option value="' + value + '">' + value + '</option>');
-            });
+            // Función para agregar horas si no están reservadas
+            function agregarHoras(horas) {
+                $.each(horas, function(key, value) {
+                    if (!reservedHours.includes(value)) {
+                        select.append('<option value="' + value + '">' + value + '</option>');
+                    }
+                });
+            }
 
-            // Agregar la opción de almuerzo (desactivada)
+            // Agregar las opciones de mañana y tarde
+            agregarHoras(horasManana);
             select.append('<option value="almuerzo" disabled>--- Almuerzo ---</option>');
-
-            // Agregar las opciones de tarde
-            $.each(horasTarde, function(key, value) {
-                select.append('<option value="' + value + '">' + value + '</option>');
-            });
+            agregarHoras(horasTarde);
 
             // Inicializar el selectpicker después de agregar las opciones
             select.selectpicker('refresh');

@@ -23,9 +23,10 @@ class AppointmentController extends Controller
         $quotas = UserSpecialization::with(['user', 'specialization'])->get();
         $patients= Patient::all();
         $today=date('Y-m-d');
+        $hour=Appointment::where('date', $today)->get();
         $doctors=User::with(['specializations.specialization.userSpecializations.appointment'])
                       ->where('user_level',3)->get();
-        return view('appointments.created',compact('quotas','patients','today','doctors'));
+        return view('appointments.created',compact('quotas','patients','today','doctors','hour'));
     }
     public function insert(StoreApointment $request){
         try {
