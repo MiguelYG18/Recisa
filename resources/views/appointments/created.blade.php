@@ -77,7 +77,7 @@
                                         <span class="input-group-text" id="inputGroup-sizing-default">Hora de
                                             atención</span>
                                         <select name="time" id="time" data-style="btn-secondary"
-                                            data-live-search="true" data-size="3" class="form-control selectpicker">
+                                            data-live-search="true" data-size="5" class="form-control selectpicker">
                                         </select>
                                     </div>
                                 </div>

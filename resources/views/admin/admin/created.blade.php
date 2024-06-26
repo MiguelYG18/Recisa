@@ -63,7 +63,7 @@
                             </div>  
                             <div class="col-md-3">
                                 <label for="role" class="form-label">Rol:</label>
-                                <select title="Rol..." name="user_level" id="user_level" data-style="btn-secondary" data-size="2" class="form-control selectpicker show-tick">
+                                <select title="Rol..." name="user_level" id="user_level" data-style="btn-secondary" data-size="3" class="form-control selectpicker show-tick">
                                     @foreach ($rol as $item)
                                         <option value="{{$item->group_level}}" {{old('user_level') == $item->group_level ? 'selected':''}}>
                                             @switch($item)
