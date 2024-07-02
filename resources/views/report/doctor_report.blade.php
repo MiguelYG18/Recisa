@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>RECISA | Reportes Usuarios</title>
+    <title>RECISA | Reporte Citas</title>
     <link rel="stylesheet" href="{{ asset('assets/css/Report.css') }}" media="all" />
     <link rel="icon" href="{{ asset('assets/img/escudo.png') }}">
 </head>
