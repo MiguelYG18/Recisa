@@ -30,9 +30,7 @@
                 <div class="address">CELULAR: {{$patient->phone}}</div>
             </div>
             <div id="invoice">
-                <h1>CITAS</h1>
-                <div class="date">Fecha y Hora: {{ \Carbon\Carbon::now()->format('Y-m-d H:i:s') }}</div>
-                <div class="date">Horarios: 7.00 A 19.00 HORAS</div>
+                <h1>CITAS DEL PACIENTE</h1>
             </div>
         </div>
         <table>
@@ -42,49 +40,40 @@
                     <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">DOCTOR</th>
                     <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">ESPECIALIDAD</th>
                     <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">HORA</th>
+                    <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">DÍA</th>
                     <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">ESTADO</th>
                 </tr>
             </thead>
             <tbody>   
                 @foreach ($patient->appointments as $index => $appointment)
-                    @switch($appointment->status)
-                        @case(0)
-                        <tr>
-                            <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">{{ $index + 1 }}</th>
-                            <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">{{ $appointment->doctor->user->surnames}}, {{$appointment->doctor->user->names}}</th>
-                            <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">{{ $appointment->doctor->specialization->name}}</th>
-                            <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">{{ $appointment->time }}</th>
-                            <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">
-                                @switch($appointment->status)
-                                    @case(0)
-                                        Por atender
-                                        @break
-                                    @case(1)
-                                        Atendido
-                                        @break
-                                    @case(2)
-                                        No atendido
-                                        @break
-                                    @default
-                                @endswitch
-                            </th>
-                        </tr>
-                            @break
-                        @case(2)
-                            <tr>
-                                <th colspan="7" style="color: #6dc36d;border: 2px solid; text-align: center; border-color: #acacb1da;">ATENDIDO</th>
-                            </tr>
-                            @break
-                        @default
-                            
-                    @endswitch    
+                    <tr>
+                        <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">{{ $index + 1 }}</th>
+                        <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">{{ $appointment->doctor->user->surnames}}, {{$appointment->doctor->user->names}}</th>
+                        <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">{{ $appointment->doctor->specialization->name}}</th>
+                        <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">{{ $appointment->time }}</th>
+                        <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">{{ $appointment->date }}</th>
+                        <th style="border: 2px solid; text-align: center; border-color: #acacb1da;">
+                            @switch($appointment->status)
+                                @case(0)
+                                    Por atender
+                                    @break
+                                @case(1)
+                                    Atendido
+                                    @break
+                                @case(2)
+                                    No atendido
+                                    @break
+                                @default
+                            @endswitch
+                        </th>
+                        
+                    </tr>
                 @endforeach
             </tbody>
         </table>
 		<br><br><br>
         <div id="notices">
-            <div>NOTA:</div>
-            <div class="notice">REPORTE DIARIO DE PACIENTES.</div>
+            <div>REPORTE GENERADO: {{ \Carbon\Carbon::now()->format('Y-m-d H:i') }}</div>
         </div>
     </main>
     <footer>
