@@ -30,10 +30,10 @@
                             <div class="row">
                                 <div class="col-md-12 mt-2">
                                     <div class="input-group">
-                                        <label class="input-group-text" for="id_area">Reserva</label>
+                                        <label class="input-group-text" for="id_area"><i class="fa-solid fa-user-doctor text-primary"></i></label>
                                         <select name="id_quota" id="id_quota" data-style="btn-secondary"
                                             data-live-search="true" data-size="3" class="form-control selectpicker">
-                                            <option value="" disabled selected>Seleccionar</option>
+                                            <option value="" disabled selected>Seleccione el médico y especialidad</option>
                                             @foreach ($quotas as $quota)
                                                 <optgroup
                                                     label="{{ $quota->user->surnames }}, {{ $quota->user->names }} -> cupos: {{ $quota->cupo_doctor }}">
@@ -49,8 +49,8 @@
                                 </div>
                                 <div class="col-md-12 mt-3">
                                     <div class="input-group">
-                                        <label class="input-group-text" for="id_area">Paciente</label>
-                                        <select name="id_patient" id="id_patient" title="Seleccione..."
+                                        <label class="input-group-text" for="id_area"><i class="fa-solid fa-bed-pulse text-primary"></i></label>
+                                        <select name="id_patient" id="id_patient" title="Seleccione al Paciente..."
                                             data-style="btn-secondary" data-live-search="true" data-size="3"
                                             class="form-control selectpicker">
                                             @foreach ($patients as $patient)
@@ -66,7 +66,7 @@
                                 <!--Fecha-->
                                 <div class="col-md-6 mt-3">
                                     <div class="input-group mb-3">
-                                        <span class="input-group-text" id="inputGroup-sizing-default">Fecha</span>
+                                        <span class="input-group-text" id="inputGroup-sizing-default"><i class="fa-solid fa-calendar-days text-primary"></i></span>
                                         <input readonly type="date" name="date" id="date"
                                             class="form-control boder-success" value="<?php echo date('Y-m-d'); ?>">
                                     </div>
@@ -74,8 +74,7 @@
                                 <!--hora-->
                                 <div class="col-md-6 mt-3">
                                     <div class="input-group mb-3">
-                                        <span class="input-group-text" id="inputGroup-sizing-default">Hora de
-                                            atención</span>
+                                        <span class="input-group-text" id="inputGroup-sizing-default"><i class="fa-solid fa-clock text-primary"></i></span>
                                         <select name="time" id="time" data-style="btn-secondary"
                                             data-live-search="true" data-size="5" class="form-control selectpicker">
                                         </select>
