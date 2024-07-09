@@ -9,6 +9,7 @@ use App\Http\Controllers\DNIController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SecretaryController;
 use App\Http\Controllers\SpecializationController;
 use App\Http\Controllers\UserGroupController;
 use App\Http\Controllers\UserSpecializationController;
@@ -106,6 +107,8 @@ Route::group(['middleware'=>'admin'],function(){
 Route::group(['middleware'=>'secretary'],function(){
     //La vista del dashbaord
     Route::get('secretary/dashboard',[DashboardController::class,'dashboard']); 
+    //Reporte de Doctores
+    Route::get('secretary/reporte/cita',[SecretaryController::class,'list']);
 });
 Route::group(['middleware'=>'doctor'],function(){
     //La vista del dashbaord
@@ -141,7 +144,7 @@ Route::group(['middleware'=>'admin_or_secretary'],function(){
     Route::get('/recisa/patients/reporte',[PatientController::class,'reporte']);
     Route::get('/recisa/patients/reporte/{dni}',[PatientController::class,'report_patient']); 
     //Reporte de Doctores y su especialidad y pacientes
-    Route::get('/recisa/admin/reporte/doctor',[AdminController::class, 'report_doctor']);
+    Route::get('/recisa/reporte/doctor',[AdminController::class, 'report_doctor']);
 });
 Route::group(['middleware'=>'profile'],function(){
     //Ruta para ver el perfil

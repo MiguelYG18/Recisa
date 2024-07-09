@@ -22,30 +22,6 @@
                 <li class="nav-item dropdown no-arrow mx-1">
                     <div class="nav-item dropdown no-arrow">
                         <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">
-                            <span class="badge bg-danger badge-counter">{{$vacio}}</span>
-                            <i class="fas fa-bell fa-fw"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end dropdown-list animated--grow-in">
-                            <h6 class="dropdown-header">Alertas</h6>
-                            @foreach ($specializations as $specialization)
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="me-3">
-                                        <div class="bg-primary icon-circle text-center">
-                                            <i class="fas fa-file-alt text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div><span class="small text-gray-500"></span>
-                                        <p>{{$specialization->name}} tiene {{$specialization->quantity_voucher}} cupos</p>
-                                    </div>
-                                </a>
-                            @endforeach
-                            <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-                        </div>
-                    </div>
-                </li>
-                <li class="nav-item dropdown no-arrow mx-1">
-                    <div class="nav-item dropdown no-arrow">
-                        <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">
                             <span class="badge bg-danger badge-counter">{{$cupo}}</span>
                             <i class="fas fa-envelope fa-fw"></i>
                         </a>
@@ -54,7 +30,11 @@
                             @foreach ($doctors as $doctor)
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image me-3">
-                                        <img class="rounded-circle" src="{{url('public/storage/perfiles/' . $doctor->image)}}">
+                                        @if($doctor->image == null)
+                                            <img class="border rounded-circle img-profile" src="https://i.postimg.cc/hjSBbZX4/doctor.png">
+                                        @else
+                                            <img class="border rounded-circle img-profile" src="{{Storage::url('public/perfiles/'.$doctor->image)}}">
+                                        @endif
                                         @switch($doctor->user_status)
                                             @case(0)
                                                 <div class="bg-warning status-indicator"></div>
@@ -95,12 +75,9 @@
                         <a class="dropdown-item" href="{{url('recisa/perfil')}}"><i class="fas fa-user fa-sm fa-fw me-2 text-gray-400">
                             </i>&nbsp;Perfil
                         </a>
-                        <a class="dropdown-item" href="#"><i class="fas fa-list fa-sm fa-fw me-2 text-gray-400">
-                            </i>&nbsp;Activity log
-                        </a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{url('logout')}}">
-                            <i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout
+                            <i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Salir
                         </a>
                     </div>
                 </div>

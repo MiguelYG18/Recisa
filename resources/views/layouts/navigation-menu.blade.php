@@ -98,7 +98,19 @@
                         <i class="fa-solid fa-house"></i>
                         <span>Perfil</span>
                     </a>
-                </li>     
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                        data-bs-target="#auth6" aria-expanded="false" aria-controls="auth6">
+                        <i class="fa fa-user-md"></i>
+                        <span>Gestión de citas</span>
+                    </a>
+                    <ul id="auth6" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item2">
+                            <a href="{{url('secretary/reporte/cita')}}" class="sidebar-link">Reporte de Citas</a>
+                        </li>
+                    </ul>
+                </li>       
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
                         data-bs-target="#auth5" aria-expanded="false" aria-controls="auth5">
@@ -128,7 +140,7 @@
                             <a href="{{url('recisa/appoitnment/list')}}" class="sidebar-link">Listar Citas</a>
                         </li>
                     </ul>
-                </li>                        
+                </li>                      
                 @break
             @case(3)
                 <li class="sidebar-item">

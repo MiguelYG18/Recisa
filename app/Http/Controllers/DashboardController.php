@@ -33,7 +33,9 @@ class DashboardController extends Controller
             return view('admin.dashboard',compact('doctor','appointment','patient','maxquatity'));
         } 
         if($user->user_level == 2){
-            return view('secretary.dashboard');
+            $doctor= User::where('user_level',3)->count();
+            $appointment=Appointment::count(); 
+            return view('secretary.dashboard',compact('doctor','appointment'));
         }
         if($user->user_level == 3){
             // Obtener las especializaciones del usuario junto con el conteo de citas
