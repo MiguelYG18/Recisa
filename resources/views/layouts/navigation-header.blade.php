@@ -77,7 +77,7 @@
                         </a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{url('logout')}}">
-                            <i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Salir
+                            <i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400" style="color:red !important"></i>&nbsp;Salir
                         </a>
                     </div>
                 </div>
